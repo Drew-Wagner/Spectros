@@ -17,10 +17,6 @@ script = ExtResource("2_pk0s0")
 speed = 256.0
 move_in_editor = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform"]
-position = Vector2(1, 0)
-shape = SubResource("RectangleShape2D_xjfp4")
-
 [node name="Sprite2D" type="Sprite2D" parent="MovingPlatform"]
 position = Vector2(-31, -56)
 texture = ExtResource("3_e67uv")
@@ -28,3 +24,7 @@ texture = ExtResource("3_e67uv")
 [node name="Sprite2D2" type="Sprite2D" parent="MovingPlatform"]
 position = Vector2(33, -56)
 texture = ExtResource("3_e67uv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_xjfp4")
