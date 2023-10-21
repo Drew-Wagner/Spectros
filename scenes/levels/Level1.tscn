@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://dd560qxrjfygt"]
+
+[ext_resource type="Script" path="res://scripts/base_level.gd" id="1_405ab"]
+[ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_0jb80"]
+[ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="3_pkat1"]
+[ext_resource type="PackedScene" uid="uid://1m2siku6krim" path="res://scenes/elements/door.tscn" id="3_xb5xx"]
+[ext_resource type="PackedScene" uid="uid://b7y8b7rwio6py" path="res://scenes/elements/trap.tscn" id="4_2m6o7"]
+[ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/elements/spikes.tscn" id="4_jkiea"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_405ab")
+
+[node name="StaticEnvironment" type="TileMap" parent="."]
+position = Vector2(0, -1)
+tile_set = ExtResource("2_0jb80")
+format = 2
+layer_0/tile_data = PackedInt32Array(65534, 393216, 4, 65535, 393216, 4, 0, 393216, 4, 131070, 393216, 4, 196606, 393216, 4, 262142, 393216, 4, 262141, 393216, 4, 262140, 393216, 4, 65536, 393216, 4, 131072, 393216, 4, 196608, 393216, 4, 196609, 393216, 4, 196610, 393216, 4, 65531, 393216, 4, 65530, 393216, 4, 65529, 393216, 4, 3, 393216, 4, 4, 393216, 4, 5, 393216, 4, 131067, 393216, 4, 131066, 393216, 4, 131065, 393216, 4, 196601, 393216, 4, 262137, 393216, 4, 262138, 393216, 4, 196602, 393216, 4, 196603, 393216, 4, 262139, 393216, 4, 131071, 393216, 4, 196607, 393216, 4, 262143, 393216, 4, 196611, 393216, 4, 131075, 393216, 4, 65539, 393216, 4, 65540, 393216, 4, 65541, 393216, 4, 131077, 393216, 4, 196613, 393216, 4, 131076, 393216, 4, 196612, 393216, 4, 196614, 393216, 4, 131078, 393216, 4, 65542, 393216, 4, 6, 393216, 4, -196602, 393216, 4, -262138, 393216, 4, -327674, 393216, 4, -393210, 393216, 4, -393211, 393216, 4, -393212, 393216, 4, -393213, 393216, 4, -393214, 393216, 4, -393215, 393216, 4, -393216, 393216, 4, -327681, 393216, 4, -327682, 393216, 4, -327683, 393216, 4, -327684, 393216, 4, -327685, 393216, 4, -327686, 393216, 4, -327687, 393216, 4, -327688, 393216, 4, -327689, 393216, 4, -327690, 393216, 4, -327691, 393216, 4, -262155, 393216, 4, -196619, 393216, 4, -131083, 393216, 4, -65547, 393216, 4, -11, 393216, 4, 65525, 393216, 4, 131061, 393216, 4, 196597, 393216, 4, 262133, 393216, 4, 262134, 393216, 4, 262135, 393216, 4, 262136, 393216, 4, 65528, 393216, 4, 65527, 393216, 4, 65526, 393216, 4, 131062, 393216, 4, 196598, 393216, 4, 131063, 393216, 4, 196599, 393216, 4, 196600, 393216, 4, 131064, 393216, 4, -7, 393216, 4, -65530, 393216, 4, -196618, 393216, 4, -262154, 393216, 4, -262153, 393216, 4, -262150, 393216, 4, -262149, 393216, 4, -262145, 393216, 4, -327680, 393216, 4, -327679, 393216, 4, -262139, 393216, 4, -327675, 393216, 4)
+
+[node name="DynamicEnvironment" type="Node" parent="."]
+
+[node name="Door" parent="DynamicEnvironment" instance=ExtResource("3_xb5xx")]
+position = Vector2(-608, 64)
+on_position = Vector2(0, -64)
+
+[node name="Door2" parent="DynamicEnvironment" instance=ExtResource("3_xb5xx")]
+position = Vector2(-544, 64)
+on_position = Vector2(0, -64)
+
+[node name="Door3" parent="DynamicEnvironment" instance=ExtResource("3_xb5xx")]
+position = Vector2(-480, 64)
+on_position = Vector2(0, -64)
+
+[node name="Door4" parent="DynamicEnvironment" instance=ExtResource("3_xb5xx")]
+position = Vector2(-96, -64)
+on_position = Vector2(0, 128)
+
+[node name="Door5" parent="DynamicEnvironment" instance=ExtResource("3_xb5xx")]
+position = Vector2(416, -64)
+
+[node name="Trap" parent="DynamicEnvironment" instance=ExtResource("4_2m6o7")]
+position = Vector2(-320, 32)
+
+[node name="Trap2" parent="DynamicEnvironment" instance=ExtResource("4_2m6o7")]
+position = Vector2(256, 32)
+on_position = Vector2(-128, 0)
+
+[node name="Spikes" type="Node" parent="."]
+
+[node name="Spikes1" parent="Spikes" instance=ExtResource("4_jkiea")]
+position = Vector2(-224, 160)
+
+[node name="Spikes2" parent="Spikes" instance=ExtResource("4_jkiea")]
+position = Vector2(-160, 160)
+
+[node name="Spikes3" parent="Spikes" instance=ExtResource("4_jkiea")]
+position = Vector2(96, 160)
+
+[node name="Spikes4" parent="Spikes" instance=ExtResource("4_jkiea")]
+position = Vector2(160, 160)
+
+[node name="Bones" type="Node" parent="."]
+
+[node name="Bone" parent="Bones" instance=ExtResource("3_pkat1")]
+position = Vector2(-96, -160)
+
+[node name="Bone2" parent="Bones" instance=ExtResource("3_pkat1")]
+position = Vector2(288, -32)
+
+[node name="Bone3" parent="Bones" instance=ExtResource("3_pkat1")]
+position = Vector2(-416, -96)
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-544, 0)

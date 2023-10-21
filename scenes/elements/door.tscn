@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/toggle_moving_platform.gd" id="1_k7yqg"]
 [ext_resource type="Script" path="res://scripts/moving_platform.gd" id="1_m76oq"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xmh8w"]
-size = Vector2(64, 128)
+[ext_resource type="Texture2D" uid="uid://bc1v0jnp7notl" path="res://materials/porte.png" id="3_5nfxi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xjfp4"]
 size = Vector2(64, 128)
@@ -18,8 +16,9 @@ script = ExtResource("1_m76oq")
 speed = 256.0
 move_in_editor = true
 
-[node name="Sprite2D" type="Sprite2D" parent="MovingPlatform"]
-texture = SubResource("PlaceholderTexture2D_xmh8w")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform"]
 shape = SubResource("RectangleShape2D_xjfp4")
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingPlatform"]
+position = Vector2(0, -32)
+texture = ExtResource("3_5nfxi")
