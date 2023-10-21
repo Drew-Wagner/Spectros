@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dokw05n2dslui"]
+
+[ext_resource type="Script" path="res://scenes/elements/toggleable_spikes.gd" id="1_a1lk0"]
+[ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/elements/spikes.tscn" id="1_b56ya"]
+
+[node name="ToggleableSpikes" type="Node2D"]
+script = ExtResource("1_a1lk0")
+spikes_scene = ExtResource("1_b56ya")
+
+[node name="Placeholder" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Placeholder"]
+polygon = PackedVector2Array(-32, 32, 0, -32, 32, 32)
