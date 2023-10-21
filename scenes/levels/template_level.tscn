@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cv0l7e2lhe25l"]
+[gd_scene load_steps=5 format=3 uid="uid://cv0l7e2lhe25l"]
 
 [ext_resource type="PackedScene" uid="uid://bxhcsdlxckv2k" path="res://scenes/main_character.tscn" id="1_oce52"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="1_u4pm0"]
 [ext_resource type="PackedScene" uid="uid://dokw05n2dslui" path="res://scenes/elements/toggleable_spikes.tscn" id="3_a5xas"]
+[ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="4_l4dle"]
 
 [node name="Root" type="Node2D"]
 
@@ -12,32 +13,45 @@ tile_set = ExtResource("1_u4pm0")
 format = 2
 layer_0/tile_data = PackedInt32Array(-65536, 393216, 4, -65535, 393216, 4, -65534, 393216, 4, -1, 393216, 4, -2, 393216, 4, -3, 393216, 4, -4, 393216, 4, -65533, 393216, 4, -65532, 393216, 4, -65531, 393216, 4, -65530, 393216, 4, -5, 393216, 4, -6, 393216, 4, -7, 393216, 4, -8, 393216, 4, -65544, 393216, 4, -65529, 393216, 4, -131065, 393216, 4)
 
+[node name="Spikes" type="Node" parent="."]
+
+[node name="ToggleableSpikes" parent="Spikes" instance=ExtResource("3_a5xas")]
+position = Vector2(-416, -96)
+is_on = true
+
+[node name="ToggleableSpikes2" parent="Spikes" instance=ExtResource("3_a5xas")]
+position = Vector2(-288, -96)
+
+[node name="ToggleableSpikes3" parent="Spikes" instance=ExtResource("3_a5xas")]
+position = Vector2(-160, -96)
+is_on = true
+
+[node name="ToggleableSpikes4" parent="Spikes" instance=ExtResource("3_a5xas")]
+position = Vector2(-32, -96)
+
+[node name="ToggleableSpikes5" parent="Spikes" instance=ExtResource("3_a5xas")]
+position = Vector2(96, -96)
+is_on = true
+
+[node name="ToggleableSpikes6" parent="Spikes" instance=ExtResource("3_a5xas")]
+position = Vector2(224, -96)
+
+[node name="ToggleableSpikes7" parent="Spikes" instance=ExtResource("3_a5xas")]
+position = Vector2(352, -96)
+is_on = true
+
+[node name="Bones" type="Node" parent="."]
+
+[node name="Bone" parent="Bones" instance=ExtResource("4_l4dle")]
+position = Vector2(-96, -96)
+
+[node name="Bone2" parent="Bones" instance=ExtResource("4_l4dle")]
+position = Vector2(416, -96)
+
+[node name="Bone3" parent="Bones" instance=ExtResource("4_l4dle")]
+position = Vector2(-416, -96)
+
 [node name="MainCharacter" parent="." instance=ExtResource("1_oce52")]
 position = Vector2(0, -64)
 velocity = Vector2(32, 0)
 moveSpeed = 48.0
-
-[node name="ToggleableSpikes" parent="." instance=ExtResource("3_a5xas")]
-position = Vector2(-416, -96)
-is_on = true
-
-[node name="ToggleableSpikes2" parent="." instance=ExtResource("3_a5xas")]
-position = Vector2(-288, -96)
-
-[node name="ToggleableSpikes3" parent="." instance=ExtResource("3_a5xas")]
-position = Vector2(-160, -96)
-is_on = true
-
-[node name="ToggleableSpikes4" parent="." instance=ExtResource("3_a5xas")]
-position = Vector2(-32, -96)
-
-[node name="ToggleableSpikes5" parent="." instance=ExtResource("3_a5xas")]
-position = Vector2(96, -96)
-is_on = true
-
-[node name="ToggleableSpikes6" parent="." instance=ExtResource("3_a5xas")]
-position = Vector2(224, -96)
-
-[node name="ToggleableSpikes7" parent="." instance=ExtResource("3_a5xas")]
-position = Vector2(352, -96)
-is_on = true
