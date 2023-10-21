@@ -6,18 +6,19 @@
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_11v8l"]
 gradient = SubResource("Gradient_66myx")
-width = 16
-height = 30
+height = 128
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aib7p"]
-radius = 8.0
+radius = 32.0
+height = 128.0
 
 [node name="MainCharacter" type="CharacterBody2D"]
-position = Vector2(0, -24)
 script = ExtResource("1_4p8au")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
 texture = SubResource("GradientTexture2D_11v8l")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -64)
 shape = SubResource("CapsuleShape2D_aib7p")
