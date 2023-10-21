@@ -40,4 +40,5 @@ func _on_finish_area_body_entered(body):
 
 func _on_level_area_body_exited(body):
 	if body is MainCharacter and not self.is_queued_for_deletion():
+		print("fell out of world")
 		body.kill()

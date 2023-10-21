@@ -5,24 +5,23 @@ extends Node2D
 
 var level: BaseLevel
 
-@onready var count_down: Label = %CountDown
 
 @export var toggle_sounds: Array[AudioStream]
 @export var win_sound: AudioStream
 @export var lose_sound: AudioStream
 @export var countdown_seconds: int = 3
 @export var is_countdown_enabled: bool
-
+@export var main_character_scene: PackedScene
 var toggle_sound_index = 0
 var level_time = 0
 
+@onready var count_down: Label = %CountDown
 @onready var level_label: Label = %LevelLabel
 @onready var time_label: Label = %TimeLabel
 @onready var audioStreamPlayer: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var main_character: MainCharacter = $MainCharacter
-
 @onready var scene_transition: AnimationPlayer = %SceneTransitionAnimPlayer
 
+var main_character: MainCharacter
 var spawn_location: Vector2
 var is_paused: bool
 
@@ -42,8 +41,6 @@ func next_level():
 	start_level()
 
 func start_level():
-	pause()
-	
 	if level:
 		level.queue_free()
 		scene_transition.play("fade")
@@ -64,6 +61,7 @@ func start_level():
 	time_label.text = "00:00.00"
 	
 	respawn()
+	pause()	
 	
 	scene_transition.play_backwards("fade")
 	await scene_transition.animation_finished
@@ -104,9 +102,10 @@ func play_toggle_sound():
 	toggle_sound_index = (toggle_sound_index + 1) % toggle_sounds.size()
 
 func respawn():
-	# Spawn in character
-	main_character.set_deferred("global_position", level.spawn_point)
-	main_character.velocity = Vector2.ZERO
+	main_character = main_character_scene.instantiate() as MainCharacter
+	main_character.killed.connect(on_character_die)
+	main_character.global_position = level.spawn_point
+	add_child(main_character)
 
 func pause():
 	is_paused = true
@@ -119,6 +118,7 @@ func unpause():
 	propagate_call("set_physics_process", [true])
 
 func on_character_die():
+	print("die")
 	audioStreamPlayer.stream = lose_sound
 	audioStreamPlayer.play()
 

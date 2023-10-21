@@ -2,12 +2,27 @@
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_rnd3o"]
 [ext_resource type="PackedScene" uid="uid://dd560qxrjfygt" path="res://scenes/levels/Level1.tscn" id="2_12uj8"]
-[ext_resource type="PackedScene" uid="uid://cv0l7e2lhe25l" path="res://scenes/levels/template.tscn" id="3_4xwov"]
+[ext_resource type="PackedScene" uid="uid://baqpc0dwmi5lf" path="res://scenes/levels/template.tscn" id="3_4xwov"]
 [ext_resource type="AudioStream" uid="uid://bofpqflybv72u" path="res://sounds/LEVIER_GJ_FOL_Lever_Off.wav" id="3_o2w25"]
 [ext_resource type="AudioStream" uid="uid://1tc4ak1mjpo1" path="res://sounds/LEVIER_GJ_FOL_Lever_On.wav" id="4_5x8y0"]
 [ext_resource type="AudioStream" uid="uid://nxnmjshhis2c" path="res://sounds/LEVIER_GJ_STATE_Win.wav" id="5_f3xnp"]
 [ext_resource type="PackedScene" uid="uid://bxhcsdlxckv2k" path="res://scenes/main_character.tscn" id="5_iqaxe"]
 [ext_resource type="AudioStream" uid="uid://ota274s1y71i" path="res://sounds/LEVIER_GJ_STATE_Lose.wav" id="6_006ic"]
+
+[sub_resource type="Animation" id="Animation_pmnll"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_v8w17"]
 resource_name = "fade"
@@ -25,21 +40,6 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_pmnll"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8x8ek"]
 _data = {
 "RESET": SubResource("Animation_pmnll"),
@@ -53,11 +53,9 @@ toggle_sounds = Array[AudioStream]([ExtResource("3_o2w25"), ExtResource("4_5x8y0
 win_sound = ExtResource("5_f3xnp")
 lose_sound = ExtResource("6_006ic")
 is_countdown_enabled = true
+main_character_scene = ExtResource("5_iqaxe")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="MainCharacter" parent="." instance=ExtResource("5_iqaxe")]
-velocity = Vector2(32, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -109,5 +107,3 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-
-[connection signal="killed" from="MainCharacter" to="." method="on_character_die"]
