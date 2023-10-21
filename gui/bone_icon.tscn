@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://chv82bw6fflfk"]
+
+[ext_resource type="Texture2D" uid="uid://c6epstetyoo8y" path="res://materials/os.png" id="1_hhr5p"]
+[ext_resource type="Script" path="res://gui/bone_icon.gd" id="1_k4y4x"]
+[ext_resource type="Texture2D" uid="uid://dcfj71vbik4yx" path="res://materials/os_outline.png" id="2_fp4nw"]
+
+[node name="BoneIcon" type="TextureRect"]
+custom_minimum_size = Vector2(64, 64)
+script = ExtResource("1_k4y4x")
+
+[node name="BoneFull" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(32, 32)
+texture = ExtResource("1_hhr5p")
+
+[node name="BoneEmpty" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+texture = ExtResource("2_fp4nw")

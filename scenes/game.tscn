@@ -1,3 +1,4 @@
+[gd_scene load_steps=14 format=3 uid="uid://4usjiwbxajd8"]
 [gd_scene load_steps=13 format=3 uid="uid://4usjiwbxajd8"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_rnd3o"]
@@ -8,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://nxnmjshhis2c" path="res://sounds/LEVIER_GJ_STATE_Win.wav" id="5_f3xnp"]
 [ext_resource type="PackedScene" uid="uid://bxhcsdlxckv2k" path="res://scenes/main_character.tscn" id="5_iqaxe"]
 [ext_resource type="AudioStream" uid="uid://ota274s1y71i" path="res://sounds/LEVIER_GJ_STATE_Lose.wav" id="6_006ic"]
+[ext_resource type="PackedScene" uid="uid://cxxbjbc1q5rmg" path="res://gui/bone_collection.tscn" id="9_kd6x2"]
+[ext_resource type="PackedScene" uid="uid://chv82bw6fflfk" path="res://gui/bone_icon.tscn" id="10_fnone"]
 [ext_resource type="AudioStream" uid="uid://caigx6k3md34c" path="res://sounds/LEVIER_GJ_AMB_LP.wav" id="9_jiikb"]
 
 [sub_resource type="Animation" id="Animation_pmnll"]

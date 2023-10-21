@@ -2,9 +2,11 @@ class_name BaseLevel
 extends Node2D
 
 signal completed()
+signal bone_collected()
 signal all_bones_collected()
+signal bone_count_updated(value: int)
 
-var bones_remaining
+var bones_remaining: int
 
 var spawn_point: Vector2:
 	get:
@@ -22,9 +24,11 @@ func _ready():
 			bone.collected.connect(_on_bone_collected)
 	
 	bones_remaining = n_bones
+	bone_count_updated.emit(bones_remaining)
 
 func _on_bone_collected():
 	bones_remaining -= 1
+	bone_collected.emit()
 	if bones_remaining == 0:
 		all_bones_collected.emit()
 

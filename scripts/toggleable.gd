@@ -40,7 +40,7 @@ func toggle():
 	is_on = !is_on
 
 func _ready():
-	if is_player_toggleable:
+	if is_player_toggleable and not Engine.is_editor_hint():
 		OnOff.toggle.connect(toggle)
 
 func _process(delta):

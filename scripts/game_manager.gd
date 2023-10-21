@@ -3,6 +3,8 @@ extends Node2D
 @export var levels: Array[PackedScene]
 @export var level_index: int = 0
 
+@onready var bone_collection: BoneCollection = $%BoneCollection
+
 var level: BaseLevel
 
 signal _toggle_released()
@@ -47,7 +49,7 @@ func start_level():
 		scene_transition.play("fade")
 		await scene_transition.animation_finished
 	
-	level_time = 0	
+	level_time = 0
 
 	if level_index >= levels.size():
 		return
@@ -55,7 +57,9 @@ func start_level():
 	# Spawn in level
 	level = levels[level_index].instantiate() as BaseLevel
 	level.completed.connect(next_level)
-
+	level.bone_count_updated.connect(bone_collection.on_bone_count_updated)
+	level.bone_collected.connect(bone_collection.on_bone_collected)
+	
 	Callable(add_child).call_deferred(level)
 	
 	level_label.text = "Level %s" % str(level_index + 1)
