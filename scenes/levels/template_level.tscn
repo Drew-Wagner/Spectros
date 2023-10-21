@@ -1,11 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://cv0l7e2lhe25l"]
 
-[ext_resource type="PackedScene" uid="uid://bxhcsdlxckv2k" path="res://scenes/main_character.tscn" id="1_oce52"]
+[ext_resource type="Script" path="res://scenes/levels/base_level.gd" id="1_ng8v4"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="1_u4pm0"]
 [ext_resource type="PackedScene" uid="uid://dokw05n2dslui" path="res://scenes/elements/toggleable_spikes.tscn" id="3_a5xas"]
 [ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="4_l4dle"]
 
-[node name="Root" type="Node2D"]
+[node name="Level" type="Node2D"]
+script = ExtResource("1_ng8v4")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(0, -1)
