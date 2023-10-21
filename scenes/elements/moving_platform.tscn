@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cu4qk30gh72x8"]
+
+[ext_resource type="Script" path="res://scenes/elements/moving_platform.gd" id="1_68kah"]
+[ext_resource type="Script" path="res://scripts/moving_platform.gd" id="2_bb151"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhyvb"]
+size = Vector2(64, 64)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2ki1r"]
+size = Vector2(64, 64)
+
+[node name="MovingPlatform" type="Node2D"]
+script = ExtResource("1_68kah")
+on_position = Vector2(0, -64)
+
+[node name="MovingPlatform" type="AnimatableBody2D" parent="."]
+script = ExtResource("2_bb151")
+speed = 256.0
+move_in_editor = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform"]
+shape = SubResource("RectangleShape2D_xhyvb")
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingPlatform"]
+texture = SubResource("PlaceholderTexture2D_2ki1r")
+
+[node name="Arrow" type="Area2D" parent="MovingPlatform"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MovingPlatform/Arrow"]
+polygon = PackedVector2Array(-25, 0, 0, -25, 25, 0, 8, 0, 8, 25, -8, 25, -8, 0)
