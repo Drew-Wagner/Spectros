@@ -1,11 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://c252nehiumnb3"]
+[gd_scene load_steps=3 format=3 uid="uid://c252nehiumnb3"]
 
+[ext_resource type="Script" path="res://scenes/game_manager.gd" id="1_dai1u"]
 [ext_resource type="PackedScene" uid="uid://cv0l7e2lhe25l" path="res://scenes/levels/template_level.tscn" id="1_uj55n"]
 
 [node name="game" type="Node2D"]
-
-[node name="TODO - Insert Level Here" parent="." instance=ExtResource("1_uj55n")]
+script = ExtResource("1_dai1u")
+levels = Array[PackedScene]([ExtResource("1_uj55n")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CountDown" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 128
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
