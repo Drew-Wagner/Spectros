@@ -13,6 +13,11 @@ config_version=5
 config/name="ZombiGameJam2023-10-20"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://textures/icon.svg"
+
+[autoload]
+
+OnOff="*res://scripts/global_on_off.gd"
+
 [input]
 
 toggle={
