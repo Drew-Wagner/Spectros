@@ -15,7 +15,7 @@ var level: BaseLevel
 var toggle_sound_index = 0
 
 @onready var audioStreamPlayer: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var mainCharacter: MainCharacter = $MainCharacter
+@onready var main_character: MainCharacter = $MainCharacter
 
 var spawn_location: Vector2
 
@@ -79,7 +79,8 @@ func play_toggle_sound():
 
 func respawn():
 	# Spawn in character
-	mainCharacter.set_deferred("global_position", level.spawn_point)
+	main_character.set_deferred("global_position", level.spawn_point)
+	main_character.velocity = Vector2.ZERO
 
 func pause():
 	propagate_call("set_physics_process", [false])

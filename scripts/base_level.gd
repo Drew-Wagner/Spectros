@@ -31,8 +31,13 @@ func _on_bone_collected():
 func _on_finish_area_body_entered(body):
 	if not body is MainCharacter:
 		return
-
+  
 	if bones_remaining > 0:
 		return
 	
 	completed.emit()
+
+
+func _on_level_area_body_exited(body):
+	if body is MainCharacter and not self.is_queued_for_deletion():
+		body.kill()
