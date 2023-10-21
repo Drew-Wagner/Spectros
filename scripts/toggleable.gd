@@ -1,8 +1,14 @@
 class_name Toggleable
-extends Node
+extends Node2D
 
 
-@export var is_on: bool = false
+@export var is_on: bool = false:
+	set(value):
+		if value and not is_on:
+			_on_switch_on()
+		elif not value and is_on:
+			_on_switch_off()
+		is_on = value
 
 # Called when the element switches from off -> on
 func _on_switch_on():
@@ -30,10 +36,6 @@ func _physics_process_off(_delta):
 
 # Toggles the element on or off
 func toggle():
-	if is_on:
-		_on_switch_off()
-	else:
-		_on_switch_on()
 	is_on = !is_on
 
 func _ready():
