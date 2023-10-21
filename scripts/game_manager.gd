@@ -5,6 +5,7 @@ extends Node2D
 
 var level: BaseLevel
 
+signal _toggle_released()
 
 @export var toggle_sounds: Array[AudioStream]
 @export var win_sound: AudioStream
@@ -63,6 +64,11 @@ func start_level():
 	respawn()
 	pause()	
 	
+	if Input.is_action_pressed("toggle"):
+		%SplashLabel.show()
+		await _toggle_released
+		%SplashLabel.hide()
+	
 	scene_transition.play_backwards("fade")
 	await scene_transition.animation_finished
 
@@ -72,7 +78,18 @@ func start_level():
 		for i in range(countdown_seconds, 0, -1):
 			count_down.text = str(i)
 			await get_tree().create_timer(1).timeout
-		
+
+			if Input.is_action_pressed("toggle"):
+				count_down.hide()
+				scene_transition.play("fade")
+				await scene_transition.animation_finished
+				%SplashLabel.show()
+				await _toggle_released
+				%SplashLabel.hide()
+				scene_transition.play_backwards("fade")
+				await scene_transition.animation_finished
+				count_down.show()
+
 	count_down.text = ""
 	count_down.hide()
 	unpause()
@@ -94,6 +111,9 @@ func _process(delta):
 		var formattedTime = formattedMinutes + ":" + formattedSeconds + "." + formattedFraction
 		
 		time_label.text = formattedTime
+	else:
+		if Input.is_action_just_released("toggle"):
+			_toggle_released.emit()
 
 func play_toggle_sound():
 	audioStreamPlayer.stream = toggle_sounds[toggle_sound_index]
@@ -102,6 +122,9 @@ func play_toggle_sound():
 	toggle_sound_index = (toggle_sound_index + 1) % toggle_sounds.size()
 
 func respawn():
+	if main_character and is_instance_valid(main_character):
+		main_character.queue_free()
+
 	main_character = main_character_scene.instantiate() as MainCharacter
 	main_character.killed.connect(on_character_die)
 	main_character.global_position = level.spawn_point

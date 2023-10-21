@@ -21,7 +21,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_v8w17"]
@@ -98,12 +98,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0)
+color = Color(0, 0, 0, 1)
 
 [node name="SceneTransitionAnimPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
 unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_8x8ek")
 }
+
+[node name="SplashCenter" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SplashLabel" type="Label" parent="CanvasLayer/SplashCenter"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 96
+text = "RELEASE THE BUTTON TO PROCEED"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
