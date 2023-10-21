@@ -1,24 +1,27 @@
 [gd_scene load_steps=5 format=3 uid="uid://bxhcsdlxckv2k"]
 
 [ext_resource type="Script" path="res://scenes/main_character.gd" id="1_e7r1n"]
-
-[sub_resource type="Gradient" id="Gradient_66myx"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_11v8l"]
-gradient = SubResource("Gradient_66myx")
-height = 128
+[ext_resource type="Texture2D" uid="uid://burvbw4d6v4lo" path="res://materials/ghost.svg" id="2_nhf7g"]
+[ext_resource type="Texture2D" uid="uid://bnyja14di3s4j" path="res://materials/skeleton.png" id="3_uknsf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aib7p"]
-radius = 32.0
-height = 128.0
+radius = 22.0
+height = 96.87
 
 [node name="MainCharacter" type="CharacterBody2D"]
 script = ExtResource("1_e7r1n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -64)
-texture = SubResource("GradientTexture2D_11v8l")
+position = Vector2(0, -55.5)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_nhf7g")
+offset = Vector2(0, 10)
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -64)
+position = Vector2(0, -48)
 shape = SubResource("CapsuleShape2D_aib7p")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_uknsf")
+offset = Vector2(0, -64)
