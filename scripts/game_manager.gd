@@ -8,6 +8,9 @@ var level: BaseLevel
 @onready var count_down: Label = %CountDown
 
 @export var toggle_sounds: Array[AudioStream]
+@export var win_sound: AudioStream
+@export var lose_sound: AudioStream
+
 var toggle_sound_index = 0
 
 @onready var audioStreamPlayer: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -19,6 +22,9 @@ func _ready():
 	start_level()
 
 func next_level():
+	audioStreamPlayer.stream = win_sound
+	audioStreamPlayer.play()
+
 	level_index += 1
 	if level_index == levels.size():
 		print("No more levels")
@@ -80,3 +86,11 @@ func pause():
 func unpause():
 	OnOff.paused = false
 	propagate_call("set_physics_process", [true])
+
+
+func on_character_die():
+	audioStreamPlayer.stream = lose_sound
+	audioStreamPlayer.play()
+
+	start_level()
+	

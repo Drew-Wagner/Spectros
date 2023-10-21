@@ -1,15 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://4usjiwbxajd8"]
+[gd_scene load_steps=8 format=3 uid="uid://4usjiwbxajd8"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_rnd3o"]
 [ext_resource type="PackedScene" uid="uid://cv0l7e2lhe25l" path="res://scenes/levels/template.tscn" id="2_etr2t"]
 [ext_resource type="AudioStream" uid="uid://bofpqflybv72u" path="res://sounds/LEVIER_GJ_FOL_Lever_Off.wav" id="3_o2w25"]
 [ext_resource type="AudioStream" uid="uid://1tc4ak1mjpo1" path="res://sounds/LEVIER_GJ_FOL_Lever_On.wav" id="4_5x8y0"]
+[ext_resource type="AudioStream" uid="uid://nxnmjshhis2c" path="res://sounds/LEVIER_GJ_STATE_Win.wav" id="5_f3xnp"]
 [ext_resource type="PackedScene" uid="uid://bxhcsdlxckv2k" path="res://scenes/main_character.tscn" id="5_iqaxe"]
+[ext_resource type="AudioStream" uid="uid://ota274s1y71i" path="res://sounds/LEVIER_GJ_STATE_Lose.wav" id="6_006ic"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_rnd3o")
 levels = Array[PackedScene]([ExtResource("2_etr2t")])
 toggle_sounds = Array[AudioStream]([ExtResource("3_o2w25"), ExtResource("4_5x8y0")])
+win_sound = ExtResource("5_f3xnp")
+lose_sound = ExtResource("6_006ic")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -33,4 +37,4 @@ vertical_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
-[connection signal="killed" from="MainCharacter" to="." method="start_level"]
+[connection signal="killed" from="MainCharacter" to="." method="on_character_die"]
