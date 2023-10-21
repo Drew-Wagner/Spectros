@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://drgbe6551a4os"]
+
+[ext_resource type="Script" path="res://scripts/die_area.gd" id="1_l0l40"]
+
+[sub_resource type="Gradient" id="Gradient_qhvla"]
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3i0oa"]
+gradient = SubResource("Gradient_qhvla")
+fill_to = Vector2(0.00854701, 0.540598)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fyq1"]
+size = Vector2(64, 64)
+
+[node name="Spikes" type="Area2D"]
+script = ExtResource("1_l0l40")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_3i0oa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8fyq1")
+debug_color = Color(0.854902, 0, 0, 0.419608)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
