@@ -5,7 +5,3 @@ signal killed()
 
 func kill():
 	killed.emit()
-
-
-func collect_bone():
-	print("Bone collected!")

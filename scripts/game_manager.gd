@@ -18,6 +18,14 @@ var spawn_location: Vector2
 func _ready():
 	start_level()
 
+func next_level():
+	level_index += 1
+	if level_index == levels.size():
+		print("No more levels")
+		return
+
+	start_level()
+
 func start_level():
 	if level_index >= levels.size():
 		return
@@ -27,6 +35,7 @@ func start_level():
 
 	# Spawn in level
 	level = levels[level_index].instantiate() as BaseLevel
+	level.completed.connect(next_level)
 	add_child(level)
 	
 	respawn()

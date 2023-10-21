@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://hnygefrtotfx"]
 
 [ext_resource type="Texture2D" uid="uid://67r4qsba55dv" path="res://materials/dog-bone-10.png" id="1_8clmp"]
-[ext_resource type="Script" path="res://scripts/bone.gd" id="1_tinys"]
+[ext_resource type="Script" path="res://scripts/collectible.gd" id="1_tinys"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v6ind"]
 radius = 25.0
