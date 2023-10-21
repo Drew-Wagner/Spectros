@@ -3,7 +3,7 @@ extends Node2D
 @export var levels: Array[PackedScene]
 @export var level_index: int = 0
 
-var level: Node2D
+var level: BaseLevel
 
 @onready var count_down: Label = %CountDown
 
@@ -26,10 +26,9 @@ func start_level():
 		level.queue_free()
 
 	# Spawn in level
-	level = levels[level_index].instantiate()
+	level = levels[level_index].instantiate() as BaseLevel
 	add_child(level)
 	
-	spawn_location = level.get_node("%PlayerSpawn").global_position
 	respawn()
 	# Countdown
 	pause()
@@ -63,7 +62,7 @@ func play_toggle_sound():
 
 func respawn():
 	# Spawn in character
-	mainCharacter.set_deferred("global_position", spawn_location)
+	mainCharacter.set_deferred("global_position", level.spawn_point)
 
 func pause():
 	propagate_call("set_physics_process", [false])
