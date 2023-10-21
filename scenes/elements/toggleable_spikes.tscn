@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dokw05n2dslui"]
 
-[ext_resource type="Script" path="res://scenes/elements/toggleable_spikes.gd" id="1_a1lk0"]
+[ext_resource type="Script" path="res://scripts/toggleable_spikes.gd" id="1_a1lk0"]
 [ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/elements/spikes.tscn" id="1_b56ya"]
 
 [node name="ToggleableSpikes" type="Node2D"]
