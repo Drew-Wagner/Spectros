@@ -15,7 +15,6 @@ toggle_sounds = Array[AudioStream]([ExtResource("3_o2w25"), ExtResource("4_5x8y0
 
 [node name="MainCharacter" parent="." instance=ExtResource("5_iqaxe")]
 velocity = Vector2(32, 0)
-moveSpeed = 48.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
