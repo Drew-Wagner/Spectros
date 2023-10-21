@@ -1,5 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://4usjiwbxajd8"]
-[gd_scene load_steps=13 format=3 uid="uid://4usjiwbxajd8"]
+[gd_scene load_steps=15 format=3 uid="uid://4usjiwbxajd8"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_rnd3o"]
 [ext_resource type="PackedScene" uid="uid://dd560qxrjfygt" path="res://scenes/levels/Level1.tscn" id="2_12uj8"]
@@ -9,9 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://nxnmjshhis2c" path="res://sounds/LEVIER_GJ_STATE_Win.wav" id="5_f3xnp"]
 [ext_resource type="PackedScene" uid="uid://bxhcsdlxckv2k" path="res://scenes/main_character.tscn" id="5_iqaxe"]
 [ext_resource type="AudioStream" uid="uid://ota274s1y71i" path="res://sounds/LEVIER_GJ_STATE_Lose.wav" id="6_006ic"]
-[ext_resource type="PackedScene" uid="uid://cxxbjbc1q5rmg" path="res://gui/bone_collection.tscn" id="9_kd6x2"]
-[ext_resource type="PackedScene" uid="uid://chv82bw6fflfk" path="res://gui/bone_icon.tscn" id="10_fnone"]
+[ext_resource type="PackedScene" uid="uid://cxxbjbc1q5rmg" path="res://gui/bone_collection.tscn" id="9_0rnu1"]
 [ext_resource type="AudioStream" uid="uid://caigx6k3md34c" path="res://sounds/LEVIER_GJ_AMB_LP.wav" id="9_jiikb"]
+[ext_resource type="PackedScene" uid="uid://chv82bw6fflfk" path="res://gui/bone_icon.tscn" id="10_edinx"]
 
 [sub_resource type="Animation" id="Animation_pmnll"]
 length = 0.001
@@ -127,6 +126,18 @@ text = "RELEASE THE BUTTON TO PROCEED"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="BoneCollection" parent="CanvasLayer" instance=ExtResource("9_0rnu1")]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 64.0
+grow_horizontal = 0
+bone_icon_scene = ExtResource("10_edinx")
 
 [node name="AudioEffects" type="AudioStreamPlayer" parent="."]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://gui/bone_collection.gd" id="1_ehhpd"]
 
-[node name="Control" type="Control"]
+[node name="BoneCollection" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_top = 32.0
