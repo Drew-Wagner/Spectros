@@ -10,6 +10,7 @@ var level: BaseLevel
 @export var toggle_sounds: Array[AudioStream]
 @export var win_sound: AudioStream
 @export var lose_sound: AudioStream
+@export var countdown_seconds: int = 3
 @export var is_countdown_enabled: bool
 
 var toggle_sound_index = 0
@@ -19,6 +20,8 @@ var level_time = 0
 @onready var time_label: Label = %TimeLabel
 @onready var audioStreamPlayer: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var main_character: MainCharacter = $MainCharacter
+
+@onready var scene_transition: AnimationPlayer = %SceneTransitionAnimPlayer
 
 var spawn_location: Vector2
 var is_paused: bool
@@ -39,13 +42,17 @@ func next_level():
 	start_level()
 
 func start_level():
-	if level_index >= levels.size():
-		return
+	pause()
 	
 	if level:
 		level.queue_free()
-		
-	level_time = 0
+		scene_transition.play("fade")
+		await scene_transition.animation_finished
+	
+	level_time = 0	
+
+	if level_index >= levels.size():
+		return
 
 	# Spawn in level
 	level = levels[level_index].instantiate() as BaseLevel
@@ -57,25 +64,21 @@ func start_level():
 	time_label.text = "00:00.00"
 	
 	respawn()
+	
+	scene_transition.play_backwards("fade")
+	await scene_transition.animation_finished
+
 	# Countdown
 	if is_countdown_enabled:
-		pause()
 		count_down.show()
-		count_down.text = "3"
-		get_tree().create_timer(1).timeout.connect(
-			func ():
-				count_down.text = "2")
-		get_tree().create_timer(2).timeout.connect(
-			func ():
-				count_down.text = "1")
-				
-		get_tree().create_timer(3.0).timeout.connect(
-			func():
-				count_down.text = ""
-				count_down.hide()
-				unpause()
-		)
-	
+		for i in range(countdown_seconds, 0, -1):
+			count_down.text = str(i)
+			await get_tree().create_timer(1).timeout
+		
+	count_down.text = ""
+	count_down.hide()
+	unpause()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
