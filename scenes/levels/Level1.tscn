@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dd560qxrjfygt"]
+[gd_scene load_steps=10 format=3 uid="uid://dd560qxrjfygt"]
 
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_405ab"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_0jb80"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://1m2siku6krim" path="res://scenes/elements/door.tscn" id="3_xb5xx"]
 [ext_resource type="PackedScene" uid="uid://b7y8b7rwio6py" path="res://scenes/elements/trap.tscn" id="4_2m6o7"]
 [ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/elements/spikes.tscn" id="4_jkiea"]
+[ext_resource type="PackedScene" uid="uid://cu4qk30gh72x8" path="res://scenes/elements/moving_platform.tscn" id="5_g6c5n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6qsb"]
 size = Vector2(1152, 632)
@@ -25,22 +26,6 @@ debug_color = Color(0, 0.117647, 0.145098, 0.419608)
 
 [node name="DynamicEnvironment" type="Node" parent="."]
 
-[node name="Door" parent="DynamicEnvironment" instance=ExtResource("3_xb5xx")]
-position = Vector2(-608, 128)
-on_position = Vector2(0, -64)
-
-[node name="Door2" parent="DynamicEnvironment" instance=ExtResource("3_xb5xx")]
-position = Vector2(-544, 128)
-on_position = Vector2(0, -64)
-
-[node name="Door3" parent="DynamicEnvironment" instance=ExtResource("3_xb5xx")]
-position = Vector2(-480, 128)
-on_position = Vector2(0, -64)
-
-[node name="Door4" parent="DynamicEnvironment" instance=ExtResource("3_xb5xx")]
-position = Vector2(-96, 0)
-on_position = Vector2(0, 128)
-
 [node name="ExitDoor" parent="DynamicEnvironment" instance=ExtResource("3_xb5xx")]
 position = Vector2(416, -64)
 is_player_toggleable = false
@@ -52,12 +37,26 @@ position = Vector2(-320, 32)
 position = Vector2(256, 32)
 on_position = Vector2(-128, 0)
 
-[node name="StaticEnvironment" type="TileMap" parent="."]
-position = Vector2(0, -1)
-tile_set = ExtResource("2_0jb80")
-format = 2
-layer_0/z_index = 1
-layer_0/tile_data = PackedInt32Array(65534, 1, 3, 65535, 1, 3, 0, 1, 3, 131070, 1, 3, 196606, 1, 3, 262142, 1, 3, 262141, 1, 3, 262140, 1, 3, 65536, 1, 3, 131072, 1, 3, 196608, 1, 3, 196609, 1, 3, 196610, 1, 3, 65531, 1, 3, 65530, 65537, 3, 65529, 1, 3, 3, 1, 3, 4, 1, 3, 5, 1, 3, 131067, 1, 4, 131066, 65537, 4, 131065, 1, 4, 196601, 1, 3, 262137, 1, 4, 262138, 65537, 4, 196602, 65537, 3, 196603, 1, 3, 262139, 1, 4, 131071, 1, 3, 196607, 1, 3, 262143, 1, 3, 196611, 1, 3, 131075, 1, 3, 65539, 1, 3, 65540, 1, 3, 65541, 1, 3, 131077, 1, 3, 196613, 1, 3, 131076, 1, 3, 196612, 1, 3, 196614, 1, 3, 131078, 1, 3, 65542, 1, 3, 6, 1, 3, -262138, 2, 0, -327674, 65538, 0, -393210, 2, 0, -393211, 2, 0, -393212, 65538, 0, -393213, 2, 0, -393214, 2, 0, -393215, 131074, 0, -393216, 2, 0, -327681, 2, 0, -327682, 2, 0, -327683, 2, 0, -327684, 65538, 0, -327685, 2, 0, -327686, 131074, 0, -327687, 2, 0, -327688, 2, 0, -327689, 2, 0, -327690, 2, 0, -327691, 2, 0, -262155, 2, 0, -196619, 2, 0, -131083, 131074, 0, -65547, 65538, 0, -11, 2, 0, 65525, 1, 3, 131061, 1, 4, 196597, 1, 3, 262133, 1, 4, 262134, 65537, 4, 262135, 1, 4, 262136, 65537, 4, 65528, 65537, 3, 65527, 1, 3, 65526, 65537, 3, 131062, 65537, 4, 196598, 65537, 3, 131063, 1, 4, 196599, 1, 3, 196600, 65537, 3, 131064, 65537, 4, -7, 2, 0, -196618, 2, 0, -262154, 65538, 0, -262153, 2, 0, -262150, 2, 0, -262149, 2, 0, -262145, 2, 0, -327680, 2, 0, -327679, 65538, 0, -262139, 2, 0, -327675, 2, 0)
+[node name="MovingPlatform" parent="DynamicEnvironment" instance=ExtResource("5_g6c5n")]
+position = Vector2(-480, 64)
+
+[node name="MovingPlatform2" parent="DynamicEnvironment" instance=ExtResource("5_g6c5n")]
+position = Vector2(-416, 64)
+
+[node name="MovingPlatform3" parent="DynamicEnvironment" instance=ExtResource("5_g6c5n")]
+position = Vector2(-352, 64)
+
+[node name="MovingPlatform4" parent="DynamicEnvironment" instance=ExtResource("5_g6c5n")]
+position = Vector2(32, -64)
+rotation = 3.14159
+orientation = 2
+on_position = Vector2(0, -128)
+
+[node name="MovingPlatform5" parent="DynamicEnvironment" instance=ExtResource("5_g6c5n")]
+position = Vector2(32, 0)
+rotation = 3.14159
+orientation = 2
+on_position = Vector2(0, -128)
 
 [node name="Spikes" type="Node" parent="."]
 
