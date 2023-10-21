@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7y8b7rwio6py"]
+
+[ext_resource type="Script" path="res://scripts/toggle_moving_platform.gd" id="1_oyb2j"]
+[ext_resource type="Script" path="res://scripts/moving_platform.gd" id="2_pk0s0"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xmh8w"]
+size = Vector2(128, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjfp4"]
+size = Vector2(128, 64)
+
+[node name="Trap" type="Node2D"]
+position = Vector2(-1, 0)
+script = ExtResource("1_oyb2j")
+on_position = Vector2(128, 0)
+
+[node name="MovingPlatform" type="AnimatableBody2D" parent="."]
+script = ExtResource("2_pk0s0")
+speed = 256.0
+move_in_editor = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingPlatform"]
+texture = SubResource("PlaceholderTexture2D_xmh8w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform"]
+shape = SubResource("RectangleShape2D_xjfp4")
