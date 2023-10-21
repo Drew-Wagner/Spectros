@@ -7,6 +7,5 @@
 [node name="TODO - Insert Level Here" parent="." instance=ExtResource("1_uj55n")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
