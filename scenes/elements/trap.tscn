@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/toggle_moving_platform.gd" id="1_oyb2j"]
 [ext_resource type="Script" path="res://scripts/moving_platform.gd" id="2_pk0s0"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xmh8w"]
-size = Vector2(128, 64)
+[ext_resource type="Texture2D" uid="uid://chw8dqb12033v" path="res://materials/environment/plaquette_roche.png" id="3_e67uv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xjfp4"]
 size = Vector2(128, 64)
@@ -19,8 +17,14 @@ script = ExtResource("2_pk0s0")
 speed = 256.0
 move_in_editor = true
 
-[node name="Sprite2D" type="Sprite2D" parent="MovingPlatform"]
-texture = SubResource("PlaceholderTexture2D_xmh8w")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform"]
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_xjfp4")
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingPlatform"]
+position = Vector2(-31, -56)
+texture = ExtResource("3_e67uv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="MovingPlatform"]
+position = Vector2(33, -56)
+texture = ExtResource("3_e67uv")
