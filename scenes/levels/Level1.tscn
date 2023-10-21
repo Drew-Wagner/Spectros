@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dd560qxrjfygt"]
+[gd_scene load_steps=10 format=3 uid="uid://dd560qxrjfygt"]
 
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_405ab"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_0jb80"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b7y8b7rwio6py" path="res://scenes/elements/trap.tscn" id="4_2m6o7"]
 [ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/elements/spikes.tscn" id="4_jkiea"]
 [ext_resource type="PackedScene" uid="uid://cu4qk30gh72x8" path="res://scenes/elements/moving_platform.tscn" id="5_g6c5n"]
-[ext_resource type="PackedScene" uid="uid://dokw05n2dslui" path="res://scenes/elements/toggleable_spikes.tscn" id="6_tj1wj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8svx4"]
 size = Vector2(1216, 832)
@@ -22,14 +21,14 @@ script = ExtResource("1_405ab")
 [node name="LevelArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelArea"]
-position = Vector2(-128, 24)
+position = Vector2(-128, 32)
 shape = SubResource("RectangleShape2D_8svx4")
 debug_color = Color(0, 0.117647, 0.145098, 0.419608)
 
 [node name="StaticEnvironment" type="TileMap" parent="."]
 tile_set = ExtResource("2_0jb80")
 format = 2
-layer_0/tile_data = PackedInt32Array(65534, 1, 3, 65535, 1, 4, 0, 1, 3, 131070, 1, 4, 196606, 1, 4, 262142, 1, 3, 65536, 1, 4, 131072, 1, 4, 196608, 65537, 3, 196609, 1, 3, 196610, 65537, 4, 65531, 1, 3, 65530, 1, 3, 65529, 65537, 3, 3, 1, 3, 4, 1, 4, 5, 65537, 3, 131067, 65537, 3, 131066, 1, 3, 131065, 1, 3, 196601, 1, 3, 262137, 65537, 3, 262138, 1, 3, 196602, 1, 3, 196603, 1, 3, 262139, 1, 4, 131071, 1, 3, 196607, 65537, 3, 262143, 1, 3, 196611, 65537, 3, 131075, 1, 3, 65539, 1, 4, 65540, 65537, 3, 65541, 65537, 3, 131077, 65537, 3, 196613, 1, 4, 131076, 1, 3, 196612, 1, 3, 196614, 65537, 3, 131078, 1, 4, 65542, 65537, 3, 6, 1, 3, -196602, 65538, 0, -262138, 65538, 0, -327674, 65538, 0, -393210, 2, 0, -393211, 2, 0, -393212, 65538, 0, -393213, 2, 0, -393214, 2, 0, -393215, 131074, 0, -393216, 65538, 0, -327681, 131074, 0, -327682, 2, 0, -327683, 2, 0, -327684, 131074, 0, -327685, 65538, 0, -327686, 65538, 0, -327687, 2, 0, -327688, 2, 0, -327689, 2, 0, -327690, 65538, 0, -327691, 2, 0, -262155, 2, 0, -196619, 131074, 0, -131083, 2, 0, -65547, 65538, 0, -11, 65538, 0, 65525, 1, 4, 131061, 65537, 3, 196597, 1, 3, 262133, 65537, 3, 262134, 1, 3, 262135, 65537, 3, 262136, 1, 4, 65528, 1, 3, 65527, 1, 3, 65526, 1, 3, 131062, 1, 3, 196598, 1, 3, 131063, 1, 3, 196599, 1, 3, 196600, 1, 4, 131064, 1, 3, -7, 131074, 0, -196618, 131074, 0, -262154, 2, 0, -262153, 131074, 0, -262150, 131074, 0, -262149, 65538, 0, -262145, 65538, 0, -327680, 2, 0, -327679, 131074, 0, -262139, 131074, 0, -327675, 2, 0, 262140, 1, 3, 262141, 1, 3)
+layer_0/tile_data = PackedInt32Array(65534, 1, 3, 65535, 1, 3, 0, 1, 3, 131070, 1, 3, 196606, 1, 3, 262142, 1, 3, 65536, 1, 3, 131072, 1, 3, 196608, 1, 3, 196609, 1, 3, 196610, 1, 3, 65531, 1, 3, 65530, 1, 3, 65529, 1, 3, 3, 1, 3, 4, 1, 3, 5, 1, 3, 131067, 1, 3, 131066, 1, 3, 131065, 1, 3, 196601, 1, 3, 262137, 1, 3, 262138, 1, 3, 196602, 1, 3, 196603, 1, 3, 262139, 1, 3, 131071, 1, 3, 196607, 1, 3, 262143, 1, 3, 196611, 1, 3, 131075, 1, 3, 65539, 1, 3, 65540, 1, 3, 65541, 1, 3, 131077, 1, 3, 196613, 1, 3, 131076, 1, 3, 196612, 1, 3, 196614, 1, 3, 131078, 1, 3, 65542, 1, 3, 6, 1, 3, -196602, 2, 0, -262138, 2, 0, -327674, 2, 0, -393210, 2, 0, -393211, 2, 0, -393212, 2, 0, -393213, 2, 0, -393214, 2, 0, -393215, 2, 0, -393216, 2, 0, -327681, 2, 0, -327682, 2, 0, -327683, 2, 0, -327684, 2, 0, -327685, 2, 0, -327686, 2, 0, -327687, 2, 0, -327688, 2, 0, -327689, 2, 0, -327690, 2, 0, -327691, 2, 0, -262155, 2, 0, -196619, 2, 0, -131083, 2, 0, -65547, 2, 0, -11, 2, 0, 65525, 1, 3, 131061, 1, 3, 196597, 1, 3, 262133, 1, 3, 262134, 1, 3, 262135, 1, 3, 262136, 1, 3, 65528, 1, 3, 65527, 1, 3, 65526, 1, 3, 131062, 1, 3, 196598, 1, 3, 131063, 1, 3, 196599, 1, 3, 196600, 1, 3, 131064, 1, 3, -7, 2, 0, -196618, 2, 0, -262154, 2, 0, -262153, 2, 0, -262150, 2, 0, -262149, 2, 0, -262145, 2, 0, -327680, 2, 0, -327679, 2, 0, -262139, 2, 0, -327675, 2, 0, 262140, 1, 3, 262141, 1, 3)
 
 [node name="DynamicEnvironment" type="Node" parent="."]
 
@@ -65,9 +64,6 @@ rotation = 3.14159
 orientation = 2
 on_position = Vector2(0, -128)
 
-[node name="ToggleableSpikes" parent="DynamicEnvironment" instance=ExtResource("6_tj1wj")]
-position = Vector2(96, 0)
-
 [node name="Spikes" type="Node" parent="."]
 
 [node name="Spikes3" parent="Spikes" instance=ExtResource("4_jkiea")]
@@ -83,7 +79,7 @@ position = Vector2(224, 192)
 position = Vector2(288, 192)
 
 [node name="Spikes7" parent="Spikes" instance=ExtResource("4_jkiea")]
-position = Vector2(224, -192)
+position = Vector2(96, -192)
 rotation = -3.14159
 
 [node name="Spikes8" parent="Spikes" instance=ExtResource("4_jkiea")]

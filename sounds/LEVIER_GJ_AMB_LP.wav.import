@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://400eis1mc6xf"
+uid="uid://caigx6k3md34c"
 path="res://.godot/imported/LEVIER_GJ_AMB_LP.wav-910ba7ebcb0ff8688866b827e93dea6f.sample"
 
 [deps]
@@ -18,7 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop_mode=0
+edit/loop_mode=2
 edit/loop_begin=0
 edit/loop_end=-1
 compress/mode=0

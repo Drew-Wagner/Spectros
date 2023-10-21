@@ -19,7 +19,7 @@ var level_time = 0
 @onready var count_down: Label = %CountDown
 @onready var level_label: Label = %LevelLabel
 @onready var time_label: Label = %TimeLabel
-@onready var audioStreamPlayer: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var audio_effects_player: AudioStreamPlayer = $AudioEffects
 @onready var scene_transition: AnimationPlayer = %SceneTransitionAnimPlayer
 
 var main_character: MainCharacter
@@ -31,8 +31,8 @@ func _ready():
 	start_level()
 
 func next_level():
-	audioStreamPlayer.stream = win_sound
-	audioStreamPlayer.play()
+	audio_effects_player.stream = win_sound
+	audio_effects_player.play()
 
 	level_index += 1
 	if level_index == levels.size():
@@ -116,8 +116,8 @@ func _process(delta):
 			_toggle_released.emit()
 
 func play_toggle_sound():
-	audioStreamPlayer.stream = toggle_sounds[toggle_sound_index]
-	audioStreamPlayer.play()
+	audio_effects_player.stream = toggle_sounds[toggle_sound_index]
+	audio_effects_player.play()
 
 	toggle_sound_index = (toggle_sound_index + 1) % toggle_sounds.size()
 
@@ -142,8 +142,8 @@ func unpause():
 
 func on_character_die():
 	print("die")
-	audioStreamPlayer.stream = lose_sound
-	audioStreamPlayer.play()
+	audio_effects_player.stream = lose_sound
+	audio_effects_player.play()
 
 	start_level()
 	
