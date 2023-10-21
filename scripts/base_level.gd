@@ -2,6 +2,7 @@ class_name BaseLevel
 extends Node2D
 
 signal completed()
+signal all_bones_collected()
 
 var bones_remaining
 
@@ -24,6 +25,8 @@ func _ready():
 
 func _on_bone_collected():
 	bones_remaining -= 1
+	if bones_remaining == 0:
+		all_bones_collected.emit()
 
 func _on_finish_area_body_entered(body):
 	if not body is MainCharacter:
