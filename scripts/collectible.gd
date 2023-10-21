@@ -3,6 +3,10 @@ extends Node2D
 
 signal collected()
 
+func _ready():
+	pass
+
+
 func _on_area_2d_body_entered(body):
 	if body is MainCharacter:
 		collected.emit()
