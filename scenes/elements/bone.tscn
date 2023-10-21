@@ -1,20 +1,111 @@
-[gd_scene load_steps=4 format=3 uid="uid://hnygefrtotfx"]
+[gd_scene load_steps=10 format=3 uid="uid://hnygefrtotfx"]
 
-[ext_resource type="Texture2D" uid="uid://67r4qsba55dv" path="res://materials/dog-bone-10.png" id="1_8clmp"]
-[ext_resource type="Script" path="res://scripts/collectible.gd" id="1_tinys"]
+[ext_resource type="Script" path="res://scenes/elements/bone.gd" id="1_e1uyx"]
+[ext_resource type="Texture2D" uid="uid://c6epstetyoo8y" path="res://materials/os.png" id="2_3em5n"]
+
+[sub_resource type="Animation" id="Animation_76p4n"]
+resource_name = "rotate"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.174533, 0.436332, -0.174533]
+}
+
+[sub_resource type="Animation" id="Animation_52yhv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.174533]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gbkun"]
+_data = {
+"RESET": SubResource("Animation_52yhv"),
+"rotate": SubResource("Animation_76p4n")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v6ind"]
-radius = 25.0
+radius = 20.0
+
+[sub_resource type="Animation" id="Animation_k7v4s"]
+resource_name = "Hover"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(0.5, -2, 2),
+"update": 0,
+"values": [Vector2(0, 8), Vector2(0, -8), Vector2(0, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_cj6u7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y3sqn"]
+_data = {
+"Hover": SubResource("Animation_k7v4s"),
+"RESET": SubResource("Animation_cj6u7")
+}
 
 [node name="Bone" type="Node2D" groups=["bones"]]
-script = ExtResource("1_tinys")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_8clmp")
+script = ExtResource("1_e1uyx")
 
 [node name="Area2D" type="Area2D" parent="."]
 
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+rotation = -0.174533
+texture = ExtResource("2_3em5n")
+
+[node name="RotationPlayer" type="AnimationPlayer" parent="Area2D/Sprite2D"]
+unique_name_in_owner = true
+autoplay = "rotate"
+libraries = {
+"": SubResource("AnimationLibrary_gbkun")
+}
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_v6ind")
+
+[node name="HoverPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+autoplay = "Hover"
+libraries = {
+"": SubResource("AnimationLibrary_y3sqn")
+}
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
