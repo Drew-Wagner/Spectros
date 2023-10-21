@@ -8,7 +8,8 @@ var spikes: Area2D
 # Called when the element switches from off -> on
 func _on_switch_on():
 	_add_spikes()
-	spikes_off.hide()
+	if(spikes_off != null):
+		spikes_off.hide()
 
 
 # Called when the element switches from on -> off

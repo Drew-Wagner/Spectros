@@ -20,13 +20,14 @@ position = Vector2(8, -141.5)
 shape = SubResource("RectangleShape2D_emyvp")
 debug_color = Color(0, 0.117647, 0.145098, 0.419608)
 
+[node name="DynamicEnvironment" type="Node" parent="."]
+
 [node name="StaticEnvironment" type="TileMap" parent="."]
 position = Vector2(0, -1)
 tile_set = ExtResource("1_u4pm0")
 format = 2
+layer_0/z_index = 1
 layer_0/tile_data = PackedInt32Array(-65536, 1, 3, -65535, 1, 3, -65534, 1, 3, -1, 1, 3, -2, 1, 3, -3, 1, 3, -4, 1, 3, -65533, 1, 3, -65532, 1, 3, -65531, 1, 3, -65530, 1, 3, -5, 1, 3, -6, 1, 3, -7, 1, 3, -8, 1, 3, -65544, 65538, 0, -65529, 1, 3, -131065, 65538, 0)
-
-[node name="DynamicEnvironment" type="Node" parent="."]
 
 [node name="Bones" type="Node" parent="."]
 
