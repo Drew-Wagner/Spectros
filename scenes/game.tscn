@@ -1,11 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://c252nehiumnb3"]
+[gd_scene load_steps=6 format=3 uid="uid://4usjiwbxajd8"]
 
-[ext_resource type="PackedScene" uid="uid://cv0l7e2lhe25l" path="res://scenes/levels/template_level.tscn" id="1_uj55n"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_rnd3o"]
+[ext_resource type="PackedScene" uid="uid://cv0l7e2lhe25l" path="res://scenes/levels/template.tscn" id="2_etr2t"]
+[ext_resource type="AudioStream" uid="uid://bofpqflybv72u" path="res://sounds/LEVIER_GJ_FOL_Lever_Off.wav" id="3_o2w25"]
+[ext_resource type="AudioStream" uid="uid://1tc4ak1mjpo1" path="res://sounds/LEVIER_GJ_FOL_Lever_On.wav" id="4_5x8y0"]
+[ext_resource type="PackedScene" uid="uid://bxhcsdlxckv2k" path="res://scenes/main_character.tscn" id="5_iqaxe"]
 
 [node name="game" type="Node2D"]
-
-[node name="TODO - Insert Level Here" parent="." instance=ExtResource("1_uj55n")]
+script = ExtResource("1_rnd3o")
+levels = Array[PackedScene]([ExtResource("2_etr2t")])
+toggle_sounds = Array[AudioStream]([ExtResource("3_o2w25"), ExtResource("4_5x8y0")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="MainCharacter" parent="." instance=ExtResource("5_iqaxe")]
+velocity = Vector2(32, 0)
+moveSpeed = 48.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CountDown" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 128
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="killed" from="MainCharacter" to="." method="start_level"]
