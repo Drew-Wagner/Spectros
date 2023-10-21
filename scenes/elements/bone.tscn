@@ -1,7 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://hnygefrtotfx"]
+[gd_scene load_steps=11 format=3 uid="uid://hnygefrtotfx"]
 
 [ext_resource type="Script" path="res://scenes/elements/bone.gd" id="1_e1uyx"]
 [ext_resource type="Texture2D" uid="uid://c6epstetyoo8y" path="res://materials/os.png" id="2_3em5n"]
+[ext_resource type="AudioStream" uid="uid://diaacvin060px" path="res://sounds/LEVIER_GJ_STATE_Bonus.wav" id="3_w2ney"]
+
+[sub_resource type="Animation" id="Animation_52yhv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.174533]
+}
 
 [sub_resource type="Animation" id="Animation_76p4n"]
 resource_name = "rotate"
@@ -20,21 +36,6 @@ tracks/0/keys = {
 "values": [-0.174533, 0.436332, -0.174533]
 }
 
-[sub_resource type="Animation" id="Animation_52yhv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.174533]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gbkun"]
 _data = {
 "RESET": SubResource("Animation_52yhv"),
@@ -42,7 +43,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v6ind"]
-radius = 20.0
+radius = 25.0
 
 [sub_resource type="Animation" id="Animation_k7v4s"]
 resource_name = "Hover"
@@ -107,5 +108,8 @@ autoplay = "Hover"
 libraries = {
 "": SubResource("AnimationLibrary_y3sqn")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_w2ney")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
