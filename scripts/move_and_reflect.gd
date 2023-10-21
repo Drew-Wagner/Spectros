@@ -13,9 +13,13 @@ extends CharacterBody2D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+var in_stasis = false
 
 func _physics_process(delta):
 	if Engine.is_editor_hint(): return  # disables movement in the editor
+	
+	if in_stasis:
+		return
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -28,3 +32,6 @@ func _physics_process(delta):
 	velocity.x = direction * moveSpeed
 
 	move_and_slide()
+
+func set_in_stasis(active: bool):
+	in_stasis = active

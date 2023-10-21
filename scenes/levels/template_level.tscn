@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cv0l7e2lhe25l"]
+[gd_scene load_steps=4 format=3 uid="uid://cv0l7e2lhe25l"]
 
 [ext_resource type="PackedScene" uid="uid://bxhcsdlxckv2k" path="res://scenes/main_character.tscn" id="1_oce52"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="1_u4pm0"]
+[ext_resource type="PackedScene" uid="uid://c3i108tufuyhc" path="res://scenes/elements/stasis_field.tscn" id="3_6ofpx"]
 
 [node name="Root" type="Node2D"]
 
@@ -9,9 +10,13 @@
 position = Vector2(0, -1)
 tile_set = ExtResource("1_u4pm0")
 format = 2
-layer_0/tile_data = PackedInt32Array(-65536, 393216, 4, -65535, 393216, 4, -65534, 393216, 4, -1, 393216, 4, -2, 393216, 4, -3, 393216, 4, -4, 393216, 4, -65540, 393216, 4, -65533, 393216, 4, -131069, 393216, 4, -131070, 1, 65536)
+layer_0/tile_data = PackedInt32Array(-65536, 393216, 4, -65535, 393216, 4, -65534, 393216, 4, -1, 393216, 4, -2, 393216, 4, -3, 393216, 4, -4, 393216, 4, -65540, 393216, 4, -65533, 393216, 4, -131069, 393216, 4)
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_oce52")]
 position = Vector2(0, -64)
 velocity = Vector2(32, 0)
-moveSpeed = 16.0
+moveSpeed = 40.0
+
+[node name="StasisField" parent="." instance=ExtResource("3_6ofpx")]
+position = Vector2(96, -96)
+pull_speed = 512.0

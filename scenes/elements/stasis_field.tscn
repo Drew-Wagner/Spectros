@@ -16,6 +16,7 @@ size = Vector2(64, 64)
 
 [node name="StasisField" type="Node2D"]
 script = ExtResource("1_khsr5")
+pull_speed = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -26,6 +27,9 @@ texture = SubResource("GradientTexture2D_exk6u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_8msnd")
+
+[node name="PullTarget" type="Marker2D" parent="."]
+position = Vector2(0, 32)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
