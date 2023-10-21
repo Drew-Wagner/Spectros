@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://1m2siku6krim"]
+
+[ext_resource type="Script" path="res://scripts/toggle_moving_platform.gd" id="1_k7yqg"]
+[ext_resource type="Script" path="res://scripts/moving_platform.gd" id="1_m76oq"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xmh8w"]
+size = Vector2(64, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjfp4"]
+size = Vector2(64, 128)
+
+[node name="Door" type="Node2D" node_paths=PackedStringArray("moving_platform")]
+position = Vector2(-13, 7)
+script = ExtResource("1_k7yqg")
+moving_platform = NodePath("MovingPlatform")
+on_position = Vector2(0, -128)
+
+[node name="MovingPlatform" type="AnimatableBody2D" parent="."]
+script = ExtResource("1_m76oq")
+speed = 256.0
+move_in_editor = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingPlatform"]
+texture = SubResource("PlaceholderTexture2D_xmh8w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform"]
+shape = SubResource("RectangleShape2D_xjfp4")
