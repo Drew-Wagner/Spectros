@@ -19,13 +19,19 @@ var _is_moving: bool:
 
 var _target: Vector2
 
-func move_to(target: Vector2):
+func move_to(target: Vector2, instant: bool = false):
+	_target = target
+	if instant:
+		set_deferred("position", target)
+
 	if target != position:
-		_target = target
 		_is_moving = true
 
 func _physics_process(delta):
-	if not _is_moving or not move_in_editor:
+	if not _is_moving:
+		return
+
+	if Engine.is_editor_hint() and not move_in_editor:
 		return
 
 	var vector_to_target = (_target - position)
