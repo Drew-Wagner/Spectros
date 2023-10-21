@@ -10,6 +10,7 @@ var level: BaseLevel
 @export var toggle_sounds: Array[AudioStream]
 @export var win_sound: AudioStream
 @export var lose_sound: AudioStream
+@export var is_countdown_enabled: bool
 
 var toggle_sound_index = 0
 
@@ -19,6 +20,7 @@ var toggle_sound_index = 0
 var spawn_location: Vector2
 
 func _ready():
+	OnOff.toggle.connect(play_toggle_sound)
 	start_level()
 
 func next_level():
@@ -42,28 +44,28 @@ func start_level():
 	# Spawn in level
 	level = levels[level_index].instantiate() as BaseLevel
 	level.completed.connect(next_level)
-	add_child(level)
+
+	Callable(add_child).call_deferred(level)
 	
 	respawn()
 	# Countdown
-	pause()
-	count_down.show()
-	count_down.text = "3"
-	get_tree().create_timer(1).timeout.connect(
-		func ():
-			count_down.text = "2")
-	get_tree().create_timer(2).timeout.connect(
-		func ():
-			count_down.text = "1")
-			
-	get_tree().create_timer(3.0).timeout.connect(
-		func():
-			count_down.text = ""
-			count_down.hide()
-			unpause()
-	)
-	
-	OnOff.toggle.connect(play_toggle_sound)
+	if is_countdown_enabled:
+		pause()
+		count_down.show()
+		count_down.text = "3"
+		get_tree().create_timer(1).timeout.connect(
+			func ():
+				count_down.text = "2")
+		get_tree().create_timer(2).timeout.connect(
+			func ():
+				count_down.text = "1")
+				
+		get_tree().create_timer(3.0).timeout.connect(
+			func():
+				count_down.text = ""
+				count_down.hide()
+				unpause()
+		)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
