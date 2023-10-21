@@ -1,19 +1,20 @@
 extends Toggleable
 
 @export var spikes_scene: PackedScene
+@onready var spikes_off: Sprite2D = $SpikesOff
 
 var spikes: Area2D
 
 # Called when the element switches from off -> on
 func _on_switch_on():
-	print("ON")
 	_add_spikes()
+	spikes_off.hide()
 
 
 # Called when the element switches from on -> off
 func _on_switch_off():
-	print("OFF")
 	spikes.queue_free()
+	spikes_off.show()
 
 
 func _add_spikes():
