@@ -26,6 +26,8 @@ func move_to(target: Vector2, instant: bool = false):
 
 	if target != position:
 		_is_moving = true
+	else:
+		arrived.emit(target)
 
 func _physics_process(delta):
 	if not _is_moving:
@@ -44,4 +46,4 @@ func _physics_process(delta):
 		position = _target
 		
 		_is_moving = false
-		arrived.emit()
+		arrived.emit(_target)
