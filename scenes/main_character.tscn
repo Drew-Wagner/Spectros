@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxhcsdlxckv2k"]
+
+[ext_resource type="Script" path="res://scripts/move_and_reflect.gd" id="1_4p8au"]
+
+[sub_resource type="Gradient" id="Gradient_66myx"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_11v8l"]
+gradient = SubResource("Gradient_66myx")
+width = 16
+height = 30
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aib7p"]
+radius = 8.0
+
+[node name="MainCharacter" type="CharacterBody2D"]
+position = Vector2(0, -24)
+script = ExtResource("1_4p8au")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_11v8l")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_aib7p")

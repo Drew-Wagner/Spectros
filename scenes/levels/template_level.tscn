@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv0l7e2lhe25l"]
+
+[ext_resource type="PackedScene" uid="uid://da347djbero52" path="res://scenes/main_character.tscn" id="1_oce52"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qbgbu"]
+size = Vector2(64, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8stax"]
+size = Vector2(64, 16)
+
+[node name="Root" type="Node2D"]
+
+[node name="Ground" type="StaticBody2D" parent="."]
+scale = Vector2(3, 1.00247)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+texture = SubResource("PlaceholderTexture2D_qbgbu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("RectangleShape2D_8stax")
+
+[node name="Ground2" type="StaticBody2D" parent="."]
+position = Vector2(64, -16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground2"]
+texture = SubResource("PlaceholderTexture2D_qbgbu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
+shape = SubResource("RectangleShape2D_8stax")
+
+[node name="Ground3" type="StaticBody2D" parent="."]
+position = Vector2(-64, -16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground3"]
+texture = SubResource("PlaceholderTexture2D_qbgbu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground3"]
+shape = SubResource("RectangleShape2D_8stax")
+
+[node name="MainCharacter" parent="." instance=ExtResource("1_oce52")]
+velocity = Vector2(32, 0)
