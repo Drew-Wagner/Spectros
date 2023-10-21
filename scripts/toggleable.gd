@@ -2,7 +2,7 @@ class_name Toggleable
 extends Node
 
 
-@export var on: bool = false
+@export var is_on: bool = false
 
 # Called when the element switches from off -> on
 func _on_switch_on():
@@ -30,23 +30,23 @@ func _physics_process_off(_delta):
 
 # Toggles the element on or off
 func toggle():
-	if on:
+	if is_on:
 		_on_switch_off()
 	else:
 		_on_switch_on()
-	on = !on
+	is_on = !is_on
 
 func _ready():
 	OnOff.toggle.connect(toggle)
 
 func _process(delta):
-	if on:
+	if is_on:
 		_process_on(delta)
 	else:
 		_process_off(delta)
 
 func _physics_process(delta):
-	if on:
+	if is_on:
 		_physics_process_on(delta)
 	else:
 		_physics_process_off(delta)
