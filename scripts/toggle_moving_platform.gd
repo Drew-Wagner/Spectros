@@ -1,3 +1,4 @@
+class_name ToggleMovingPlatform
 extends Toggleable
 
 @export var moving_platform: MovingPlatform
