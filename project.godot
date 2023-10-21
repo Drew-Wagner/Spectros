@@ -21,8 +21,15 @@ OnOff="*res://scripts/global_on_off.gd"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/window_width_override=1920
 window/size/window_height_override=1080
+
+[gui]
+
+theme/custom="res://halloween.tres"
+theme/custom_font="res://fonts/CFHalloween-Regular.ttf"
 
 [input]
 
