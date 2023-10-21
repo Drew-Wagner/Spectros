@@ -6,12 +6,12 @@
 [node name="Root" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2(0, -1)
 tile_set = ExtResource("1_u4pm0")
 format = 2
-layer_0/tile_data = PackedInt32Array(-65536, 393216, 4, -65535, 393216, 4, -65534, 393216, 4, -1, 393216, 4, -2, 393216, 4, -3, 393216, 4, -4, 393216, 4, -65540, 393216, 4, -65533, 393216, 4, -131069, 393216, 4)
+layer_0/tile_data = PackedInt32Array(-65536, 393216, 4, -65535, 393216, 4, -65534, 393216, 4, -1, 393216, 4, -2, 393216, 4, -3, 393216, 4, -4, 393216, 4, -65540, 393216, 4, -65533, 393216, 4, -131069, 393216, 4, -131070, 1, 65536)
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_oce52")]
-position = Vector2(-32, -110)
-scale = Vector2(3, 3)
+position = Vector2(0, -64)
 velocity = Vector2(32, 0)
-moveSpeed = 48.0
+moveSpeed = 16.0
