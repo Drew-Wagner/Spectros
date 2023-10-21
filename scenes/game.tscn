@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c252nehiumnb3"]
+
+[ext_resource type="PackedScene" uid="uid://cv0l7e2lhe25l" path="res://scenes/levels/template_level.tscn" id="1_uj55n"]
+
+[node name="game" type="Node2D"]
+
+[node name="TODO - Insert Level Here" parent="." instance=ExtResource("1_uj55n")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
