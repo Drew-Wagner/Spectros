@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3i108tufuyhc"]
+
+[ext_resource type="Script" path="res://scripts/StasisField.gd" id="1_khsr5"]
+
+[sub_resource type="Gradient" id="Gradient_ny1u0"]
+colors = PackedColorArray(1, 0, 0.916667, 0.517647, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_exk6u"]
+gradient = SubResource("Gradient_ny1u0")
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8msnd"]
+size = Vector2(64, 64)
+
+[node name="StasisField" type="Node2D"]
+script = ExtResource("1_khsr5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -32)
+texture = SubResource("GradientTexture2D_exk6u")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_8msnd")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
