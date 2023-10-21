@@ -1,7 +1,8 @@
 class_name Toggleable
 extends Node2D
 
-
+# Whether or not to connect to global OnOff.toggle signal
+@export var is_player_toggleable: bool = true
 @export var is_on: bool = false:
 	set(value):
 		if value and not is_on:
@@ -39,7 +40,8 @@ func toggle():
 	is_on = !is_on
 
 func _ready():
-	OnOff.toggle.connect(toggle)
+	if is_player_toggleable:
+		OnOff.toggle.connect(toggle)
 
 func _process(delta):
 	if is_on:
