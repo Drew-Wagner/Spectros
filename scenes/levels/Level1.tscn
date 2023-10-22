@@ -72,8 +72,6 @@ rotation = 3.14159
 
 [node name="EnemySpider" parent="DynamicEnvironment" instance=ExtResource("7_v2ebx")]
 position = Vector2(-96, -256)
-descent_delay = 0.0
-ascent_delay = 0.0
 
 [node name="StaticEnvironment" type="TileMap" parent="."]
 tile_set = ExtResource("2_0jb80")
