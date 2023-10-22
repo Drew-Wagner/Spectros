@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://4usjiwbxajd8"]
+[gd_scene load_steps=24 format=3 uid="uid://4usjiwbxajd8"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_rnd3o"]
 [ext_resource type="PackedScene" uid="uid://dd560qxrjfygt" path="res://scenes/levels/Level1.tscn" id="2_12uj8"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://nxnmjshhis2c" path="res://sounds/LEVIER_GJ_STATE_Win.wav" id="5_f3xnp"]
 [ext_resource type="PackedScene" uid="uid://bxhcsdlxckv2k" path="res://scenes/main_character.tscn" id="5_iqaxe"]
 [ext_resource type="AudioStream" uid="uid://ota274s1y71i" path="res://sounds/LEVIER_GJ_STATE_Lose.wav" id="6_006ic"]
+[ext_resource type="AudioStream" uid="uid://ck2sgonakejta" path="res://sounds/LEVIER_GJ_STATE_Countdown.wav" id="7_8gj3s"]
 [ext_resource type="Texture2D" uid="uid://cf30xyhg4xcvb" path="res://textures/background_flou.png" id="8_6v6g5"]
 [ext_resource type="PackedScene" uid="uid://cxxbjbc1q5rmg" path="res://gui/bone_collection.tscn" id="9_0rnu1"]
 [ext_resource type="AudioStream" uid="uid://caigx6k3md34c" path="res://sounds/LEVIER_GJ_AMB_LP.wav" id="9_jiikb"]
@@ -97,7 +98,7 @@ levels = Array[PackedScene]([ExtResource("2_12uj8")])
 toggle_sounds = Array[AudioStream]([ExtResource("3_o2w25"), ExtResource("4_5x8y0")])
 win_sound = ExtResource("5_f3xnp")
 lose_sound = ExtResource("6_006ic")
-is_countdown_enabled = true
+start_sound = ExtResource("7_8gj3s")
 main_character_scene = ExtResource("5_iqaxe")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -118,19 +119,6 @@ stretch_mode = 6
 [node name="LevelHolder" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="CountDown" type="Label" parent="CanvasLayer"]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 128
-text = "3"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 offset_right = 40.0
@@ -165,7 +153,7 @@ visible = false
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 theme_override_font_sizes/font_size = 96
-text = "RELEASE THE BUTTON TO PROCEED"
+text = "Press Space Bar To Start"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true

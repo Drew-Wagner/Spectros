@@ -8,19 +8,18 @@ extends Node2D
 var level: BaseLevel
 
 signal _toggle_released()
+signal _toggle_pressed()
 signal game_end()
 signal level_start()
 
 @export var toggle_sounds: Array[AudioStream]
 @export var win_sound: AudioStream
 @export var lose_sound: AudioStream
-@export var countdown_seconds: int = 3
-@export var is_countdown_enabled: bool
+@export var start_sound: AudioStream
 @export var main_character_scene: PackedScene
 var toggle_sound_index = 0
 var level_time = 0
 
-@onready var count_down: Label = %CountDown
 @onready var level_label: Label = %LevelLabel
 @onready var time_label: Label = %TimeLabel
 @onready var audio_effects_player: AudioStreamPlayer = $AudioEffects
@@ -74,34 +73,17 @@ func start_level():
 	respawn()
 	pause()
 	
-	if Input.is_action_pressed("toggle"):
-		%SplashLabel.show()
-		await _toggle_released
-		%SplashLabel.hide()
+	%SplashLabel.show()
 	
 	scene_transition.play_backwards("fade")
 	await scene_transition.animation_finished
+	
+	await _toggle_pressed
+	await _toggle_released
+	%SplashLabel.hide()
+	audio_effects_player.stream = start_sound
+	audio_effects_player.play()
 
-	# Countdown
-	if is_countdown_enabled:
-		count_down.show()
-		for i in range(countdown_seconds, 0, -1):
-			count_down.text = str(i)
-			await get_tree().create_timer(1).timeout
-
-			if Input.is_action_pressed("toggle"):
-				count_down.hide()
-				scene_transition.play("fade")
-				await scene_transition.animation_finished
-				%SplashLabel.show()
-				await _toggle_released
-				%SplashLabel.hide()
-				scene_transition.play_backwards("fade")
-				await scene_transition.animation_finished
-				count_down.show()
-
-	count_down.text = ""
-	count_down.hide()
 	unpause()
 
 
@@ -122,6 +104,8 @@ func _process(delta):
 		
 		time_label.text = formattedTime
 	else:
+		if Input.is_action_just_pressed("toggle"):
+			_toggle_pressed.emit()
 		if Input.is_action_just_released("toggle"):
 			_toggle_released.emit()
 
