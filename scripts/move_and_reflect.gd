@@ -2,13 +2,18 @@
 class_name MoveAndReflect
 extends CharacterBody2D
 
-@onready var sprite2D: Sprite2D = $Sprite2D
+@onready var sprite2D: Node2D = $Sprite2D
 
 @export var moveSpeed: float = 32
 @export var isLookingRight: bool = true:
 	set (value):
 		if sprite2D and (isLookingRight && !value or !isLookingRight && value):
-			sprite2D.flip_h = !sprite2D.flip_h
+			if sprite2D.has_method("flip_h"):
+				sprite2D.flip_h = !sprite2D.flip_h
+			else:
+				for child in sprite2D.get_children():
+					if child.has_method("flip_h"):
+						child.flip_h = !child.flip_h
 		isLookingRight = value
 	
 # Get the gravity from the project settings to be synced with RigidBody nodes.

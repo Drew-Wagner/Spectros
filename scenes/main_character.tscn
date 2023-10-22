@@ -1,15 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxhcsdlxckv2k"]
+[gd_scene load_steps=20 format=3 uid="uid://bxhcsdlxckv2k"]
 
 [ext_resource type="Script" path="res://scripts/main_character.gd" id="1_e7r1n"]
+[ext_resource type="Texture2D" uid="uid://dqnmw4vq8bnkf" path="res://textures/skeleton/0.png" id="2_jyr73"]
 [ext_resource type="Texture2D" uid="uid://8nx1r3rgvjti" path="res://materials/ghost_glow.png" id="2_up3m7"]
-[ext_resource type="Texture2D" uid="uid://bnyja14di3s4j" path="res://materials/skeleton.png" id="3_uknsf"]
+[ext_resource type="Texture2D" uid="uid://cy7373oh4ke64" path="res://textures/skeleton/squelette_animation01.png" id="3_qp1ee"]
+[ext_resource type="Texture2D" uid="uid://c65ebcn282ndf" path="res://textures/skeleton/squelette_animation02.png" id="4_fib3i"]
+[ext_resource type="Texture2D" uid="uid://cmdsd6eb83bqc" path="res://textures/skeleton/squelette_animation03.png" id="5_6m64t"]
+[ext_resource type="Texture2D" uid="uid://burrx2v0akry8" path="res://textures/skeleton/squelette_animation04.png" id="6_w4rbd"]
+[ext_resource type="Texture2D" uid="uid://dg78ih4e3otoj" path="res://textures/skeleton/squelette_animation06.png" id="7_ggge3"]
+[ext_resource type="Texture2D" uid="uid://crjjess4le74g" path="res://textures/skeleton/squelette_animation07.png" id="8_m816j"]
+[ext_resource type="Texture2D" uid="uid://bd8ve1jwe54et" path="res://textures/skeleton/squelette_animation08.png" id="9_xsw0o"]
+[ext_resource type="Texture2D" uid="uid://jvigdiccp4hj" path="res://textures/skeleton/squelette_animation09.png" id="10_ger57"]
+[ext_resource type="Texture2D" uid="uid://ch5r05fh2e4sy" path="res://textures/skeleton/squelette_animation10.png" id="11_u52c4"]
+[ext_resource type="Texture2D" uid="uid://brtqo4c0551po" path="res://textures/skeleton/squelette_animation11.png" id="12_8ro2t"]
+[ext_resource type="Texture2D" uid="uid://b2lud7gujsdfg" path="res://textures/skeleton/squelette_animation12.png" id="13_d2hm4"]
 
 [sub_resource type="Animation" id="Animation_52adl"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D2:modulate")
+tracks/0/path = NodePath("Sprite2D/Ghost:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -21,7 +32,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D2:scale")
+tracks/1/path = NodePath("Sprite2D/Ghost:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -33,7 +44,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D2:rotation")
+tracks/2/path = NodePath("Sprite2D/Ghost:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -45,7 +56,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:rotation")
+tracks/3/path = NodePath("Sprite2D/Skeleton:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -62,7 +73,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D2:modulate")
+tracks/0/path = NodePath("Sprite2D/Ghost:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -74,7 +85,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D2:scale")
+tracks/1/path = NodePath("Sprite2D/Ghost:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -86,7 +97,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D2:rotation")
+tracks/2/path = NodePath("Sprite2D/Ghost:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -98,7 +109,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:rotation")
+tracks/3/path = NodePath("Sprite2D/Skeleton:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -114,6 +125,50 @@ _data = {
 "skeleton": SubResource("Animation_kb3wt")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_qyk05"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jyr73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qp1ee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fib3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6m64t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_w4rbd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ggge3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_m816j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xsw0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ger57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_u52c4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8ro2t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_d2hm4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6lsiv"]
 size = Vector2(32, 88)
 
@@ -127,17 +182,22 @@ libraries = {
 "": SubResource("AnimationLibrary_e6oqd")
 }
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 1
+[node name="Sprite2D" type="Node2D" parent="."]
 position = Vector2(-2.38419e-07, -48)
 rotation = -0.0523599
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("3_uknsf")
+
+[node name="Skeleton" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+rotation = -0.0523599
+sprite_frames = SubResource("SpriteFrames_qyk05")
+autoplay = "default"
+frame_progress = 0.553737
 offset = Vector2(0.582909, 0.04953)
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Ghost" type="Sprite2D" parent="Sprite2D"]
 z_index = -1
-position = Vector2(1, -61)
+position = Vector2(2.23866, -17.2398)
 rotation = -0.0523599
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_up3m7")
