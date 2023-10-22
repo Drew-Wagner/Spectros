@@ -1,0 +1,135 @@
+[gd_scene load_steps=11 format=3 uid="uid://dqm3usquyv1l4"]
+
+[ext_resource type="Script" path="res://scripts/base_level.gd" id="1_ofp7a"]
+[ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_icp6s"]
+[ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="3_rgctd"]
+[ext_resource type="PackedScene" uid="uid://xynpr4h0gdnx" path="res://scenes/enemies/enemy_bat.tscn" id="4_uwm6b"]
+[ext_resource type="PackedScene" uid="uid://cu4qk30gh72x8" path="res://scenes/elements/moving_platform.tscn" id="5_x3tx2"]
+[ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/elements/spikes.tscn" id="6_ooy8t"]
+[ext_resource type="PackedScene" uid="uid://1m2siku6krim" path="res://scenes/elements/door.tscn" id="7_jo7cc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
+size = Vector2(1792, 1024)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx1p3"]
+size = Vector2(384, 512)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h148x"]
+size = Vector2(64, 64)
+
+[node name="Level" type="Node2D"]
+position = Vector2(896, 512)
+script = ExtResource("1_ofp7a")
+
+[node name="LevelArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelArea"]
+shape = SubResource("RectangleShape2D_emyvp")
+debug_color = Color(0, 0.647059, 0.760784, 0.419608)
+
+[node name="BourreauArea" type="Area2D" parent="."]
+position = Vector2(704, 256)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BourreauArea"]
+shape = SubResource("RectangleShape2D_wx1p3")
+debug_color = Color(0.941176, 0, 0, 0.419608)
+
+[node name="DynamicEnvironment" type="Node" parent="."]
+
+[node name="StaticEnvironment" type="TileMap" parent="."]
+tile_set = ExtResource("2_icp6s")
+format = 2
+layer_0/z_index = 1
+layer_0/tile_data = PackedInt32Array(524285, 0, 3, 524286, 0, 4, 524287, 0, 3, 458751, 0, 4, 393215, 0, 4, 327679, 0, 3, 327676, 0, 3, 393212, 0, 3, 458748, 0, 4, 524284, 65536, 4, 327675, 0, 3, 327674, 0, 3, 327673, 0, 4, 327672, 0, 3, 327671, 65536, 4, 327670, 0, 3, 327669, 0, 3, 262144, 0, 4, 262145, 0, 4, 262146, 0, 3, 262147, 0, 3, 262148, 0, 3, 262149, 0, 3, 262150, 65536, 4, 262151, 0, 4, 327668, 65536, 4, 196615, 5, 1, -262156, 3, 0, -196620, 3, 0, -131084, 65539, 0, -65548, 3, 0, -12, 3, 0, 65524, 65539, 0, -327673, 65539, 0, -262137, 3, 0, -196601, 65539, 0, -131065, 65539, 0, -65529, 131075, 0, 7, 131075, 0, 65543, 3, 0, 131079, 3, 0, -327674, 3, 0, -327675, 3, 0, -327676, 65539, 0, -327677, 3, 0, -327678, 3, 0, -327679, 131075, 0, -327680, 3, 0, -262145, 3, 0, -262146, 65539, 0, -262147, 65539, 0, -262148, 3, 0, -262149, 3, 0, -262150, 3, 0, -262151, 65539, 0, -262152, 3, 0, -262153, 3, 0, -262154, 3, 0, -262155, 3, 0, 131066, 3, 0, 65530, 3, 0, -6, 131075, 0, -65542, 3, 0, -131078, 3, 0, -196614, 65539, 0, 131063, 3, 0, 65527, 65539, 0, -9, 65539, 0, -65545, 3, 0, -131081, 131075, 0, -196617, 131075, 0, 65537, 3, 0, 1, 65539, 0, -65535, 65539, 0, -131071, 3, 0, -196607, 65539, 0, -262143, 65539, 0, 65540, 65539, 0, 4, 65539, 0, -65532, 3, 0, -131068, 3, 0, -196604, 65539, 0, -262140, 3, 0)
+
+[node name="Bones" type="Node" parent="."]
+
+[node name="Bone" parent="Bones" instance=ExtResource("3_rgctd")]
+position = Vector2(1088, 736)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-672, 256)
+
+[node name="FinishArea" type="Area2D" parent="."]
+position = Vector2(-800, 224)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishArea"]
+shape = SubResource("RectangleShape2D_h148x")
+debug_color = Color(1, 1, 0.188235, 0.419608)
+
+[node name="EnemyBat" parent="." instance=ExtResource("4_uwm6b")]
+position = Vector2(352, 216)
+moveSpeed = 150.0
+
+[node name="Interactables" type="Node" parent="."]
+
+[node name="MovingPlatform" parent="Interactables" instance=ExtResource("5_x3tx2")]
+position = Vector2(352, 736)
+on_position = Vector2(0, -128)
+
+[node name="MovingPlatform2" parent="Interactables" instance=ExtResource("5_x3tx2")]
+position = Vector2(352, 672)
+on_position = Vector2(0, -128)
+
+[node name="MovingPlatform3" parent="Interactables" instance=ExtResource("5_x3tx2")]
+position = Vector2(992, 672)
+on_position = Vector2(0, -128)
+
+[node name="MovingPlatform4" parent="Interactables" instance=ExtResource("5_x3tx2")]
+position = Vector2(992, 744)
+on_position = Vector2(0, -128)
+
+[node name="MovingPlatform5" parent="Interactables" instance=ExtResource("5_x3tx2")]
+position = Vector2(1184, 536)
+rotation = 3.14159
+orientation = 2
+on_position = Vector2(0, -128)
+
+[node name="MovingPlatform6" parent="Interactables" instance=ExtResource("5_x3tx2")]
+position = Vector2(1184, 608)
+rotation = 3.14159
+orientation = 2
+on_position = Vector2(0, -128)
+
+[node name="MovingPlatform7" parent="Interactables" instance=ExtResource("5_x3tx2")]
+position = Vector2(544, 608)
+rotation = 3.14159
+orientation = 2
+on_position = Vector2(0, -128)
+
+[node name="MovingPlatform8" parent="Interactables" instance=ExtResource("5_x3tx2")]
+position = Vector2(544, 544)
+rotation = 3.14159
+orientation = 2
+on_position = Vector2(0, -128)
+
+[node name="MovingPlatform9" parent="Interactables" instance=ExtResource("5_x3tx2")]
+position = Vector2(736, 800)
+rotation = -1.5708
+orientation = 3
+on_position = Vector2(0, -128)
+
+[node name="MovingPlatform10" parent="Interactables" instance=ExtResource("5_x3tx2")]
+position = Vector2(800, 800)
+rotation = -1.5708
+orientation = 3
+on_position = Vector2(0, -128)
+
+[node name="Hazard" type="Node" parent="."]
+
+[node name="Spikes" parent="Hazard" instance=ExtResource("6_ooy8t")]
+position = Vector2(736, 928)
+
+[node name="Spikes2" parent="Hazard" instance=ExtResource("6_ooy8t")]
+position = Vector2(800, 928)
+
+[node name="Door" parent="." instance=ExtResource("7_jo7cc")]
+position = Vector2(-736, 192)
+is_player_toggleable = false
+
+[connection signal="all_bones_collected" from="." to="Door" method="toggle"]
+[connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]
+[connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]
