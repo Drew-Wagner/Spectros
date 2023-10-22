@@ -30,3 +30,6 @@ func _on_switch_off():
 		return
 	
 	moving_platform.move_to(off_position)
+
+
+
