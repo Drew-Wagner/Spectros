@@ -173,6 +173,8 @@ animations = [{
 size = Vector2(32, 88)
 
 [node name="MainCharacter" type="CharacterBody2D" groups=["player"]]
+floor_block_on_wall = false
+platform_on_leave = 2
 script = ExtResource("1_e7r1n")
 moveSpeed = 128.0
 

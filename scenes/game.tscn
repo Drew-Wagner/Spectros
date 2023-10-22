@@ -1,10 +1,10 @@
 [gd_scene load_steps=38 format=3 uid="uid://4usjiwbxajd8"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_rnd3o"]
-[ext_resource type="PackedScene" uid="uid://dqm3usquyv1l4" path="res://scenes/levels/Level4.tscn" id="2_eublf"]
 [ext_resource type="PackedScene" uid="uid://dvwy8al6vu40d" path="res://scenes/levels/level_1.tscn" id="2_12uj8"]
+[ext_resource type="PackedScene" uid="uid://dqm3usquyv1l4" path="res://scenes/levels/Level4.tscn" id="2_eublf"]
 [ext_resource type="PackedScene" uid="uid://dmb6yaqqbdgor" path="res://scenes/levels/Level2.tscn" id="2_g42qk"]
-[ext_resource type="PackedScene" path="res://scenes/levels/Level3.tscn" id="2_jjbby"]
+[ext_resource type="PackedScene" uid="uid://36dkaner3txs" path="res://scenes/levels/Level3.tscn" id="2_jjbby"]
 [ext_resource type="AudioStream" uid="uid://bofpqflybv72u" path="res://sounds/LEVIER_GJ_FOL_Lever_Off.wav" id="3_o2w25"]
 [ext_resource type="AudioStream" uid="uid://1tc4ak1mjpo1" path="res://sounds/LEVIER_GJ_FOL_Lever_On.wav" id="4_5x8y0"]
 [ext_resource type="AudioStream" uid="uid://nxnmjshhis2c" path="res://sounds/LEVIER_GJ_STATE_Win.wav" id="5_f3xnp"]
@@ -108,7 +108,7 @@ _data = {
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_rnd3o")
-levels = Array[PackedScene]([ExtResource("2_eublf"), ExtResource("2_jjbby"), ExtResource("2_g42qk"), ExtResource("2_12uj8")])
+levels = Array[PackedScene]([ExtResource("2_jjbby"), ExtResource("2_eublf"), ExtResource("2_12uj8"), ExtResource("2_g42qk")])
 toggle_sounds = Array[AudioStream]([ExtResource("3_o2w25"), ExtResource("4_5x8y0")])
 grunt_sounds = Array[AudioStream]([ExtResource("5_k5x62"), ExtResource("6_mcigs"), ExtResource("7_s3rb2"), ExtResource("8_fmkyl"), ExtResource("9_qffde"), ExtResource("10_siirr")])
 win_sound = ExtResource("5_f3xnp")
@@ -138,8 +138,10 @@ stretch_mode = 6
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-offset_right = 192.0
-offset_bottom = 56.0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 256.0
+offset_bottom = 126.0
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 
@@ -228,6 +230,7 @@ libraries = {
 script = ExtResource("13_qf1cm")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
