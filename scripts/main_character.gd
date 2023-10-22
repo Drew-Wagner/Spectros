@@ -1,5 +1,5 @@
-extends MoveAndReflect
 class_name MainCharacter
+extends MoveAndReflect
 
 signal killed()
 

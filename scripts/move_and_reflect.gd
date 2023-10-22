@@ -1,6 +1,6 @@
 @tool # allows the "isLookingRight" code to run in the editor
-extends CharacterBody2D
 class_name MoveAndReflect
+extends CharacterBody2D
 
 @onready var sprite2D: Sprite2D = $Sprite2D
 
