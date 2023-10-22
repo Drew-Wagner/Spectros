@@ -85,7 +85,7 @@ uppercase = true
 [node name="Title" type="Label" parent="Hbox/VBoxContainer/Title"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-text = "SKELETOMB"
+text = "SPECTROS"
 label_settings = SubResource("LabelSettings_cbhdu")
 horizontal_alignment = 1
 vertical_alignment = 1
