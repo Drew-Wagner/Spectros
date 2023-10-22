@@ -2,8 +2,15 @@
 extends Toggleable
 
 @export var pull_speed: float = 512 # pixels / sec
+@export var stasis_range: float:# Grid units, can be fractions
+	set(value):
+		stasis_range = value
+		_set_stasis_range()
+
 @onready var particles: GPUParticles2D = $GPUParticles2D
 @onready var pull_target: Marker2D = $PullTarget
+@onready var stasis_area: Area2D = $Area2D
+
 var bodies_in_area: Array[Node2D]
 
 func _on_area_2d_body_entered(body):
@@ -38,3 +45,23 @@ func _physics_process_on(_delta):
 		var direction = (pull_target.global_position - body.global_position).normalized()
 		body.velocity = direction * pull_speed
 		body.move_and_slide()
+
+
+func _set_stasis_range():
+	stasis_area = $Area2D as Area2D
+	particles = $GPUParticles2D as GPUParticles2D
+	print(stasis_area)
+	
+	if stasis_area == null or particles == null:
+		print("null")
+		return
+	
+	stasis_area.scale.y = stasis_range
+	
+	var process_material = particles.process_material as ParticleProcessMaterial
+	process_material.emission_box_extents = Vector3(30, 30 * stasis_range, 1)
+	particles.position = Vector2(0, -30 * stasis_range)
+	if stasis_range > 4:
+		particles.amount = 50 * sqrt(stasis_range)
+	else:
+		particles.amount = 50
