@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://4usjiwbxajd8"]
+[gd_scene load_steps=23 format=3 uid="uid://4usjiwbxajd8"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_rnd3o"]
 [ext_resource type="PackedScene" uid="uid://dd560qxrjfygt" path="res://scenes/levels/Level1.tscn" id="2_12uj8"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://nxnmjshhis2c" path="res://sounds/LEVIER_GJ_STATE_Win.wav" id="5_f3xnp"]
 [ext_resource type="PackedScene" uid="uid://bxhcsdlxckv2k" path="res://scenes/main_character.tscn" id="5_iqaxe"]
 [ext_resource type="AudioStream" uid="uid://ota274s1y71i" path="res://sounds/LEVIER_GJ_STATE_Lose.wav" id="6_006ic"]
+[ext_resource type="Texture2D" uid="uid://cf30xyhg4xcvb" path="res://textures/background_flou.png" id="8_6v6g5"]
 [ext_resource type="PackedScene" uid="uid://cxxbjbc1q5rmg" path="res://gui/bone_collection.tscn" id="9_0rnu1"]
 [ext_resource type="AudioStream" uid="uid://caigx6k3md34c" path="res://sounds/LEVIER_GJ_AMB_LP.wav" id="9_jiikb"]
 [ext_resource type="PackedScene" path="res://gui/bone_icon.tscn" id="10_edinx"]
@@ -99,7 +100,17 @@ lose_sound = ExtResource("6_006ic")
 is_countdown_enabled = true
 main_character_scene = ExtResource("5_iqaxe")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_6v6g5")
+
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="LevelHolder" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

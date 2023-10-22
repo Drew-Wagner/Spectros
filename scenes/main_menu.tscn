@@ -1,18 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://djsf8quqac6or"]
+[gd_scene load_steps=6 format=3 uid="uid://djsf8quqac6or"]
 
 [ext_resource type="Shortcut" uid="uid://dbm3w3ubk6mno" path="res://scripts/toggle_button_shortcut.tres" id="1_bixpp"]
 [ext_resource type="AudioStream" uid="uid://caigx6k3md34c" path="res://sounds/LEVIER_GJ_AMB_LP.wav" id="1_kyauq"]
+[ext_resource type="Texture2D" uid="uid://cf30xyhg4xcvb" path="res://textures/background_flou.png" id="1_o5iy1"]
 [ext_resource type="Script" path="res://scripts/scene_navigation.gd" id="2_kgo7m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_00kev"]
+font_size = 96
+shadow_size = 12
+shadow_color = Color(0.756863, 0.364706, 0, 0.505882)
 
 [node name="main_menu" type="CanvasLayer"]
 
-[node name="BG" type="ColorRect" parent="."]
+[node name="BG" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+texture = ExtResource("1_o5iy1")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 anchors_preset = 15
@@ -36,8 +42,8 @@ alignment = 1
 [node name="Title" type="Label" parent="GridContainer/Title"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-theme_override_font_sizes/font_size = 96
 text = "SKELETOMB"
+label_settings = SubResource("LabelSettings_00kev")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -71,6 +77,7 @@ theme_override_constants/margin_bottom = 32
 
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.784314)
 text = "Produced by ZombiGameJam Studios"
 horizontal_alignment = 1
 vertical_alignment = 1

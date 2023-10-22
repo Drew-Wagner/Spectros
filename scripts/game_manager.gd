@@ -66,7 +66,7 @@ func start_level():
 	level.bone_count_updated.connect(bone_collection.on_bone_count_updated)
 	level.bone_collected.connect(bone_collection.on_bone_collected)
 	
-	Callable(add_child).call_deferred(level)
+	Callable($LevelHolder.add_child).call_deferred(level)
 	
 	level_label.text = "Level %s" % str(level_index + 1)
 	time_label.text = "00:00.00"
