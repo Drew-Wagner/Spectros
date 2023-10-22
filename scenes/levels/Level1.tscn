@@ -41,12 +41,15 @@ on_position = Vector2(-128, 0)
 
 [node name="MovingPlatform" parent="DynamicEnvironment" instance=ExtResource("5_g6c5n")]
 position = Vector2(-480, 64)
+material_texture = 0
 
 [node name="MovingPlatform2" parent="DynamicEnvironment" instance=ExtResource("5_g6c5n")]
 position = Vector2(-416, 64)
+material_texture = 0
 
 [node name="MovingPlatform3" parent="DynamicEnvironment" instance=ExtResource("5_g6c5n")]
 position = Vector2(-352, 64)
+material_texture = 0
 
 [node name="MovingPlatform4" parent="DynamicEnvironment" instance=ExtResource("5_g6c5n")]
 position = Vector2(32, -64)
@@ -85,7 +88,7 @@ position = Vector2(224, 192)
 position = Vector2(288, 192)
 
 [node name="Spikes7" parent="Spikes" instance=ExtResource("4_jkiea")]
-position = Vector2(96, -192)
+position = Vector2(160, -192)
 rotation = -3.14159
 
 [node name="Spikes8" parent="Spikes" instance=ExtResource("4_jkiea")]
