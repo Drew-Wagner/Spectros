@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcfj71vbik4yx"
-path="res://.godot/imported/os_outline.png-ad8090de7af12928d7b44eebe51dc377.ctex"
+uid="uid://dlqrse0jmsug"
+path="res://.godot/imported/os_slots_empty.png-a2b868ab8d46cc981e700c0ba6bc835f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://materials/os_outline.png"
-dest_files=["res://.godot/imported/os_outline.png-ad8090de7af12928d7b44eebe51dc377.ctex"]
+source_file="res://materials/os_slots_empty.png"
+dest_files=["res://.godot/imported/os_slots_empty.png-a2b868ab8d46cc981e700c0ba6bc835f.ctex"]
 
 [params]
 
