@@ -2,7 +2,7 @@
 extends Toggleable
 
 @export var pull_speed: float = 512 # pixels / sec
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var particles: GPUParticles2D = $GPUParticles2D
 @onready var pull_target: Marker2D = $PullTarget
 var bodies_in_area: Array[Node2D]
 
@@ -22,20 +22,19 @@ func _on_area_2d_body_exited(body):
 			body.set_in_stasis(false)                   
 
 func _on_switch_on():
-	sprite.show()
+	particles.show()
 	for body in bodies_in_area:
 		body.set_in_stasis(true)
 
 func _on_switch_off():
-	sprite.hide()
+	particles.hide()
 	for body in bodies_in_area:
 		body.set_in_stasis(false)
 
 func _physics_process_on(delta):
 	for body in bodies_in_area:
-		var offset = (pull_target.global_position - body.global_position)
-		var position_change = offset.normalized() * pull_speed * delta
-		if position_change.length_squared() > offset.length_squared():
-			position_change = offset
-
-		body.set_deferred("global_position", body.global_position + position_change) 
+		if not body is CharacterBody2D:
+			continue
+		var direction = (pull_target.global_position - body.global_position).normalized()
+		body.velocity = direction * pull_speed
+		body.move_and_slide()
