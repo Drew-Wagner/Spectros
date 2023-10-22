@@ -158,7 +158,7 @@ uppercase = true
 
 [node name="Artists" type="Label" parent="Hbox/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-text = "Marjolain ???
+text = "Marjolain Deschênes
  "
 horizontal_alignment = 1
 uppercase = true
