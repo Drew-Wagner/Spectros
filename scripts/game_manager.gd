@@ -25,6 +25,7 @@ var level_time = 0
 @onready var time_label: Label = %TimeLabel
 var audio_effects_player: AudioStreamPlaybackPolyphonic
 @onready var scene_transition: AnimationPlayer = %SceneTransitionAnimPlayer
+@onready var transition_particles: Node2D = %TransitionParticles
 
 var main_character: MainCharacter
 var spawn_location: Vector2
@@ -140,8 +141,7 @@ func unpause():
 	propagate_call("set_physics_process", [true])
 
 func on_character_die():
-	print("die")
 	audio_effects_player.play_stream(lose_sound)
-
+	transition_particles.propagate_call("set_emitting", [true])
 	start_level()
 	

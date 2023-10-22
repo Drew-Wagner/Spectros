@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://4usjiwbxajd8"]
+[gd_scene load_steps=33 format=3 uid="uid://4usjiwbxajd8"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_rnd3o"]
 [ext_resource type="PackedScene" uid="uid://dd560qxrjfygt" path="res://scenes/levels/Level1.tscn" id="2_12uj8"]
@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://mambkkt245kn" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_01.wav" id="5_k5x62"]
 [ext_resource type="AudioStream" uid="uid://ota274s1y71i" path="res://sounds/LEVIER_GJ_STATE_Lose.wav" id="6_006ic"]
 [ext_resource type="AudioStream" uid="uid://cwde5p3jhtrdg" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_02.wav" id="6_mcigs"]
-[ext_resource type="AudioStream" uid="uid://b33bbfl0xsl5r" path="res://sounds/LEVIER_GJ_STATE_Countdown.wav" id="7_8gj3s"]
+[ext_resource type="AudioStream" uid="uid://ck2sgonakejta" path="res://sounds/LEVIER_GJ_STATE_Countdown.wav" id="7_8gj3s"]
 [ext_resource type="AudioStream" uid="uid://cslstts0sdh6f" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_03.wav" id="7_s3rb2"]
 [ext_resource type="Texture2D" uid="uid://cf30xyhg4xcvb" path="res://textures/background_flou.png" id="8_6v6g5"]
 [ext_resource type="AudioStream" uid="uid://b2mxcx5osaili" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_04.wav" id="8_fmkyl"]
@@ -22,6 +22,10 @@
 [ext_resource type="AudioStream" uid="uid://bhg71u1feri8c" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_06.wav" id="10_siirr"]
 [ext_resource type="Texture2D" uid="uid://b8lrhek1y2knw" path="res://textures/switch_E03.png" id="12_t227g"]
 [ext_resource type="Script" path="res://scripts/toggleable.gd" id="13_qf1cm"]
+[ext_resource type="Texture2D" uid="uid://cdepx4hsyo5kh" path="res://materials/BAT.png" id="21_j2d88"]
+[ext_resource type="Texture2D" uid="uid://cychrkbb03800" path="res://materials/enn_bat_citrouille.png" id="22_h685u"]
+[ext_resource type="Texture2D" uid="uid://dutqirio1g75y" path="res://materials/enn_citrouille01.png" id="23_5orxp"]
+[ext_resource type="Texture2D" uid="uid://csdky8lro0o22" path="res://textures/enn_spider.png" id="24_bslw4"]
 
 [sub_resource type="Animation" id="Animation_a07gw"]
 length = 0.001
@@ -216,6 +220,80 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_8x8ek")
 }
+
+[node name="TransitionParticles" type="Node2D" parent="CanvasLayer/ColorRect"]
+unique_name_in_owner = true
+
+[node name="PumpkinBats" type="CPUParticles2D" parent="CanvasLayer/ColorRect/TransitionParticles"]
+position = Vector2(1920, 490)
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+texture = ExtResource("22_h685u")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 540)
+direction = Vector2(-1, 0)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 3000.0
+initial_velocity_max = 4000.0
+linear_accel_max = 1000.0
+radial_accel_min = -80.65
+scale_amount_max = 2.0
+
+[node name="Pumpkins" type="CPUParticles2D" parent="CanvasLayer/ColorRect/TransitionParticles"]
+position = Vector2(1920, 490)
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+texture = ExtResource("23_5orxp")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 540)
+direction = Vector2(-1, 0)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 3000.0
+initial_velocity_max = 4000.0
+linear_accel_max = 1000.0
+radial_accel_min = -80.65
+
+[node name="Spiders" type="CPUParticles2D" parent="CanvasLayer/ColorRect/TransitionParticles"]
+position = Vector2(-736, -704)
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+texture = ExtResource("24_bslw4")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 540)
+direction = Vector2(-1, 0)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 3000.0
+initial_velocity_max = 4000.0
+linear_accel_max = 1000.0
+radial_accel_min = -80.65
+scale_amount_max = 3.0
+
+[node name="Bats" type="CPUParticles2D" parent="CanvasLayer/ColorRect/TransitionParticles"]
+position = Vector2(1920, 490)
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+texture = ExtResource("21_j2d88")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 540)
+direction = Vector2(-1, 0)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 3000.0
+initial_velocity_max = 4000.0
+linear_accel_max = 1000.0
+radial_accel_min = -80.65
+scale_amount_min = 0.1
 
 [node name="AudioEffects" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
