@@ -1,9 +1,9 @@
-extends Control
+extends MarginContainer
 class_name BoneCollection
 
 @export var bone_icon_scene: PackedScene
 
-@onready var hbox = $BoneCollection/HBoxContainer
+@onready var hbox = $HBoxContainer
 
 var bone_amount: int
 var bone_icons: Array[BoneIcon]
@@ -29,5 +29,4 @@ func on_bone_collected():
 	bones_collected_amount += 1
 
 func _turn_on_bone_by_number(number: int):
-	bone_icons[bone_amount - number - 1].bone_full.show()
-	bone_icons[bone_amount - number - 1].bone_empty.hide()
+	bone_icons[bone_amount - number - 1].set_full_texture()

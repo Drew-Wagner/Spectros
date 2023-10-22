@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://4usjiwbxajd8"]
+[gd_scene load_steps=29 format=3 uid="uid://4usjiwbxajd8"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_rnd3o"]
 [ext_resource type="PackedScene" uid="uid://dd560qxrjfygt" path="res://scenes/levels/Level1.tscn" id="2_12uj8"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://cxxbjbc1q5rmg" path="res://gui/bone_collection.tscn" id="9_0rnu1"]
 [ext_resource type="AudioStream" uid="uid://caigx6k3md34c" path="res://sounds/LEVIER_GJ_AMB_LP.wav" id="9_jiikb"]
 [ext_resource type="AudioStream" uid="uid://bqn8v3nwh8bvt" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_05.wav" id="9_qffde"]
-[ext_resource type="PackedScene" uid="uid://chv82bw6fflfk" path="res://gui/bone_icon.tscn" id="10_edinx"]
 [ext_resource type="Texture2D" uid="uid://coc4n04vmmje8" path="res://textures/switch_E02.png" id="10_mamxs"]
 [ext_resource type="Texture2D" uid="uid://dqg33apvr1jvo" path="res://textures/switch_E01.png" id="10_ocyo5"]
 [ext_resource type="Script" path="res://scripts/scene_navigation.gd" id="10_ojnpv"]
@@ -128,8 +127,8 @@ stretch_mode = 6
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 192.0
+offset_bottom = 56.0
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 
@@ -165,53 +164,43 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="BoneCollection" parent="CanvasLayer" instance=ExtResource("9_0rnu1")]
-unique_name_in_owner = true
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -64.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 64.0
-grow_horizontal = 0
-bone_icon_scene = ExtResource("10_edinx")
-
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Spacer" type="Control" parent="CanvasLayer/GridContainer"]
+[node name="BoneCollection" parent="CanvasLayer/VBoxContainer" instance=ExtResource("9_0rnu1")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 8
 size_flags_vertical = 3
 
-[node name="Spacer2" type="Control" parent="CanvasLayer/GridContainer"]
+[node name="Spacer" type="Control" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GridContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
 alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GridContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("10_ocyo5")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GridContainer/HBoxContainer/TextureRect"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/VBoxContainer/HBoxContainer/TextureRect"]
 libraries = {
 "": SubResource("AnimationLibrary_r5uvx")
 }
 
-[node name="Toggleable" type="Node2D" parent="CanvasLayer/GridContainer/HBoxContainer/TextureRect"]
+[node name="Toggleable" type="Node2D" parent="CanvasLayer/VBoxContainer/HBoxContainer/TextureRect"]
 script = ExtResource("13_qf1cm")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
@@ -239,6 +228,6 @@ autoplay = true
 script = ExtResource("10_ojnpv")
 
 [connection signal="game_end" from="." to="SceneNavigation" method="go_to" binds= ["res://scenes/end_of_game_menu.tscn"]]
-[connection signal="level_start" from="." to="CanvasLayer/GridContainer/HBoxContainer/TextureRect/AnimationPlayer" method="play" binds= ["RESET"]]
-[connection signal="switched_off" from="CanvasLayer/GridContainer/HBoxContainer/TextureRect/Toggleable" to="CanvasLayer/GridContainer/HBoxContainer/TextureRect/AnimationPlayer" method="play_backwards" binds= ["switch"]]
-[connection signal="switched_on" from="CanvasLayer/GridContainer/HBoxContainer/TextureRect/Toggleable" to="CanvasLayer/GridContainer/HBoxContainer/TextureRect/AnimationPlayer" method="play" binds= ["switch"]]
+[connection signal="level_start" from="." to="CanvasLayer/VBoxContainer/HBoxContainer/TextureRect/AnimationPlayer" method="play" binds= ["RESET"]]
+[connection signal="switched_off" from="CanvasLayer/VBoxContainer/HBoxContainer/TextureRect/Toggleable" to="CanvasLayer/VBoxContainer/HBoxContainer/TextureRect/AnimationPlayer" method="play_backwards" binds= ["switch"]]
+[connection signal="switched_on" from="CanvasLayer/VBoxContainer/HBoxContainer/TextureRect/Toggleable" to="CanvasLayer/VBoxContainer/HBoxContainer/TextureRect/AnimationPlayer" method="play" binds= ["switch"]]
