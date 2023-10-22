@@ -13,6 +13,7 @@ signal game_end()
 signal level_start()
 
 @export var toggle_sounds: Array[AudioStream]
+@export var grunt_sounds: Array[AudioStream]
 @export var win_sound: AudioStream
 @export var lose_sound: AudioStream
 @export var start_sound: AudioStream
@@ -22,7 +23,7 @@ var level_time = 0
 
 @onready var level_label: Label = %LevelLabel
 @onready var time_label: Label = %TimeLabel
-@onready var audio_effects_player: AudioStreamPlayer = $AudioEffects
+var audio_effects_player: AudioStreamPlaybackPolyphonic
 @onready var scene_transition: AnimationPlayer = %SceneTransitionAnimPlayer
 
 var main_character: MainCharacter
@@ -30,18 +31,22 @@ var spawn_location: Vector2
 var is_paused: bool
 
 func _ready():
+	var player: AudioStreamPlayer = %AudioEffects
+	player.stream = AudioStreamPolyphonic.new()
+	player.play()
+	audio_effects_player = player.get_stream_playback()
+	
+	print(audio_effects_player)
 	OnOff.toggle.connect(play_toggle_sound)
 	start_level()
 
 func next_level():
-	audio_effects_player.stream = win_sound
-	audio_effects_player.play()
+	audio_effects_player.play_stream(win_sound)
 
 	level_index += 1
 	start_level()
 
 	if level_index == levels.size():
-		await audio_effects_player.finished
 		game_end.emit()
 
 
@@ -81,8 +86,7 @@ func start_level():
 	await _toggle_pressed
 	await _toggle_released
 	%SplashLabel.hide()
-	audio_effects_player.stream = start_sound
-	audio_effects_player.play()
+	audio_effects_player.play_stream(start_sound)
 
 	unpause()
 
@@ -110,8 +114,8 @@ func _process(delta):
 			_toggle_released.emit()
 
 func play_toggle_sound():
-	audio_effects_player.stream = toggle_sounds[toggle_sound_index]
-	audio_effects_player.play()
+	audio_effects_player.play_stream(toggle_sounds[toggle_sound_index])
+	audio_effects_player.play_stream(grunt_sounds.pick_random())
 
 	toggle_sound_index = (toggle_sound_index + 1) % toggle_sounds.size()
 
@@ -136,8 +140,7 @@ func unpause():
 
 func on_character_die():
 	print("die")
-	audio_effects_player.stream = lose_sound
-	audio_effects_player.play()
+	audio_effects_player.play_stream(lose_sound)
 
 	start_level()
 	
