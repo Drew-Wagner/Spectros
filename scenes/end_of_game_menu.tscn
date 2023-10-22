@@ -57,26 +57,21 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_a8sva")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="Hbox" type="HBoxContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 3
-
-[node name="Spacer" type="Control" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Title" type="VBoxContainer" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 alignment = 1
 
-[node name="Thanks" type="Label" parent="GridContainer/Title"]
+[node name="Title" type="VBoxContainer" parent="Hbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Thanks" type="Label" parent="Hbox/Title"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Thanks for playing"
@@ -84,7 +79,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Title" type="Label" parent="GridContainer/Title"]
+[node name="Title" type="Label" parent="Hbox/Title"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "SKELETOMB"
@@ -92,20 +87,15 @@ label_settings = SubResource("LabelSettings_cbhdu")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="GridContainer/Title"]
+[node name="MarginContainer" type="MarginContainer" parent="Hbox/Title"]
 layout_mode = 2
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="BackToMainMenu" type="Button" parent="GridContainer/Title/MarginContainer"]
+[node name="BackToMainMenu" type="Button" parent="Hbox/Title/MarginContainer"]
 layout_mode = 2
 shortcut = ExtResource("1_1eg65")
 text = "RETURN TO MAIN MENU"
-
-[node name="Spacer2" type="Control" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="Cover" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -128,4 +118,4 @@ autoplay = true
 [node name="Navigation" type="Node" parent="."]
 script = ExtResource("2_numlj")
 
-[connection signal="pressed" from="GridContainer/Title/MarginContainer/BackToMainMenu" to="Navigation" method="go_to" binds= ["res://scenes/main_menu.tscn"]]
+[connection signal="pressed" from="Hbox/Title/MarginContainer/BackToMainMenu" to="Navigation" method="go_to" binds= ["res://scenes/main_menu.tscn"]]
