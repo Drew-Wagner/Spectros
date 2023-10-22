@@ -1,28 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxxbjbc1q5rmg"]
+[gd_scene load_steps=3 format=3 uid="uid://cxxbjbc1q5rmg"]
 
 [ext_resource type="Script" path="res://gui/bone_collection.gd" id="1_ehhpd"]
+[ext_resource type="PackedScene" uid="uid://chv82bw6fflfk" path="res://gui/bone_icon.tscn" id="2_iad1v"]
 
-[node name="BoneCollection" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_top = 32.0
-offset_right = 64.0
-offset_bottom = 96.0
-script = ExtResource("1_ehhpd")
-
-[node name="BoneCollection" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
+[node name="BoneCollection" type="MarginContainer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+offset_left = -160.0
+offset_bottom = 160.0
 grow_horizontal = 0
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
+script = ExtResource("1_ehhpd")
+bone_icon_scene = ExtResource("2_iad1v")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BoneCollection"]
-custom_minimum_size = Vector2(64, 64)
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = -40

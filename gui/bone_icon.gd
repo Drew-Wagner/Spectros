@@ -1,5 +1,8 @@
 extends TextureRect
 class_name BoneIcon
 
-@onready var bone_full: Sprite2D = $BoneFull
-@onready var bone_empty: Sprite2D = $BoneEmpty
+@export var bone_full_texture: Texture2D
+
+
+func set_full_texture():
+	texture = bone_full_texture
