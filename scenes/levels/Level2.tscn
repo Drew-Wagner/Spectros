@@ -1,11 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmb6yaqqbdgor"]
+[gd_scene load_steps=15 format=3 uid="uid://dmb6yaqqbdgor"]
 
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_g1cww"]
+[ext_resource type="Texture2D" uid="uid://bm2gfylya18x6" path="res://materials/enn_citrouille03.png" id="2_0w4ic"]
 [ext_resource type="PackedScene" uid="uid://cu4qk30gh72x8" path="res://scenes/elements/moving_platform.tscn" id="2_f56am"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_uqvsa"]
 [ext_resource type="PackedScene" uid="uid://dokw05n2dslui" path="res://scenes/elements/toggleable_spikes.tscn" id="3_utycn"]
+[ext_resource type="PackedScene" uid="uid://1m2siku6krim" path="res://scenes/elements/door.tscn" id="4_2fmj7"]
 [ext_resource type="PackedScene" uid="uid://bth5xo6bxskba" path="res://scenes/elements/enemy_spider.tscn" id="4_ffgve"]
+[ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/elements/spikes.tscn" id="4_uyd1a"]
+[ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="5_36hil"]
 [ext_resource type="PackedScene" uid="uid://ck2m2kpsthl3l" path="res://scenes/elements/stasis_field.tscn" id="7_jn4cx"]
+[ext_resource type="PackedScene" uid="uid://xynpr4h0gdnx" path="res://scenes/enemies/enemy_bat.tscn" id="8_obauu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
 size = Vector2(1792, 1024)
@@ -17,6 +22,7 @@ size = Vector2(384, 512)
 size = Vector2(64, 64)
 
 [node name="Level" type="Node2D"]
+position = Vector2(896, 512)
 script = ExtResource("1_g1cww")
 
 [node name="LevelArea" type="Area2D" parent="."]
@@ -35,7 +41,7 @@ shape = SubResource("RectangleShape2D_8ge5x")
 debug_color = Color(0.941176, 0, 0, 0.419608)
 
 [node name="FinishArea" type="Area2D" parent="."]
-position = Vector2(416, 96)
+position = Vector2(-864, 352)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FinishArea"]
 shape = SubResource("RectangleShape2D_h148x")
@@ -46,49 +52,128 @@ tile_set = ExtResource("2_uqvsa")
 format = 2
 layer_0/modulate = Color(0.84, 0.5628, 0.77994, 1)
 layer_0/z_index = 1
-layer_0/tile_data = PackedInt32Array(-262132, 1, 4, -327668, 1, 3, -65525, 1, 3, -262133, 65537, 3, -327669, 1, 3, -65526, 1, 3, -262134, 1, 4, -327670, 65537, 3, -262135, 1, 3, -327671, 1, 3, -262136, 65537, 3, -327672, 1, 3, -65529, 65537, 3, -131065, 65537, 3, -196601, 1, 3, -262137, 1, 3, -327673, 1, 3, -65530, 65537, 4, -131066, 65537, 3, -196602, 1, 4, -262138, 1, 3, -327674, 65537, 3, -65531, 1, 3, -131067, 65537, 3, -196603, 1, 3, -262139, 1, 3, -327675, 1, 3, 65538, 1, 3, 2, 65537, 3, -65534, 1, 4, -131070, 65537, 3, -196606, 65537, 3, -262142, 1, 3, -327678, 1, 3, 65537, 1, 3, 1, 1, 3, -65535, 1, 3, -131071, 1, 3, -196607, 1, 3, -262143, 65537, 3, -327679, 1, 3, -65538, 1, 4, -262146, 65537, 3, -65539, 65537, 3, -262147, 1, 3, -65540, 1, 3, -262148, 1, 3, -65541, 65537, 3, -262149, 1, 3, -65542, 1, 3, -131079, 1, 3, -196615, 65537, 3, -262151, 1, 3, -327687, 1, 4, -393223, 1, 3, 131061, 1, 4, 65525, 1, 3, -11, 1, 3, -65547, 1, 3, -131083, 1, 3, -196619, 1, 4, 131060, 1, 3, 65524, 65537, 3, -12, 65537, 4, -65548, 1, 4, -131084, 1, 3, -196620, 1, 4, 131059, 1, 3, 65523, 1, 3, -13, 1, 3, -65549, 1, 4, -131085, 65537, 3, -196621, 1, 4, -65543, 65537, 3, -393224, 65537, 3, -262152, 1, 3, -327688, 65537, 4, -196616, 1, 3, -131080, 1, 3, -65544, 65537, 3, 196615, 65537, 3, 131079, 1, 3, 196614, 65537, 3, 131078, 65537, 3, 196613, 65537, 3, 131077, 65537, 3, 196612, 1, 3, 131076, 1, 3, 196611, 65537, 3, 131075, 1, 3, 196610, 1, 3, 131074, 65537, 3, 196609, 1, 3, 131073, 1, 3, 196608, 1, 4, 131072, 65537, 3, 262143, 1, 3, 196607, 1, 3, 262142, 1, 3, 196606, 65537, 3, 262141, 65537, 3, 196605, 65537, 4, 262140, 1, 3, 196604, 1, 3, 262139, 65537, 3, 196603, 65537, 3, 262138, 1, 3, 196602, 1, 4, 262137, 1, 4, 196601, 1, 3, 262136, 1, 3, 196600, 1, 3, 262135, 65537, 4, 196599, 65537, 3, 262134, 1, 3, 262133, 1, 3, 196597, 1, 3, 262132, 1, 3, 196596, 1, 3, 262131, 65537, 3, 196595, 65537, 3, 196598, 1, 3, -262145, 65537, 3, -327680, 65537, 3, -65524, 65537, 3, 393203, 65537, 3, 458739, 65537, 4, 458740, 65537, 3, -458740, 1, 3, -458741, 65537, 3, -458742, 1, 3, -458744, 1, 3, -458743, 1, 4, -458745, 1, 3, -458746, 1, 3, -458747, 65537, 3, -458748, 1, 3, -458749, 65537, 3, -458750, 1, 3, -458751, 1, 3, -458752, 65537, 3, -393217, 1, 3, -393218, 1, 3, -393219, 65537, 3, -393220, 1, 3, -393221, 1, 4, -393222, 1, 4, -393225, 1, 3, -393226, 1, 3, -393227, 65537, 3, -393228, 1, 3, -393229, 1, 4, -327693, 65537, 3, -393204, 65537, 3, -196596, 1, 3, -131060, 1, 3, 393223, 1, 3, 393222, 1, 3, 393221, 65537, 3, 393220, 65537, 4, 393219, 1, 3, 393218, 65537, 3, 393217, 1, 3, 393216, 65537, 3, 458751, 1, 4, 458750, 1, 3, 458749, 65537, 4, 458748, 65537, 3, 458747, 1, 3, 458746, 1, 3, 458745, 1, 3, 458744, 1, 3, 458743, 65537, 3, 458742, 65537, 3, 458741, 1, 3, 327667, 1, 3, -262157, 1, 3, 262151, 1, 3, 327687, 65537, 3, 65543, 1, 4, 7, 65537, 3, -65528, 65537, 3, -65527, 65537, 3)
+layer_0/tile_data = PackedInt32Array(-262132, 1, 4, -327668, 1, 3, -65525, 1, 3, -65526, 1, 3, -65529, 65537, 3, 65538, 1, 3, 2, 65537, 3, -65534, 1, 4, 65537, 1, 3, 1, 1, 3, -65535, 1, 3, -131071, 1, 3, -65538, 1, 4, -65539, 65537, 3, -65540, 1, 3, -65541, 65537, 3, -65542, 1, 3, -131079, 1, 3, -196615, 65537, 3, -262151, 1, 3, -327687, 1, 4, -393223, 1, 3, 131061, 1, 4, 65525, 1, 3, -11, 1, 3, -65547, 1, 3, -131083, 1, 3, -196619, 1, 4, 131060, 1, 3, 65524, 65537, 3, -12, 65537, 4, -65548, 1, 4, -131084, 1, 3, -196620, 1, 4, 131059, 1, 3, 65523, 1, 3, -13, 1, 3, -65549, 1, 4, -131085, 65537, 3, -196621, 1, 4, -65543, 65537, 3, -393224, 65537, 3, -262152, 1, 3, -327688, 65537, 4, -196616, 1, 3, -131080, 1, 3, -65544, 65537, 3, 196615, 65537, 3, 131079, 1, 3, 131074, 65537, 3, 131073, 1, 3, 131072, 65537, 3, 196607, 1, 3, 196606, 65537, 3, 196605, 65537, 4, 196604, 1, 3, 196603, 65537, 3, 196602, 1, 4, 196601, 1, 3, 196600, 1, 3, 196599, 65537, 3, 196597, 1, 3, 196596, 1, 3, 196595, 65537, 3, 196598, 1, 3, -65524, 65537, 3, 458739, 65537, 4, 458740, 65537, 3, -458740, 1, 3, -458741, 65537, 3, -458742, 1, 3, -458744, 1, 3, -458743, 1, 4, -458745, 1, 3, -458746, 1, 3, -458747, 65537, 3, -458748, 1, 3, -458749, 65537, 3, -458750, 1, 3, -458751, 1, 3, -458752, 65537, 3, -393217, 1, 3, -393218, 1, 3, -393219, 65537, 3, -393220, 1, 3, -393221, 1, 4, -393222, 1, 4, -393225, 1, 3, -393226, 1, 3, -393227, 65537, 3, -393228, 1, 3, -393229, 1, 4, -327693, 65537, 3, -393204, 65537, 3, -196596, 1, 3, -131060, 1, 3, 393223, 1, 3, 393222, 1, 3, 393221, 65537, 3, 393220, 65537, 4, 393219, 1, 3, 393218, 65537, 3, 393217, 1, 3, 393216, 65537, 3, 458751, 1, 4, 458747, 1, 3, 458746, 1, 3, 458745, 1, 3, 458744, 1, 3, 458743, 65537, 3, 458742, 65537, 3, 458741, 1, 3, -262157, 1, 3, 262151, 1, 3, 327687, 65537, 3, 65543, 1, 4, 7, 65537, 3, -65528, 65537, 3, -65527, 65537, 3, -131074, 1, 3, -196610, 65537, 3, -262146, 1, 3, -327682, 1, 3, -131078, 65537, 3, -131077, 65537, 3, -131076, 1, 3, -327684, 65537, 3, -327685, 1, 3, -327686, 1, 4, -327683, 1, 3, -262147, 1, 3, -196611, 1, 3, -131075, 1, 3, -196607, 65537, 3, -262143, 1, 3, -262142, 65537, 3, -262141, 1, 3, -262140, 65537, 3, -262139, 1, 4, -262138, 1, 3, -262137, 1, 3, -262136, 1, 3, -65532, 65537, 3, 4, 1, 4, 65540, 65537, 3, 131076, 1, 3, 131075, 65537, 3, 65539, 1, 3, 3, 1, 3, -65533, 1, 3, 524283, 1, 3, 524287, 1, 3, 589819, 65537, 3, 589823, 1, 4, 655355, 65537, 3, 655359, 65537, 3)
+
+[node name="Misc" type="Node" parent="."]
+
+[node name="Citrouille" type="Sprite2D" parent="Misc"]
+z_index = 2
+position = Vector2(608, 280)
+texture = ExtResource("2_0w4ic")
+
+[node name="Door" parent="Misc" instance=ExtResource("4_2fmj7")]
+position = Vector2(160, 832)
 
 [node name="Bones" type="Node" parent="."]
+
+[node name="Bone" parent="Bones" instance=ExtResource("5_36hil")]
+position = Vector2(544, 480)
+
+[node name="Bone2" parent="Bones" instance=ExtResource("5_36hil")]
+position = Vector2(1056, 416)
+
+[node name="Bone3" parent="Bones" instance=ExtResource("5_36hil")]
+position = Vector2(1248, 224)
 
 [node name="Enemies" type="Node" parent="."]
 
 [node name="EnemySpider" parent="Enemies" instance=ExtResource("4_ffgve")]
-position = Vector2(-224, -32)
+position = Vector2(672, 480)
 descent_delay = 1.0
-ascent_delay = 0.0
+
+[node name="Spikes" parent="Enemies" instance=ExtResource("4_uyd1a")]
+position = Vector2(1632, 416)
+
+[node name="EnemyBat" parent="Enemies" instance=ExtResource("8_obauu")]
+position = Vector2(448, 856)
+
+[node name="EnemySpider2" parent="Enemies" instance=ExtResource("4_ffgve")]
+position = Vector2(1120, 736)
+descent_delay = 1.0
+
+[node name="EnemySpider3" parent="Enemies" instance=ExtResource("4_ffgve")]
+position = Vector2(1056, 736)
+descent_delay = 1.5
+
+[node name="EnemySpider4" parent="Enemies" instance=ExtResource("4_ffgve")]
+position = Vector2(992, 736)
+descent_delay = 2.0
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-160, 128)
+position = Vector2(-704, -256)
 
 [node name="DynamicEnvironment" type="Node" parent="."]
 
 [node name="MovingPlatform" parent="DynamicEnvironment" instance=ExtResource("2_f56am")]
-position = Vector2(-608, -224)
+position = Vector2(288, 288)
 rotation = 1.5708
 orientation = 1
 on_position = Vector2(0, -128)
 
 [node name="MovingPlatform2" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
-position = Vector2(-544, -224)
+position = Vector2(352, 288)
 rotation = 1.5708
 orientation = 1
 sprite = NodePath("../MovingPlatform/MovingPlatform/Sprite2D")
 on_position = Vector2(0, -128)
 
 [node name="ToggleableSpikes" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
-position = Vector2(-608, 96)
+position = Vector2(288, 608)
 
 [node name="ToggleableSpikes2" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
-position = Vector2(-544, 96)
+position = Vector2(352, 608)
 
 [node name="ToggleableSpikes3" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
-position = Vector2(-160, 96)
+position = Vector2(736, 608)
 
 [node name="StasisField" parent="DynamicEnvironment" instance=ExtResource("7_jn4cx")]
-position = Vector2(-352, -32)
+position = Vector2(544, 480)
 rotation = 3.14159
 stasis_range = 3.0
 
+[node name="MovingPlatform3" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
+position = Vector2(864, 672)
+sprite = NodePath("../MovingPlatform/MovingPlatform/Sprite2D")
+on_position = Vector2(0, -384)
+
+[node name="MovingPlatform4" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
+position = Vector2(928, 672)
+sprite = NodePath("../MovingPlatform/MovingPlatform/Sprite2D")
+on_position = Vector2(0, -384)
+
+[node name="ToggleableSpikes4" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
+position = Vector2(1056, 224)
+is_on = true
+
+[node name="ToggleableSpikes5" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
+position = Vector2(1184, 224)
+
+[node name="ToggleableSpikes6" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
+position = Vector2(1312, 224)
+is_on = true
+
+[node name="ToggleableSpikes7" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
+position = Vector2(1440, 224)
+
+[node name="MovingPlatform5" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
+position = Vector2(1696, 416)
+rotation = -1.57079
+sprite = NodePath("../MovingPlatform/MovingPlatform/Sprite2D")
+
+[node name="ToggleableSpikes8" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
+position = Vector2(1376, 416)
+
+[node name="MovingPlatform6" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
+position = Vector2(1248, 928)
+sprite = NodePath("../MovingPlatform/MovingPlatform/Sprite2D")
+on_position = Vector2(0, -448)
+
+[node name="MovingPlatform7" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
+position = Vector2(1312, 928)
+sprite = NodePath("../MovingPlatform/MovingPlatform/Sprite2D")
+on_position = Vector2(0, -448)
+
+[connection signal="all_bones_collected" from="." to="Misc/Door" method="toggle"]
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]
 [connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]
