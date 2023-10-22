@@ -65,13 +65,16 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Title" type="VBoxContainer" parent="Hbox"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Hbox"]
+layout_mode = 2
+
+[node name="Title" type="VBoxContainer" parent="Hbox/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 6
 alignment = 1
 
-[node name="Thanks" type="Label" parent="Hbox/Title"]
+[node name="Thanks" type="Label" parent="Hbox/VBoxContainer/Title"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Thanks for playing"
@@ -79,7 +82,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Title" type="Label" parent="Hbox/Title"]
+[node name="Title" type="Label" parent="Hbox/VBoxContainer/Title"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "SKELETOMB"
@@ -87,15 +90,86 @@ label_settings = SubResource("LabelSettings_cbhdu")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Hbox/Title"]
+[node name="MarginContainer" type="MarginContainer" parent="Hbox/VBoxContainer/Title"]
 layout_mode = 2
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="BackToMainMenu" type="Button" parent="Hbox/Title/MarginContainer"]
+[node name="BackToMainMenu" type="Button" parent="Hbox/VBoxContainer/Title/MarginContainer"]
 layout_mode = 2
 shortcut = ExtResource("1_1eg65")
 text = "RETURN TO MAIN MENU"
+
+[node name="MarginContainer" type="MarginContainer" parent="Hbox/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="GridContainer" type="GridContainer" parent="Hbox/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 64
+theme_override_constants/v_separation = 16
+columns = 4
+
+[node name="Programming Label" type="Label" parent="Hbox/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.427451, 0.690196, 0.988235, 1)
+text = "Programming"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Level Design Label" type="Label" parent="Hbox/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.427451, 0.690196, 0.988235, 1)
+text = "Level Design"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Artwork Label" type="Label" parent="Hbox/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.427451, 0.690196, 0.988235, 1)
+text = "Artwork"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Audio Label" type="Label" parent="Hbox/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.427451, 0.690196, 0.988235, 1)
+text = "Audio"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Programmers" type="Label" parent="Hbox/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Drew Wagner
+William Plante-Tremblay"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Designers" type="Label" parent="Hbox/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Xavier Corriveau-Paradis
+William Plante-Tremblay"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Artists" type="Label" parent="Hbox/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Marjolain ???
+ "
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Audio" type="Label" parent="Hbox/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Xavier Corriveau-Paradis
+
+"
+horizontal_alignment = 1
+uppercase = true
 
 [node name="Cover" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -118,4 +192,4 @@ autoplay = true
 [node name="Navigation" type="Node" parent="."]
 script = ExtResource("2_numlj")
 
-[connection signal="pressed" from="Hbox/Title/MarginContainer/BackToMainMenu" to="Navigation" method="go_to" binds= ["res://scenes/main_menu.tscn"]]
+[connection signal="pressed" from="Hbox/VBoxContainer/Title/MarginContainer/BackToMainMenu" to="Navigation" method="go_to" binds= ["res://scenes/main_menu.tscn"]]
