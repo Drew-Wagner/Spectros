@@ -100,15 +100,20 @@ lose_sound = ExtResource("6_006ic")
 is_countdown_enabled = true
 main_character_scene = ExtResource("5_iqaxe")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_6v6g5")
-
-[node name="Camera2D" type="Camera2D" parent="."]
+expand_mode = 2
+stretch_mode = 6
 
 [node name="LevelHolder" type="Node2D" parent="."]
 
