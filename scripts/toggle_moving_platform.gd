@@ -21,7 +21,7 @@ func _get_configuration_warnings():
 func _on_switch_on():
 	if !moving_platform:
 		return
-		
+
 	moving_platform.move_to(on_position)
 
 # Called when the element switches from on -> off

@@ -8,6 +8,7 @@ extends Node2D
 var level: BaseLevel
 
 signal _toggle_released()
+signal game_end()
 
 @export var toggle_sounds: Array[AudioStream]
 @export var win_sound: AudioStream
@@ -37,15 +38,18 @@ func next_level():
 	audio_effects_player.play()
 
 	level_index += 1
-	if level_index == levels.size():
-		print("No more levels")
-		return
-
 	start_level()
 
+	if level_index == levels.size():
+		await audio_effects_player.finished
+		game_end.emit()
+
+
 func start_level():
+	pause()
 	if level:
 		level.queue_free()
+
 		scene_transition.play("fade")
 		await scene_transition.animation_finished
 	
@@ -66,7 +70,7 @@ func start_level():
 	time_label.text = "00:00.00"
 	
 	respawn()
-	pause()	
+	pause()
 	
 	if Input.is_action_pressed("toggle"):
 		%SplashLabel.show()

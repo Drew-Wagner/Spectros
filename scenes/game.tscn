@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_rnd3o"]
 [ext_resource type="PackedScene" uid="uid://dd560qxrjfygt" path="res://scenes/levels/Level1.tscn" id="2_12uj8"]
-[ext_resource type="PackedScene" uid="uid://baqpc0dwmi5lf" path="res://scenes/levels/template.tscn" id="3_4xwov"]
 [ext_resource type="AudioStream" uid="uid://bofpqflybv72u" path="res://sounds/LEVIER_GJ_FOL_Lever_Off.wav" id="3_o2w25"]
 [ext_resource type="AudioStream" uid="uid://1tc4ak1mjpo1" path="res://sounds/LEVIER_GJ_FOL_Lever_On.wav" id="4_5x8y0"]
 [ext_resource type="AudioStream" uid="uid://nxnmjshhis2c" path="res://sounds/LEVIER_GJ_STATE_Win.wav" id="5_f3xnp"]
@@ -11,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cxxbjbc1q5rmg" path="res://gui/bone_collection.tscn" id="9_0rnu1"]
 [ext_resource type="AudioStream" uid="uid://caigx6k3md34c" path="res://sounds/LEVIER_GJ_AMB_LP.wav" id="9_jiikb"]
 [ext_resource type="PackedScene" uid="uid://chv82bw6fflfk" path="res://gui/bone_icon.tscn" id="10_edinx"]
+[ext_resource type="Script" path="res://scripts/scene_navigation.gd" id="10_ojnpv"]
 
 [sub_resource type="Animation" id="Animation_pmnll"]
 length = 0.001
@@ -51,7 +51,7 @@ _data = {
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_rnd3o")
-levels = Array[PackedScene]([ExtResource("2_12uj8"), ExtResource("3_4xwov")])
+levels = Array[PackedScene]([ExtResource("2_12uj8")])
 toggle_sounds = Array[AudioStream]([ExtResource("3_o2w25"), ExtResource("4_5x8y0")])
 win_sound = ExtResource("5_f3xnp")
 lose_sound = ExtResource("6_006ic")
@@ -144,3 +144,8 @@ bone_icon_scene = ExtResource("10_edinx")
 [node name="AudioAmbiance" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_jiikb")
 autoplay = true
+
+[node name="SceneNavigation" type="Node" parent="."]
+script = ExtResource("10_ojnpv")
+
+[connection signal="game_end" from="." to="SceneNavigation" method="go_to" binds= ["res://scenes/end_of_game_menu.tscn"]]

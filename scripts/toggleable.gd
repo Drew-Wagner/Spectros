@@ -1,13 +1,18 @@
 class_name Toggleable
 extends Node2D
 
+signal switched_on()
+signal switched_off()
+
 # Whether or not to connect to global OnOff.toggle signal
 @export var is_player_toggleable: bool = true
 @export var is_on: bool = false:
 	set(value):
 		if value and not is_on:
+			switched_on.emit()
 			_on_switch_on()
 		elif not value and is_on:
+			switched_off.emit()
 			_on_switch_off()
 		is_on = value
 
