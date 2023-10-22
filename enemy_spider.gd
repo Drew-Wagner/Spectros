@@ -7,7 +7,7 @@ extends Toggleable
 @export var ascent_delay: float = 0 # seconds
 @export var move_speed: float = 256 # pixels / sec
 @export var move_in_editor: bool = false
-var move_direction: Vector2 = Vector2.ZERO
+var move_direction: Vector2 = Vector2.UP
 
 func _draw():
 	if spider_body == null:
@@ -38,7 +38,7 @@ func _physics_process(delta):
 
 
 func _on_area_2d_body_entered(body):
-	if body.has_method("kill"):
+	if body.has_method("kill") and not body.is_in_group("enemies"):
 		body.kill()
 
 	if move_direction == Vector2.DOWN:
