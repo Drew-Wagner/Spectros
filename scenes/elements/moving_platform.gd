@@ -33,7 +33,7 @@ func _draw():
 		label.text = "⬆️"
 		draw_string(label.get_theme_font(""), 32 * Vector2.LEFT + 10 * Vector2.DOWN, "⬆️", HORIZONTAL_ALIGNMENT_CENTER, 64, 32)
 
-func _process(delta):
+func _process(_delta):
 	if Engine.is_editor_hint():
 		queue_redraw()
 
