@@ -15,7 +15,7 @@ gradient = SubResource("Gradient_janw7")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ojm2u"]
 emission_shape = 3
-emission_box_extents = Vector3(30, 30, 1)
+emission_box_extents = Vector3(30, 90, 1)
 particle_flag_disable_z = true
 direction = Vector3(0, 1, 0)
 spread = 0.0
@@ -32,7 +32,6 @@ color_ramp = SubResource("GradientTexture1D_x6qxd")
 [node name="StasisField" type="Node2D"]
 script = ExtResource("1_khsr5")
 stasis_range = 1.0
-is_player_toggleable = false
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, 32)

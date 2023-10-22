@@ -48,8 +48,10 @@ func _physics_process_on(_delta):
 
 
 func _set_stasis_range():
-	if stasis_area == null or particles == null:
-		return
+	if stasis_area == null:
+		stasis_area = $Area2D
+	if particles == null:
+		particles = $GPUParticles2D
 	
 	stasis_area.scale.y = stasis_range
 	
