@@ -5,7 +5,7 @@ extends Toggleable
 @export var stasis_range: float:# Grid units, can be fractions
 	set(value):
 		stasis_range = value
-		_set_stasis_range()
+		_set_stasis_range.call_deferred()
 
 @onready var particles: GPUParticles2D = $GPUParticles2D
 @onready var pull_target: Marker2D = $PullTarget
@@ -48,12 +48,7 @@ func _physics_process_on(_delta):
 
 
 func _set_stasis_range():
-	stasis_area = $Area2D as Area2D
-	particles = $GPUParticles2D as GPUParticles2D
-	print(stasis_area)
-	
 	if stasis_area == null or particles == null:
-		print("null")
 		return
 	
 	stasis_area.scale.y = stasis_range
