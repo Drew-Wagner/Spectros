@@ -15,11 +15,14 @@ func _on_area_2d_body_entered(body):
 		hide()
 		collected.emit()
 
+		var sound_length = reward_sound.get_length()
 		if reward_sound:
 			audio_stream_player_2d.get_stream_playback().play_stream(reward_sound)
 		if reward_sound_random_array.size() > 0:
-			audio_stream_player_2d.get_stream_playback().play_stream(reward_sound_random_array.pick_random())
-			
-		await audio_stream_player_2d.finished
+			var random_sound = reward_sound_random_array.pick_random()
+			sound_length = maxf(sound_length, random_sound.get_length())
+			audio_stream_player_2d.get_stream_playback().play_stream(random_sound)
+		
+		await get_tree().create_timer(sound_length).timeout
 		queue_free()
 
