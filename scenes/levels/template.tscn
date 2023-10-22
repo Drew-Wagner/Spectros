@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://baqpc0dwmi5lf"]
+[gd_scene load_steps=8 format=3 uid="uid://baqpc0dwmi5lf"]
 
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_ng8v4"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="1_u4pm0"]
@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="4_l4dle"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
-size = Vector2(1072, 357)
+size = Vector2(1792, 1024)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx1p3"]
+size = Vector2(384, 512)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h148x"]
 size = Vector2(64, 64)
@@ -17,9 +20,15 @@ script = ExtResource("1_ng8v4")
 [node name="LevelArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelArea"]
-position = Vector2(8, -141.5)
 shape = SubResource("RectangleShape2D_emyvp")
 debug_color = Color(0, 0.647059, 0.760784, 0.419608)
+
+[node name="BourreauArea" type="Area2D" parent="."]
+position = Vector2(704, 256)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BourreauArea"]
+shape = SubResource("RectangleShape2D_wx1p3")
+debug_color = Color(0.941176, 0, 0, 0.419608)
 
 [node name="DynamicEnvironment" type="Node" parent="."]
 
