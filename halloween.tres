@@ -3,7 +3,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4jvyo"]
 
 [resource]
-Button/colors/font_color = Color(1, 0.584314, 0.388235, 1)
+Button/colors/font_color = Color(0, 0.843137, 0.470588, 1)
+Button/font_sizes/font_size = 32
 Button/styles/disabled = SubResource("StyleBoxEmpty_4jvyo")
 Button/styles/focus = SubResource("StyleBoxEmpty_4jvyo")
 Button/styles/hover = SubResource("StyleBoxEmpty_4jvyo")
