@@ -1,8 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://4usjiwbxajd8"]
+[gd_scene load_steps=37 format=3 uid="uid://4usjiwbxajd8"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_rnd3o"]
 [ext_resource type="PackedScene" uid="uid://dd560qxrjfygt" path="res://scenes/levels/Level1.tscn" id="2_12uj8"]
 [ext_resource type="PackedScene" uid="uid://dmb6yaqqbdgor" path="res://scenes/levels/Level2.tscn" id="2_g42qk"]
+[ext_resource type="PackedScene" uid="uid://36dkaner3txs" path="res://scenes/levels/Level3.tscn" id="2_jjbby"]
 [ext_resource type="AudioStream" uid="uid://bofpqflybv72u" path="res://sounds/LEVIER_GJ_FOL_Lever_Off.wav" id="3_o2w25"]
 [ext_resource type="AudioStream" uid="uid://1tc4ak1mjpo1" path="res://sounds/LEVIER_GJ_FOL_Lever_On.wav" id="4_5x8y0"]
 [ext_resource type="AudioStream" uid="uid://nxnmjshhis2c" path="res://sounds/LEVIER_GJ_STATE_Win.wav" id="5_f3xnp"]
@@ -10,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://mambkkt245kn" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_01.wav" id="5_k5x62"]
 [ext_resource type="AudioStream" uid="uid://ota274s1y71i" path="res://sounds/LEVIER_GJ_STATE_Lose.wav" id="6_006ic"]
 [ext_resource type="AudioStream" uid="uid://cwde5p3jhtrdg" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_02.wav" id="6_mcigs"]
-[ext_resource type="AudioStream" uid="uid://ck2sgonakejta" path="res://sounds/LEVIER_GJ_STATE_Countdown.wav" id="7_8gj3s"]
+[ext_resource type="AudioStream" uid="uid://b33bbfl0xsl5r" path="res://sounds/LEVIER_GJ_STATE_Countdown.wav" id="7_8gj3s"]
 [ext_resource type="AudioStream" uid="uid://cslstts0sdh6f" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_03.wav" id="7_s3rb2"]
 [ext_resource type="Texture2D" uid="uid://cf30xyhg4xcvb" path="res://textures/background_flou.png" id="8_6v6g5"]
 [ext_resource type="AudioStream" uid="uid://b2mxcx5osaili" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_04.wav" id="8_fmkyl"]
@@ -106,7 +107,7 @@ _data = {
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_rnd3o")
-levels = Array[PackedScene]([ExtResource("2_g42qk"), ExtResource("2_12uj8")])
+levels = Array[PackedScene]([ExtResource("2_jjbby"), ExtResource("2_g42qk"), ExtResource("2_12uj8")])
 toggle_sounds = Array[AudioStream]([ExtResource("3_o2w25"), ExtResource("4_5x8y0")])
 grunt_sounds = Array[AudioStream]([ExtResource("5_k5x62"), ExtResource("6_mcigs"), ExtResource("7_s3rb2"), ExtResource("8_fmkyl"), ExtResource("9_qffde"), ExtResource("10_siirr")])
 win_sound = ExtResource("5_f3xnp")
