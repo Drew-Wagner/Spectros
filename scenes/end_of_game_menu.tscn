@@ -57,6 +57,86 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_a8sva")
 
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -571.5
+offset_top = -146.0
+offset_right = 571.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 64
+theme_override_constants/v_separation = 16
+columns = 4
+
+[node name="Programming Label" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.427451, 0.690196, 0.988235, 1)
+text = "Programming"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Level Design Label" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.427451, 0.690196, 0.988235, 1)
+text = "Level Design"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Artwork Label" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.427451, 0.690196, 0.988235, 1)
+text = "Artwork"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Audio Label" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.427451, 0.690196, 0.988235, 1)
+text = "Audio"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Programmers" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Drew Wagner
+William Plante-Tremblay"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Designers" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Xavier Corriveau-Paradis
+William Plante-Tremblay"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Artists" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Marjolain Deschênes
+ "
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Audio" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Xavier Corriveau-Paradis
+
+"
+horizontal_alignment = 1
+uppercase = true
+
 [node name="Hbox" type="HBoxContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -99,77 +179,6 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 shortcut = ExtResource("1_1eg65")
 text = "RETURN TO MAIN MENU"
-
-[node name="MarginContainer" type="MarginContainer" parent="Hbox/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
-
-[node name="GridContainer" type="GridContainer" parent="Hbox/VBoxContainer/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/h_separation = 64
-theme_override_constants/v_separation = 16
-columns = 4
-
-[node name="Programming Label" type="Label" parent="Hbox/VBoxContainer/MarginContainer/GridContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.427451, 0.690196, 0.988235, 1)
-text = "Programming"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="Level Design Label" type="Label" parent="Hbox/VBoxContainer/MarginContainer/GridContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.427451, 0.690196, 0.988235, 1)
-text = "Level Design"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="Artwork Label" type="Label" parent="Hbox/VBoxContainer/MarginContainer/GridContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.427451, 0.690196, 0.988235, 1)
-text = "Artwork"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="Audio Label" type="Label" parent="Hbox/VBoxContainer/MarginContainer/GridContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.427451, 0.690196, 0.988235, 1)
-text = "Audio"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="Programmers" type="Label" parent="Hbox/VBoxContainer/MarginContainer/GridContainer"]
-layout_mode = 2
-text = "Drew Wagner
-William Plante-Tremblay"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="Designers" type="Label" parent="Hbox/VBoxContainer/MarginContainer/GridContainer"]
-layout_mode = 2
-text = "Xavier Corriveau-Paradis
-William Plante-Tremblay"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="Artists" type="Label" parent="Hbox/VBoxContainer/MarginContainer/GridContainer"]
-layout_mode = 2
-text = "Marjolain Deschênes
- "
-horizontal_alignment = 1
-uppercase = true
-
-[node name="Audio" type="Label" parent="Hbox/VBoxContainer/MarginContainer/GridContainer"]
-layout_mode = 2
-text = "Xavier Corriveau-Paradis
-
-"
-horizontal_alignment = 1
-uppercase = true
 
 [node name="Cover" type="ColorRect" parent="."]
 anchors_preset = 15
