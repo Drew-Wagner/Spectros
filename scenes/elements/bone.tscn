@@ -101,6 +101,7 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_v6ind")
+debug_color = Color(0.0941176, 0.788235, 0, 0.419608)
 
 [node name="HoverPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

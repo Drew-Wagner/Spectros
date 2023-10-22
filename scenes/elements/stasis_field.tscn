@@ -31,25 +31,30 @@ color_ramp = SubResource("GradientTexture1D_x6qxd")
 
 [node name="StasisField" type="Node2D"]
 script = ExtResource("1_khsr5")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_y7bsm")
+stasis_range = 1.0
+is_player_toggleable = false
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_8msnd")
+debug_color = Color(1, 0, 0.74902, 0.419608)
 
 [node name="PullTarget" type="Marker2D" parent="."]
 position = Vector2(0, 32)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 visible = false
-position = Vector2(0, -48)
+position = Vector2(0, -30)
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_ojm2u")
 texture = ExtResource("3_dbfm5")
 preprocess = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_y7bsm")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

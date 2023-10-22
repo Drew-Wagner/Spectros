@@ -15,6 +15,8 @@ extends ToggleMovingPlatform
 @export var brick_texture: Texture2D
 @export var wood_texture: Texture2D
 
+var active_border: Sprite2D
+
 enum Orientation {
 	Up,
 	Right,
@@ -40,15 +42,19 @@ func _process(_delta):
 func _set_orientation():
 	match orientation:
 		Orientation.Up:
+			set_border($%BorderUp)
 			rotation = 0
 		
 		Orientation.Right:
+			set_border($%BorderRight)
 			rotation = deg_to_rad(90)
 		
 		Orientation.Down:
+			set_border($%BorderDown)
 			rotation = deg_to_rad(180)
 		
 		Orientation.Left:
+			set_border($%BorderLeft)
 			rotation = deg_to_rad(-90)
 
 
@@ -62,3 +68,18 @@ func _set_material():
 		
 		MaterialTexture.Wood:
 			sprite.set_texture(wood_texture)
+	
+	_set_orientation()
+
+
+func set_border(border: Sprite2D):
+	if active_border != null:
+		active_border.hide()
+	else:
+		$%BorderUp.hide()
+	
+	if MaterialTexture.Wood == material_texture or border == null:
+		return
+	
+	border.show()
+	active_border = border

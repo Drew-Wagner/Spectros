@@ -1,18 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://cu4qk30gh72x8"]
+[gd_scene load_steps=7 format=3 uid="uid://cu4qk30gh72x8"]
 
 [ext_resource type="Script" path="res://scenes/elements/moving_platform.gd" id="1_68kah"]
 [ext_resource type="Script" path="res://scripts/moving_platform.gd" id="2_bb151"]
-[ext_resource type="Texture2D" uid="uid://cd0duvkonpsoq" path="res://materials/tiles_orange_plateforme02.png" id="3_ixm7l"]
+[ext_resource type="Texture2D" uid="uid://70ptu8emrfhe" path="res://materials/tiles_orange_simple.png" id="2_q0ap4"]
 [ext_resource type="Texture2D" uid="uid://u7pfs2ev51gm" path="res://materials/plateformes_bois.png" id="3_w5cbj"]
+[ext_resource type="Texture2D" uid="uid://dp7gquw16g4xd" path="res://materials/border_orange.png" id="5_bilss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhyvb"]
 size = Vector2(64, 64)
 
 [node name="MovingPlatform" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_68kah")
-material_texture = 1
 sprite = NodePath("MovingPlatform/Sprite2D")
-brick_texture = ExtResource("3_ixm7l")
+brick_texture = ExtResource("2_q0ap4")
 wood_texture = ExtResource("3_w5cbj")
 on_position = Vector2(0, -64)
 
@@ -26,4 +26,30 @@ move_in_editor = true
 shape = SubResource("RectangleShape2D_xhyvb")
 
 [node name="Sprite2D" type="Sprite2D" parent="MovingPlatform"]
-texture = ExtResource("3_w5cbj")
+texture = ExtResource("2_q0ap4")
+
+[node name="BorderUp" type="Sprite2D" parent="MovingPlatform"]
+unique_name_in_owner = true
+position = Vector2(0, -38)
+texture = ExtResource("5_bilss")
+
+[node name="BorderRight" type="Sprite2D" parent="MovingPlatform"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-38, 0)
+rotation = -1.57079
+texture = ExtResource("5_bilss")
+
+[node name="BorderLeft" type="Sprite2D" parent="MovingPlatform"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(38, 0)
+rotation = 1.57079
+texture = ExtResource("5_bilss")
+
+[node name="BorderDown" type="Sprite2D" parent="MovingPlatform"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, 38)
+rotation = -3.14159
+texture = ExtResource("5_bilss")
