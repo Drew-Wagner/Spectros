@@ -16,9 +16,9 @@ func _on_area_2d_body_entered(body):
 		collected.emit()
 
 		if reward_sound:
-			audio_stream_player_2d.play_stream(reward_sound)
+			audio_stream_player_2d.get_stream_playback().play_stream(reward_sound)
 		if reward_sound_random_array.size() > 0:
-			audio_stream_player_2d.play_stream(reward_sound_random_array.pick_random())
+			audio_stream_player_2d.get_stream_playback().play_stream(reward_sound_random_array.pick_random())
 			
 		await audio_stream_player_2d.finished
 		queue_free()
