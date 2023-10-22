@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://baqpc0dwmi5lf"]
+[gd_scene load_steps=7 format=3 uid="uid://baqpc0dwmi5lf"]
 
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_ng8v4"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="1_u4pm0"]
+[ext_resource type="PackedScene" uid="uid://xynpr4h0gdnx" path="res://scenes/enemies/enemy_bat.tscn" id="4_448jm"]
 [ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="4_l4dle"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
@@ -50,6 +51,9 @@ position = Vector2(-256, -320)
 position = Vector2(32, -96)
 shape = SubResource("RectangleShape2D_h148x")
 debug_color = Color(0.717647, 0.254902, 1, 0.419608)
+
+[node name="EnemyBat" parent="." instance=ExtResource("4_448jm")]
+position = Vector2(144, -104)
 
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]
 [connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]

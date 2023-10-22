@@ -1,5 +1,6 @@
 @tool # allows the "isLookingRight" code to run in the editor
 extends CharacterBody2D
+class_name MoveAndReflect
 
 @onready var sprite2D: Sprite2D = $Sprite2D
 
@@ -29,8 +30,12 @@ func _physics_process(delta):
 		isLookingRight = !isLookingRight
 
 	var direction = 1 if isLookingRight else -1
-	velocity.x = direction * moveSpeed
-
+	
+	if is_on_floor():
+		velocity.x = direction * moveSpeed
+	else:
+		velocity.x = lerpf(velocity.x, 0, delta)
+	
 	move_and_slide()
 
 func set_in_stasis(active: bool):
