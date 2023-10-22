@@ -38,7 +38,7 @@ func _physics_process(delta):
 
 
 func _on_area_2d_body_entered(body):
-	if body.has_method("kill"):
+	if body.has_method("kill") and not body.is_in_group("enemies"):
 		body.kill()
 
 	if move_direction == Vector2.DOWN:

@@ -29,4 +29,9 @@ func on_bone_collected():
 	bones_collected_amount += 1
 
 func _turn_on_bone_by_number(number: int):
-	bone_icons[bone_amount - number - 1].set_full_texture()
+	var bone_index = bone_amount - number - 1
+	
+	if bone_index < 0:
+		return
+		
+	bone_icons[bone_index].set_full_texture()
