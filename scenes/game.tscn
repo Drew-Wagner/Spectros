@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://4usjiwbxajd8"]
+[gd_scene load_steps=22 format=3 uid="uid://4usjiwbxajd8"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_rnd3o"]
 [ext_resource type="PackedScene" uid="uid://dd560qxrjfygt" path="res://scenes/levels/Level1.tscn" id="2_12uj8"]
@@ -9,8 +9,49 @@
 [ext_resource type="AudioStream" uid="uid://ota274s1y71i" path="res://sounds/LEVIER_GJ_STATE_Lose.wav" id="6_006ic"]
 [ext_resource type="PackedScene" uid="uid://cxxbjbc1q5rmg" path="res://gui/bone_collection.tscn" id="9_0rnu1"]
 [ext_resource type="AudioStream" uid="uid://caigx6k3md34c" path="res://sounds/LEVIER_GJ_AMB_LP.wav" id="9_jiikb"]
-[ext_resource type="PackedScene" uid="uid://chv82bw6fflfk" path="res://gui/bone_icon.tscn" id="10_edinx"]
+[ext_resource type="PackedScene" path="res://gui/bone_icon.tscn" id="10_edinx"]
+[ext_resource type="Texture2D" uid="uid://coc4n04vmmje8" path="res://textures/switch_E02.png" id="10_mamxs"]
+[ext_resource type="Texture2D" uid="uid://dqg33apvr1jvo" path="res://textures/switch_E01.png" id="10_ocyo5"]
 [ext_resource type="Script" path="res://scripts/scene_navigation.gd" id="10_ojnpv"]
+[ext_resource type="Texture2D" uid="uid://b8lrhek1y2knw" path="res://textures/switch_E03.png" id="12_t227g"]
+[ext_resource type="Script" path="res://scripts/toggleable.gd" id="13_qf1cm"]
+
+[sub_resource type="Animation" id="Animation_vn3ui"]
+resource_name = "switch"
+length = 0.20001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("10_ocyo5"), ExtResource("10_mamxs"), ExtResource("12_t227g")]
+}
+
+[sub_resource type="Animation" id="Animation_a07gw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_ocyo5")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r5uvx"]
+_data = {
+"RESET": SubResource("Animation_a07gw"),
+"switch": SubResource("Animation_vn3ui")
+}
 
 [sub_resource type="Animation" id="Animation_pmnll"]
 length = 0.001
@@ -95,20 +136,6 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "00:00.00"
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="SceneTransitionAnimPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
-unique_name_in_owner = true
-libraries = {
-"": SubResource("AnimationLibrary_8x8ek")
-}
-
 [node name="SplashCenter" type="CenterContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -139,6 +166,57 @@ offset_bottom = 64.0
 grow_horizontal = 0
 bone_icon_scene = ExtResource("10_edinx")
 
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spacer" type="Control" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Spacer2" type="Control" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_ocyo5")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GridContainer/HBoxContainer/TextureRect"]
+libraries = {
+"": SubResource("AnimationLibrary_r5uvx")
+}
+
+[node name="Toggleable" type="Node2D" parent="CanvasLayer/GridContainer/HBoxContainer/TextureRect"]
+script = ExtResource("13_qf1cm")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SceneTransitionAnimPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_8x8ek")
+}
+
 [node name="AudioEffects" type="AudioStreamPlayer" parent="."]
 
 [node name="AudioAmbiance" type="AudioStreamPlayer" parent="."]
@@ -149,3 +227,6 @@ autoplay = true
 script = ExtResource("10_ojnpv")
 
 [connection signal="game_end" from="." to="SceneNavigation" method="go_to" binds= ["res://scenes/end_of_game_menu.tscn"]]
+[connection signal="level_start" from="." to="CanvasLayer/GridContainer/HBoxContainer/TextureRect/AnimationPlayer" method="play" binds= ["RESET"]]
+[connection signal="switched_off" from="CanvasLayer/GridContainer/HBoxContainer/TextureRect/Toggleable" to="CanvasLayer/GridContainer/HBoxContainer/TextureRect/AnimationPlayer" method="play_backwards" binds= ["switch"]]
+[connection signal="switched_on" from="CanvasLayer/GridContainer/HBoxContainer/TextureRect/Toggleable" to="CanvasLayer/GridContainer/HBoxContainer/TextureRect/AnimationPlayer" method="play" binds= ["switch"]]

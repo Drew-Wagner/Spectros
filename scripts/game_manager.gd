@@ -9,6 +9,7 @@ var level: BaseLevel
 
 signal _toggle_released()
 signal game_end()
+signal level_start()
 
 @export var toggle_sounds: Array[AudioStream]
 @export var win_sound: AudioStream
@@ -46,6 +47,7 @@ func next_level():
 
 
 func start_level():
+	level_start.emit()
 	pause()
 	if level:
 		level.queue_free()
