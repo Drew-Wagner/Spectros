@@ -17,6 +17,7 @@ wood_texture = ExtResource("3_w5cbj")
 on_position = Vector2(0, -64)
 
 [node name="MovingPlatform" type="AnimatableBody2D" parent="."]
+show_behind_parent = true
 script = ExtResource("2_bb151")
 speed = 256.0
 move_in_editor = true
@@ -26,10 +27,3 @@ shape = SubResource("RectangleShape2D_xhyvb")
 
 [node name="Sprite2D" type="Sprite2D" parent="MovingPlatform"]
 texture = ExtResource("3_w5cbj")
-
-[node name="Arrow" type="Area2D" parent="MovingPlatform"]
-collision_layer = 0
-collision_mask = 0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MovingPlatform/Arrow"]
-polygon = PackedVector2Array(-25, 0, 0, -25, 25, 0, 8, 0, 8, 25, -8, 25, -8, 0)
