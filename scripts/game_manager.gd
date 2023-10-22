@@ -17,6 +17,7 @@ signal level_start()
 @export var win_sound: AudioStream
 @export var lose_sound: AudioStream
 @export var start_sound: AudioStream
+@export var music: AudioStream
 @export var main_character_scene: PackedScene
 var toggle_sound_index = 0
 var level_time = 0
@@ -36,6 +37,7 @@ func _ready():
 	player.stream = AudioStreamPolyphonic.new()
 	player.play()
 	audio_effects_player = player.get_stream_playback()
+	audio_effects_player.play_stream(music)
 	
 	print(audio_effects_player)
 	OnOff.toggle.connect(play_toggle_sound)
