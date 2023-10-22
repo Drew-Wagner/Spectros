@@ -71,6 +71,7 @@ func start_level():
 	level.bone_collected.connect(bone_collection.on_bone_collected)
 	
 	Callable($LevelHolder.add_child).call_deferred(level)
+	Callable(level.propagate_call).call_deferred("set_physics_process", [false])	
 	
 	level_label.text = "Level %s" % str(level_index + 1)
 	time_label.text = "00:00.00"
