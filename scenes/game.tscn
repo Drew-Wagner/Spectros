@@ -116,6 +116,7 @@ music = ExtResource("15_p6qek")
 main_character_scene = ExtResource("5_iqaxe")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = -1
