@@ -2,6 +2,8 @@
 class_name MoveAndReflect
 extends CharacterBody2D
 
+signal squished()
+
 @onready var sprite2D: Node2D = $Sprite2D
 
 @export var moveSpeed: float = 32
@@ -48,6 +50,13 @@ func _physics_process(delta):
 		velocity.x = lerpf(velocity.x, 0, delta)
 	
 	move_and_slide()
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision.get_depth() > 16:	
+			squished.emit()
+			break
+
 
 func set_in_stasis(active: bool):
 	in_stasis = active

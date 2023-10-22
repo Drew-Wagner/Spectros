@@ -208,3 +208,5 @@ offset = Vector2(0, 10)
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -44)
 shape = SubResource("RectangleShape2D_6lsiv")
+
+[connection signal="squished" from="." to="." method="_on_squished"]

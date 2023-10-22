@@ -11,11 +11,6 @@ func kill():
 		killed.emit()
 		self.queue_free()
 
-func _physics_process(delta):
-	super(delta)
-	
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		if collision.get_depth() > 8:
-			kill()
-			return
+
+func _on_squished():
+	kill()
