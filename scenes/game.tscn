@@ -1,7 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://4usjiwbxajd8"]
+[gd_scene load_steps=38 format=3 uid="uid://4usjiwbxajd8"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_rnd3o"]
 [ext_resource type="PackedScene" uid="uid://dd560qxrjfygt" path="res://scenes/levels/Level1.tscn" id="2_12uj8"]
+[ext_resource type="PackedScene" uid="uid://dqm3usquyv1l4" path="res://scenes/levels/Level4.tscn" id="2_eublf"]
 [ext_resource type="PackedScene" uid="uid://dmb6yaqqbdgor" path="res://scenes/levels/Level2.tscn" id="2_g42qk"]
 [ext_resource type="PackedScene" uid="uid://36dkaner3txs" path="res://scenes/levels/Level3.tscn" id="2_jjbby"]
 [ext_resource type="AudioStream" uid="uid://bofpqflybv72u" path="res://sounds/LEVIER_GJ_FOL_Lever_Off.wav" id="3_o2w25"]
@@ -107,7 +108,7 @@ _data = {
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_rnd3o")
-levels = Array[PackedScene]([ExtResource("2_jjbby"), ExtResource("2_g42qk"), ExtResource("2_12uj8")])
+levels = Array[PackedScene]([ExtResource("2_eublf"), ExtResource("2_jjbby"), ExtResource("2_g42qk"), ExtResource("2_12uj8")])
 toggle_sounds = Array[AudioStream]([ExtResource("3_o2w25"), ExtResource("4_5x8y0")])
 grunt_sounds = Array[AudioStream]([ExtResource("5_k5x62"), ExtResource("6_mcigs"), ExtResource("7_s3rb2"), ExtResource("8_fmkyl"), ExtResource("9_qffde"), ExtResource("10_siirr")])
 win_sound = ExtResource("5_f3xnp")
