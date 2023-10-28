@@ -6,7 +6,7 @@
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_uqvsa"]
 [ext_resource type="PackedScene" uid="uid://dokw05n2dslui" path="res://scenes/elements/toggleable_spikes.tscn" id="3_utycn"]
 [ext_resource type="PackedScene" uid="uid://1m2siku6krim" path="res://scenes/elements/door.tscn" id="4_2fmj7"]
-[ext_resource type="PackedScene" uid="uid://bth5xo6bxskba" path="res://scenes/elements/enemy_spider.tscn" id="4_ffgve"]
+[ext_resource type="PackedScene" uid="uid://bth5xo6bxskba" path="res://scenes/enemies/enemy_spider.tscn" id="4_ffgve"]
 [ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/elements/spikes.tscn" id="4_uyd1a"]
 [ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="5_36hil"]
 [ext_resource type="PackedScene" uid="uid://ck2m2kpsthl3l" path="res://scenes/elements/stasis_field.tscn" id="7_jn4cx"]
@@ -84,7 +84,7 @@ position = Vector2(160, 992)
 
 [node name="EnemySpider" parent="Enemies" instance=ExtResource("4_ffgve")]
 position = Vector2(672, 480)
-descent_delay = 1.0
+descend_wait_time = 1.25
 
 [node name="Spikes" parent="Enemies" instance=ExtResource("4_uyd1a")]
 position = Vector2(1632, 416)
@@ -93,20 +93,31 @@ position = Vector2(1632, 416)
 position = Vector2(736, 984)
 moveSpeed = 128.0
 
-[node name="EnemySpider2" parent="Enemies" instance=ExtResource("4_ffgve")]
+[node name="TimedSpiders" type="Node" parent="Enemies"]
+
+[node name="EnemySpider2" parent="Enemies/TimedSpiders" instance=ExtResource("4_ffgve")]
 position = Vector2(1120, 736)
-descent_delay = 1.4
-ascent_delay = 1.7
+descend_wait_time = -1.0
 
-[node name="EnemySpider3" parent="Enemies" instance=ExtResource("4_ffgve")]
+[node name="EnemySpider3" parent="Enemies/TimedSpiders" instance=ExtResource("4_ffgve")]
 position = Vector2(1056, 736)
-descent_delay = 1.55
-ascent_delay = 1.55
+descend_wait_time = -1.0
 
-[node name="EnemySpider4" parent="Enemies" instance=ExtResource("4_ffgve")]
+[node name="EnemySpider4" parent="Enemies/TimedSpiders" instance=ExtResource("4_ffgve")]
 position = Vector2(992, 736)
-descent_delay = 1.7
-ascent_delay = 1.4
+descend_wait_time = -1.0
+
+[node name="MainSpidersTimer" type="Timer" parent="Enemies/TimedSpiders"]
+wait_time = 5.0
+autostart = true
+
+[node name="Spider3Timer" type="Timer" parent="Enemies/TimedSpiders"]
+wait_time = 0.25
+one_shot = true
+
+[node name="Spider4Timer" type="Timer" parent="Enemies/TimedSpiders"]
+wait_time = 0.25
+one_shot = true
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
@@ -242,3 +253,8 @@ on_position = Vector2(0, -192)
 [connection signal="all_bones_collected" from="." to="Misc/Door" method="toggle"]
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]
 [connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]
+[connection signal="timeout" from="Enemies/TimedSpiders/MainSpidersTimer" to="Enemies/TimedSpiders/EnemySpider2" method="descend"]
+[connection signal="timeout" from="Enemies/TimedSpiders/MainSpidersTimer" to="Enemies/TimedSpiders/Spider3Timer" method="start" binds= [0.25]]
+[connection signal="timeout" from="Enemies/TimedSpiders/Spider3Timer" to="Enemies/TimedSpiders/EnemySpider3" method="descend"]
+[connection signal="timeout" from="Enemies/TimedSpiders/Spider3Timer" to="Enemies/TimedSpiders/Spider4Timer" method="start" binds= [0.25]]
+[connection signal="timeout" from="Enemies/TimedSpiders/Spider4Timer" to="Enemies/TimedSpiders/EnemySpider4" method="descend"]

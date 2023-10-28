@@ -59,6 +59,6 @@ func _set_stasis_range():
 	process_material.emission_box_extents = Vector3(30, 30 * stasis_range, 1)
 	particles.position = Vector2(0, -30 * stasis_range)
 	if stasis_range > 4:
-		particles.amount = 50 * sqrt(stasis_range)
+		particles.amount = int(50 * sqrt(stasis_range))
 	else:
 		particles.amount = 50

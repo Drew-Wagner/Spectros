@@ -9,9 +9,9 @@ radius = 24.0
 [node name="EnemySpider" type="Node2D"]
 script = ExtResource("1_60qeg")
 move_speed = 192.0
-is_player_toggleable = false
 
-[node name="SpiderBody" type="Area2D" parent="."]
+[node name="SpiderBody" type="CharacterBody2D" parent="."]
+velocity = Vector2(0, -192)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpiderBody"]
 shape = SubResource("CircleShape2D_r0kom")
@@ -20,8 +20,8 @@ shape = SubResource("CircleShape2D_r0kom")
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_nx6wh")
 
-[node name="RayCast2D" type="RayCast2D" parent="SpiderBody"]
-unique_name_in_owner = true
-target_position = Vector2(0, -34)
+[node name="AscendTimer" type="Timer" parent="."]
+one_shot = true
 
-[connection signal="body_entered" from="SpiderBody" to="." method="_on_area_2d_body_entered"]
+[node name="DescendTimer" type="Timer" parent="."]
+one_shot = true
