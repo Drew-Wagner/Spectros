@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_p1cje"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_qaaas"]
 [ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="3_4mf6x"]
-[ext_resource type="PackedScene" uid="uid://bth5xo6bxskba" path="res://scenes/elements/enemy_spider.tscn" id="3_bylox"]
+[ext_resource type="PackedScene" uid="uid://bth5xo6bxskba" path="res://scenes/enemies/enemy_spider.tscn" id="3_bylox"]
 [ext_resource type="PackedScene" uid="uid://xynpr4h0gdnx" path="res://scenes/enemies/enemy_bat.tscn" id="4_jtrpp"]
 [ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/elements/spikes.tscn" id="5_3yoxd"]
 [ext_resource type="PackedScene" uid="uid://ck2m2kpsthl3l" path="res://scenes/elements/stasis_field.tscn" id="6_h0qxl"]
@@ -64,7 +64,6 @@ position = Vector2(208, 344)
 
 [node name="EnemySpider" parent="Enemies" instance=ExtResource("3_bylox")]
 position = Vector2(928, 160)
-ascent_delay = 1.0
 
 [node name="Spikes" parent="Enemies" instance=ExtResource("5_3yoxd")]
 position = Vector2(928, 672)
