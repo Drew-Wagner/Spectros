@@ -126,8 +126,7 @@ position = Vector2(352, 192)
 is_player_toggleable = false
 
 [node name="FinishArea" parent="." instance=ExtResource("7_2r3bn")]
-position = Vector2(400, 200)
-is_open = true
+position = Vector2(416, 200)
 
 [connection signal="all_bones_collected" from="." to="Door" method="toggle"]
 [connection signal="all_bones_collected" from="." to="FinishArea" method="open"]
