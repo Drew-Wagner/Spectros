@@ -39,6 +39,8 @@ func next_waypoint():
 	set(value):
 		texture = value
 		_set_sprite2d_region()
+		_set_collision_shape_size()
+
 @export var top_texture: Texture2D = null
 @export var right_texture: Texture2D = null
 @export var bottom_texture: Texture2D = null
@@ -65,7 +67,7 @@ func _ready():
 		for i in len(waypoints):
 			waypoints[i] += position
 			
-	if is_toggleable:
+	if !Engine.is_editor_hint() and is_toggleable:
 		OnOff.toggle.connect(next_waypoint)
 	
 	target = waypoints[0]
