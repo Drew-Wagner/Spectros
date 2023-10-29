@@ -8,8 +8,8 @@
 size = Vector2(64, 64)
 
 [sub_resource type="Gradient" id="Gradient_pfo8p"]
-offsets = PackedFloat32Array(0, 0.31422, 0.630734, 1)
-colors = PackedColorArray(0.543547, 0.000240269, 0.552405, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.174312, 0.463303, 0.504587, 1)
+colors = PackedColorArray(0.543547, 0.000240269, 0.552405, 1, 1, 1, 1, 0.65098, 0, 0, 0, 0.203922, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_o485w"]
 gradient = SubResource("Gradient_pfo8p")
@@ -34,7 +34,7 @@ curve = SubResource("Curve_n8iei")
 emission_shape = 6
 emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 1.0
-emission_ring_radius = 52.0
+emission_ring_radius = 35.0
 emission_ring_inner_radius = 5.0
 particle_flag_disable_z = true
 direction = Vector3(0, 0, 0)
@@ -47,12 +47,10 @@ angle_min = -90.0
 angle_max = 90.0
 scale_curve = SubResource("CurveTexture_6tqw2")
 color_ramp = SubResource("GradientTexture1D_sxket")
-hue_variation_min = -1.0
-hue_variation_max = 1.0
 
 [sub_resource type="Gradient" id="Gradient_c2gsh"]
-offsets = PackedFloat32Array(0, 0.497475, 1)
-colors = PackedColorArray(1, 0.121569, 0.568627, 0.580392, 1, 0.258824, 0.513726, 1, 1, 0.776471, 0.270588, 1)
+offsets = PackedFloat32Array(0.310606, 1)
+colors = PackedColorArray(0.537255, 0.176471, 0.560784, 1, 1, 1, 1, 0.623529)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_r7eu8"]
 gradient = SubResource("Gradient_c2gsh")
@@ -71,12 +69,11 @@ initial_velocity_min = 10.0
 initial_velocity_max = 10.0
 orbit_velocity_min = 0.2
 orbit_velocity_max = 0.35
-damping_min = 1000.0
-damping_max = 1000.0
+tangential_accel_min = 100.0
+tangential_accel_max = 200.0
 scale_min = 0.2
 scale_max = 0.75
 color_ramp = SubResource("GradientTexture1D_r7eu8")
-hue_variation_min = -0.28
 
 [node name="FinishArea" type="Area2D"]
 script = ExtResource("1_ph4sy")
@@ -99,7 +96,7 @@ texture = ExtResource("2_f5m7h")
 preprocess = 3.0
 
 [node name="RingParticles" type="GPUParticles2D" parent="."]
-amount = 100
+amount = 200
 process_material = SubResource("ParticleProcessMaterial_gu4tj")
 texture = ExtResource("1_tu130")
 preprocess = 3.0
