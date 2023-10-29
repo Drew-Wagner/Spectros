@@ -7,15 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://cu4qk30gh72x8" path="res://scenes/elements/moving_platform.tscn" id="5_x3tx2"]
 [ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/elements/spikes.tscn" id="6_ooy8t"]
 [ext_resource type="PackedScene" uid="uid://1m2siku6krim" path="res://scenes/elements/door.tscn" id="7_jo7cc"]
+[ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="8_oiy8w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
 size = Vector2(1792, 1024)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wx1p3"]
 size = Vector2(384, 512)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h148x"]
-size = Vector2(64, 64)
 
 [node name="Level" type="Node2D"]
 position = Vector2(896, 512)
@@ -52,13 +50,6 @@ position = Vector2(1088, 736)
 [node name="SpawnPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-672, 256)
-
-[node name="FinishArea" type="Area2D" parent="."]
-position = Vector2(-800, 224)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishArea"]
-shape = SubResource("RectangleShape2D_h148x")
-debug_color = Color(1, 1, 0.188235, 0.419608)
 
 [node name="EnemyBat" parent="." instance=ExtResource("4_uwm6b")]
 position = Vector2(352, 216)
@@ -130,6 +121,7 @@ position = Vector2(800, 928)
 position = Vector2(-736, 192)
 is_player_toggleable = false
 
-[connection signal="all_bones_collected" from="." to="Door" method="toggle"]
+[node name="FinishArea" parent="." instance=ExtResource("8_oiy8w")]
+position = Vector2(-800, 192)
+
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]
-[connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]

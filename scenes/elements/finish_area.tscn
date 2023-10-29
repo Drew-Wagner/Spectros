@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://c8w8tqajmi2p4" path="res://materials/stasis_particle.png" id="1_tu130"]
 [ext_resource type="Texture2D" uid="uid://c6epstetyoo8y" path="res://materials/os.png" id="2_f5m7h"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h148x"]
-size = Vector2(64, 64)
+[sub_resource type="CircleShape2D" id="CircleShape2D_5lfi0"]
+radius = 40.0
 
 [sub_resource type="Gradient" id="Gradient_pfo8p"]
 offsets = PackedFloat32Array(0, 0.174312, 0.463303, 0.504587, 1)
@@ -75,11 +75,13 @@ scale_min = 0.2
 scale_max = 0.75
 color_ramp = SubResource("GradientTexture1D_r7eu8")
 
-[node name="FinishArea" type="Area2D"]
+[node name="FinishArea" type="Area2D" groups=["all_bones_collected_listeners", "finish_area"]]
 script = ExtResource("1_ph4sy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_h148x")
+visible = false
+shape = SubResource("CircleShape2D_5lfi0")
+disabled = true
 debug_color = Color(1, 1, 0.188235, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
