@@ -2,17 +2,15 @@
 
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_ng8v4"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="1_u4pm0"]
-[ext_resource type="PackedScene" uid="uid://xynpr4h0gdnx" path="res://scenes/enemies/enemy_bat.tscn" id="4_448jm"]
+[ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="4_gi0lq"]
 [ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="4_l4dle"]
+[ext_resource type="PackedScene" uid="uid://1m2siku6krim" path="res://scenes/elements/door.tscn" id="5_qe8io"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
 size = Vector2(1792, 1024)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wx1p3"]
 size = Vector2(384, 512)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h148x"]
-size = Vector2(64, 64)
 
 [node name="Level" type="Node2D"]
 position = Vector2(896, 512)
@@ -46,7 +44,7 @@ layer_0/tile_data = PackedInt32Array(-65536, 0, 4, -65535, 0, 3, -65534, 65536, 
 position = Vector2(800, 416)
 
 [node name="Bone2" parent="Bones" instance=ExtResource("4_l4dle")]
-position = Vector2(1312, 416)
+position = Vector2(1120, 416)
 
 [node name="Bone3" parent="Bones" instance=ExtResource("4_l4dle")]
 position = Vector2(480, 416)
@@ -57,15 +55,10 @@ position = Vector2(480, 416)
 unique_name_in_owner = true
 position = Vector2(-256, -320)
 
-[node name="FinishArea" type="Area2D" parent="."]
+[node name="FinishArea" parent="." instance=ExtResource("4_gi0lq")]
+position = Vector2(416, -96)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishArea"]
-position = Vector2(32, -96)
-shape = SubResource("RectangleShape2D_h148x")
-debug_color = Color(1, 1, 0.188235, 0.419608)
-
-[node name="EnemyBat" parent="." instance=ExtResource("4_448jm")]
-position = Vector2(144, -104)
+[node name="Door" parent="." instance=ExtResource("5_qe8io")]
+position = Vector2(352, -128)
 
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]
-[connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]

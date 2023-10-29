@@ -11,15 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://cu4qk30gh72x8" path="res://scenes/elements/moving_platform.tscn" id="8_1hkxh"]
 [ext_resource type="PackedScene" uid="uid://1m2siku6krim" path="res://scenes/elements/door.tscn" id="10_v55gd"]
 [ext_resource type="PackedScene" uid="uid://b7y8b7rwio6py" path="res://scenes/elements/trap.tscn" id="11_vto20"]
+[ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="12_ju5uy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
 size = Vector2(1792, 1024)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wx1p3"]
 size = Vector2(384, 512)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h148x"]
-size = Vector2(64, 64)
 
 [node name="Level" type="Node2D"]
 position = Vector2(896, 512)
@@ -100,13 +98,6 @@ position = Vector2(288, -96)
 unique_name_in_owner = true
 position = Vector2(-416, -64)
 
-[node name="FinishArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishArea"]
-position = Vector2(832, -96)
-shape = SubResource("RectangleShape2D_h148x")
-debug_color = Color(1, 1, 0.188235, 0.419608)
-
 [node name="MovingPlatform" parent="." instance=ExtResource("8_1hkxh")]
 position = Vector2(-352, -32)
 
@@ -144,6 +135,7 @@ position = Vector2(512, -32)
 on_position = Vector2(-128, 0)
 is_on = true
 
-[connection signal="all_bones_collected" from="." to="ExitDoor" method="toggle"]
+[node name="FinishArea" parent="." instance=ExtResource("12_ju5uy")]
+position = Vector2(864, -128)
+
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]
-[connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]

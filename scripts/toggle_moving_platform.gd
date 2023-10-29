@@ -32,4 +32,5 @@ func _on_switch_off():
 	moving_platform.move_to(off_position)
 
 
-
+func on_all_bones_collected():
+	is_on = true

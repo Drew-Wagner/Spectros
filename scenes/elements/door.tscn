@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xjfp4"]
 size = Vector2(64, 192)
 
-[node name="Door" type="Node2D"]
+[node name="Door" type="Node2D" groups=["all_bones_collected_listeners"]]
 script = ExtResource("1_k7yqg")
 on_position = Vector2(0, -128)
 

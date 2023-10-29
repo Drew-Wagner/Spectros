@@ -11,15 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="5_36hil"]
 [ext_resource type="PackedScene" uid="uid://ck2m2kpsthl3l" path="res://scenes/elements/stasis_field.tscn" id="7_jn4cx"]
 [ext_resource type="PackedScene" uid="uid://xynpr4h0gdnx" path="res://scenes/enemies/enemy_bat.tscn" id="8_obauu"]
+[ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="12_yejf2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
 size = Vector2(1792, 1024)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ge5x"]
 size = Vector2(384, 512)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h148x"]
-size = Vector2(64, 64)
 
 [node name="Level" type="Node2D"]
 position = Vector2(896, 512)
@@ -39,14 +37,6 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BourreauArea"]
 shape = SubResource("RectangleShape2D_8ge5x")
 debug_color = Color(0.941176, 0, 0, 0.419608)
-
-[node name="FinishArea" type="Area2D" parent="."]
-position = Vector2(-864, 352)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishArea"]
-position = Vector2(64, -64)
-shape = SubResource("RectangleShape2D_h148x")
-debug_color = Color(0.996078, 1, 0.172549, 0.419608)
 
 [node name="StaticEnvironment" type="TileMap" parent="."]
 tile_set = ExtResource("2_uqvsa")
@@ -250,9 +240,10 @@ orientation = 2
 sprite = NodePath("../MovingPlatform8/MovingPlatform/Sprite2D")
 on_position = Vector2(0, -192)
 
-[connection signal="all_bones_collected" from="." to="Misc/Door" method="toggle"]
+[node name="FinishArea2" parent="." instance=ExtResource("12_yejf2")]
+position = Vector2(-800, 256)
+
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]
-[connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]
 [connection signal="timeout" from="Enemies/TimedSpiders/MainSpidersTimer" to="Enemies/TimedSpiders/EnemySpider2" method="descend"]
 [connection signal="timeout" from="Enemies/TimedSpiders/MainSpidersTimer" to="Enemies/TimedSpiders/Spider3Timer" method="start" binds= [0.25]]
 [connection signal="timeout" from="Enemies/TimedSpiders/Spider3Timer" to="Enemies/TimedSpiders/EnemySpider3" method="descend"]
