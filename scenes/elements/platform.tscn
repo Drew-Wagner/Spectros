@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjcnnvu3yseel"]
+
+[ext_resource type="Script" path="res://scripts/Platform.gd" id="1_3c0oq"]
+[ext_resource type="Texture2D" uid="uid://u7pfs2ev51gm" path="res://materials/plateformes_bois.png" id="2_qtaqy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxbmq"]
+size = Vector2(130, 65)
+
+[node name="Platform" type="AnimatableBody2D"]
+script = ExtResource("1_3c0oq")
+speed = 256.0
+width = 2
+waypoints = Array[Vector2]([Vector2(0, 0)])
+texture = ExtResource("2_qtaqy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+show_behind_parent = true
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("2_qtaqy")
+region_enabled = true
+region_rect = Rect2(0, 0, 130, 65)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lxbmq")
