@@ -10,6 +10,9 @@ func kill():
 		is_killed = true
 		killed.emit()
 		self.queue_free()
+		return true
+	
+	return false
 
 
 func _on_squished():
