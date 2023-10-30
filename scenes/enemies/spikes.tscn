@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://drgbe6551a4os"]
 
-[ext_resource type="Texture2D" uid="uid://cpbnn0onl8q5l" path="res://materials/spikes01.png" id="2_kybrj"]
-[ext_resource type="PackedScene" uid="uid://cvmv0ubhebeb7" path="res://scenes/components/kill_box.tscn" id="2_maibp"]
+[ext_resource type="Texture2D" uid="uid://cpbnn0onl8q5l" path="res://materials/spikes01.png" id="1_qfy8x"]
+[ext_resource type="PackedScene" uid="uid://cvmv0ubhebeb7" path="res://scenes/components/kill_box.tscn" id="2_4wj46"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fyq1"]
 size = Vector2(64, 13)
 
-[node name="Spikes" type="Node2D" groups=["enemies"]]
+[node name="Spikes" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_kybrj")
+texture = ExtResource("1_qfy8x")
 
-[node name="KillBox" parent="." instance=ExtResource("2_maibp")]
+[node name="KillBox" parent="." instance=ExtResource("2_4wj46")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillBox"]
 position = Vector2(0, 25.5)
