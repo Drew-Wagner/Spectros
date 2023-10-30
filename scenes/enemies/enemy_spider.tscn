@@ -1,17 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bth5xo6bxskba"]
+[gd_scene load_steps=6 format=3 uid="uid://bth5xo6bxskba"]
 
 [ext_resource type="Script" path="res://scripts/enemy_spider.gd" id="1_60qeg"]
 [ext_resource type="Texture2D" uid="uid://csdky8lro0o22" path="res://textures/enn_spider.png" id="2_nx6wh"]
+[ext_resource type="PackedScene" uid="uid://cvmv0ubhebeb7" path="res://scenes/components/kill_box.tscn" id="3_o7wso"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0xexo"]
-radius = 13.0
-height = 54.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nyv46"]
-radius = 17.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mfjf7"]
+radius = 24.0
 height = 56.0
 
-[node name="EnemySpider" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_fn28r"]
+radius = 32.0
+
+[node name="EnemySpider" type="Node2D" groups=["enemies"]]
 script = ExtResource("1_60qeg")
 move_speed = 192.0
 
@@ -19,22 +19,21 @@ move_speed = 192.0
 velocity = Vector2(0, -192)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpiderBody"]
-position = Vector2(0, -3)
-shape = SubResource("CapsuleShape2D_0xexo")
+shape = SubResource("CapsuleShape2D_mfjf7")
 
 [node name="Sprite2D" type="Sprite2D" parent="SpiderBody"]
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_nx6wh")
 
-[node name="Area2D" type="Area2D" parent="SpiderBody"]
+[node name="KillBox" parent="SpiderBody" instance=ExtResource("3_o7wso")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpiderBody/Area2D"]
-shape = SubResource("CapsuleShape2D_nyv46")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpiderBody/KillBox"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_fn28r")
+debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="AscendTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="DescendTimer" type="Timer" parent="."]
 one_shot = true
-
-[connection signal="body_entered" from="SpiderBody/Area2D" to="." method="_on_area_2d_body_entered"]

@@ -142,12 +142,6 @@ func _physics_process(_delta):
 		is_at_top = true
 		at_top.emit()
 
-
-func _on_area_2d_body_entered(body):
-	if body is MainCharacter:
-		body.kill()
-
-
 # Draws the "spider web" line.
 func _draw():
 	if spider_body == null:
