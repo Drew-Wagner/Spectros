@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqm3usquyv1l4"]
+[gd_scene load_steps=13 format=3 uid="uid://dqm3usquyv1l4"]
 
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_ofp7a"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_icp6s"]
 [ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="3_rgctd"]
 [ext_resource type="PackedScene" uid="uid://xynpr4h0gdnx" path="res://scenes/enemies/enemy_bat.tscn" id="4_uwm6b"]
-[ext_resource type="PackedScene" uid="uid://cu4qk30gh72x8" path="res://scenes/elements/moving_platform.tscn" id="5_x3tx2"]
+[ext_resource type="Texture2D" uid="uid://70ptu8emrfhe" path="res://materials/tiles_orange_simple.png" id="6_ipcd7"]
+[ext_resource type="PackedScene" uid="uid://cjcnnvu3yseel" path="res://scenes/elements/platform.tscn" id="6_lo2fk"]
 [ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/elements/spikes.tscn" id="6_ooy8t"]
+[ext_resource type="Texture2D" uid="uid://dp7gquw16g4xd" path="res://materials/border_orange.png" id="7_1adhs"]
 [ext_resource type="PackedScene" uid="uid://1m2siku6krim" path="res://scenes/elements/door.tscn" id="7_jo7cc"]
 [ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="8_oiy8w"]
 
@@ -57,57 +59,53 @@ moveSpeed = 150.0
 
 [node name="Interactables" type="Node" parent="."]
 
-[node name="MovingPlatform" parent="Interactables" instance=ExtResource("5_x3tx2")]
-position = Vector2(352, 736)
-on_position = Vector2(0, -128)
+[node name="Platform" parent="Interactables" instance=ExtResource("6_lo2fk")]
+position = Vector2(352, 704)
+is_autonomous = false
+is_toggleable = true
+width = 1
+height = 2
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -2)])
+texture = ExtResource("6_ipcd7")
+bottom_texture = ExtResource("7_1adhs")
 
-[node name="MovingPlatform2" parent="Interactables" instance=ExtResource("5_x3tx2")]
-position = Vector2(352, 672)
-on_position = Vector2(0, -128)
+[node name="Platform2" parent="Interactables" instance=ExtResource("6_lo2fk")]
+position = Vector2(544, 576)
+is_autonomous = false
+is_toggleable = true
+width = 1
+height = 2
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, 2)])
+texture = ExtResource("6_ipcd7")
+bottom_texture = ExtResource("7_1adhs")
 
-[node name="MovingPlatform3" parent="Interactables" instance=ExtResource("5_x3tx2")]
-position = Vector2(992, 672)
-on_position = Vector2(0, -128)
+[node name="Platform3" parent="Interactables" instance=ExtResource("6_lo2fk")]
+position = Vector2(768, 800)
+is_autonomous = false
+is_toggleable = true
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(-2, 0)])
+texture = ExtResource("6_ipcd7")
+top_texture = ExtResource("7_1adhs")
 
-[node name="MovingPlatform4" parent="Interactables" instance=ExtResource("5_x3tx2")]
-position = Vector2(992, 744)
-on_position = Vector2(0, -128)
+[node name="Platform4" parent="Interactables" instance=ExtResource("6_lo2fk")]
+position = Vector2(992, 704)
+is_autonomous = false
+is_toggleable = true
+width = 1
+height = 2
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -2)])
+texture = ExtResource("6_ipcd7")
+bottom_texture = ExtResource("7_1adhs")
 
-[node name="MovingPlatform5" parent="Interactables" instance=ExtResource("5_x3tx2")]
-position = Vector2(1184, 536)
-rotation = 3.14159
-orientation = 2
-on_position = Vector2(0, -128)
-
-[node name="MovingPlatform6" parent="Interactables" instance=ExtResource("5_x3tx2")]
-position = Vector2(1184, 608)
-rotation = 3.14159
-orientation = 2
-on_position = Vector2(0, -128)
-
-[node name="MovingPlatform7" parent="Interactables" instance=ExtResource("5_x3tx2")]
-position = Vector2(544, 608)
-rotation = 3.14159
-orientation = 2
-on_position = Vector2(0, -128)
-
-[node name="MovingPlatform8" parent="Interactables" instance=ExtResource("5_x3tx2")]
-position = Vector2(544, 544)
-rotation = 3.14159
-orientation = 2
-on_position = Vector2(0, -128)
-
-[node name="MovingPlatform9" parent="Interactables" instance=ExtResource("5_x3tx2")]
-position = Vector2(736, 800)
-rotation = -1.5708
-orientation = 3
-on_position = Vector2(0, -128)
-
-[node name="MovingPlatform10" parent="Interactables" instance=ExtResource("5_x3tx2")]
-position = Vector2(800, 800)
-rotation = -1.5708
-orientation = 3
-on_position = Vector2(0, -128)
+[node name="Platform5" parent="Interactables" instance=ExtResource("6_lo2fk")]
+position = Vector2(1184, 576)
+is_autonomous = false
+is_toggleable = true
+width = 1
+height = 2
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, 2)])
+texture = ExtResource("6_ipcd7")
+bottom_texture = ExtResource("7_1adhs")
 
 [node name="Hazard" type="Node" parent="."]
 

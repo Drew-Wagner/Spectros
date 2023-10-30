@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dvwy8al6vu40d"]
+[gd_scene load_steps=18 format=3 uid="uid://dvwy8al6vu40d"]
 
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_p1cje"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_qaaas"]
@@ -7,10 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://xynpr4h0gdnx" path="res://scenes/enemies/enemy_bat.tscn" id="4_jtrpp"]
 [ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/elements/spikes.tscn" id="5_3yoxd"]
 [ext_resource type="PackedScene" uid="uid://ck2m2kpsthl3l" path="res://scenes/elements/stasis_field.tscn" id="6_h0qxl"]
+[ext_resource type="PackedScene" uid="uid://cjcnnvu3yseel" path="res://scenes/elements/platform.tscn" id="7_fpliy"]
 [ext_resource type="PackedScene" uid="uid://dokw05n2dslui" path="res://scenes/elements/toggleable_spikes.tscn" id="7_shr2y"]
-[ext_resource type="PackedScene" uid="uid://cu4qk30gh72x8" path="res://scenes/elements/moving_platform.tscn" id="8_1hkxh"]
+[ext_resource type="Texture2D" uid="uid://70ptu8emrfhe" path="res://materials/tiles_orange_simple.png" id="8_exlec"]
+[ext_resource type="Texture2D" uid="uid://dp7gquw16g4xd" path="res://materials/border_orange.png" id="9_5gxpe"]
+[ext_resource type="Texture2D" uid="uid://bqfvlivebk645" path="res://materials/platform_gray_thin.png" id="10_m6pvq"]
 [ext_resource type="PackedScene" uid="uid://1m2siku6krim" path="res://scenes/elements/door.tscn" id="10_v55gd"]
-[ext_resource type="PackedScene" uid="uid://b7y8b7rwio6py" path="res://scenes/elements/trap.tscn" id="11_vto20"]
+[ext_resource type="Texture2D" uid="uid://c3a16eky6ynqf" path="res://materials/platform_gray_thin_border.png" id="11_dr7lh"]
 [ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="12_ju5uy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
@@ -87,6 +90,43 @@ rotation = 3.14159
 position = Vector2(416, 288)
 rotation = 1.57079
 
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("7_fpliy")]
+position = Vector2(480, 480)
+is_autonomous = false
+is_toggleable = true
+width = 3
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -1)])
+texture = ExtResource("8_exlec")
+top_texture = ExtResource("9_5gxpe")
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("7_fpliy")]
+position = Vector2(1056, 384)
+is_autonomous = false
+is_toggleable = true
+width = 1
+height = 2
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, 2)])
+texture = ExtResource("8_exlec")
+top_texture = ExtResource("9_5gxpe")
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("7_fpliy")]
+position = Vector2(832, 456)
+is_autonomous = false
+is_toggleable = true
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(2, 0)])
+texture = ExtResource("10_m6pvq")
+top_texture = ExtResource("11_dr7lh")
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("7_fpliy")]
+position = Vector2(1280, 456)
+is_autonomous = false
+is_toggleable = true
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(2, 0)])
+texture = ExtResource("10_m6pvq")
+top_texture = ExtResource("11_dr7lh")
+
 [node name="StasisField" parent="." instance=ExtResource("6_h0qxl")]
 position = Vector2(224, -288)
 rotation = -3.14159
@@ -98,42 +138,9 @@ position = Vector2(288, -96)
 unique_name_in_owner = true
 position = Vector2(-416, -64)
 
-[node name="MovingPlatform" parent="." instance=ExtResource("8_1hkxh")]
-position = Vector2(-352, -32)
-
-[node name="MovingPlatform2" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("8_1hkxh")]
-position = Vector2(-416, -32)
-sprite = NodePath("../MovingPlatform/MovingPlatform/Sprite2D")
-
-[node name="MovingPlatform3" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("8_1hkxh")]
-position = Vector2(-480, -32)
-sprite = NodePath("../MovingPlatform/MovingPlatform/Sprite2D")
-
-[node name="MovingPlatform4" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("8_1hkxh")]
-position = Vector2(160, -96)
-rotation = 3.14159
-orientation = 2
-sprite = NodePath("../MovingPlatform/MovingPlatform/Sprite2D")
-on_position = Vector2(0, -128)
-
-[node name="MovingPlatform5" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("8_1hkxh")]
-position = Vector2(160, -160)
-rotation = 3.14159
-orientation = 2
-sprite = NodePath("../MovingPlatform/MovingPlatform/Sprite2D")
-on_position = Vector2(0, -128)
-
 [node name="ExitDoor" parent="." instance=ExtResource("10_v55gd")]
 position = Vector2(800, -128)
 is_player_toggleable = false
-
-[node name="Trap" parent="." instance=ExtResource("11_vto20")]
-position = Vector2(-65, -32)
-
-[node name="Trap2" parent="." instance=ExtResource("11_vto20")]
-position = Vector2(512, -32)
-on_position = Vector2(-128, 0)
-is_on = true
 
 [node name="FinishArea" parent="." instance=ExtResource("12_ju5uy")]
 position = Vector2(864, -128)

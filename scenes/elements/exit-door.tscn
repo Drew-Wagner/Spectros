@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/exit-door.gd" id="2_b7jng"]
 [ext_resource type="Texture2D" uid="uid://bc1v0jnp7notl" path="res://materials/porte.png" id="3_imo73"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_leku4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yuea6"]
 size = Vector2(65, 193)
 
 [node name="Platform" groups=["all_bones_collected_listeners"] instance=ExtResource("1_ydgs7")]
@@ -19,4 +19,4 @@ texture = ExtResource("3_imo73")
 region_rect = Rect2(0, 0, 65, 193)
 
 [node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("RectangleShape2D_leku4")
+shape = SubResource("RectangleShape2D_yuea6")

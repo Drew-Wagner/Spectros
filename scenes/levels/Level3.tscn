@@ -84,7 +84,7 @@ position = Vector2(416, 192)
 position = Vector2(-384, 288)
 is_autonomous = false
 is_toggleable = true
-waypoints = Array[Vector2]([Vector2(0, 0), Vector2(-128, 0)])
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(-2, 0)])
 texture = ExtResource("9_74amt")
 top_texture = ExtResource("10_73wi0")
 
@@ -92,7 +92,7 @@ top_texture = ExtResource("10_73wi0")
 position = Vector2(128, 288)
 is_autonomous = false
 is_toggleable = true
-waypoints = Array[Vector2]([Vector2(0, 0), Vector2(128, 0)])
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(2, 0)])
 texture = ExtResource("9_74amt")
 top_texture = ExtResource("10_73wi0")
 
@@ -102,7 +102,7 @@ is_autonomous = false
 is_toggleable = true
 width = 1
 height = 2
-waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -128)])
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -2)])
 texture = ExtResource("9_74amt")
 bottom_texture = ExtResource("10_73wi0")
 
@@ -112,7 +112,7 @@ is_autonomous = false
 is_toggleable = true
 width = 1
 height = 2
-waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, 128)])
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, 2)])
 texture = ExtResource("9_74amt")
 bottom_texture = ExtResource("10_73wi0")
 

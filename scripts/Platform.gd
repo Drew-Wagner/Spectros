@@ -2,8 +2,10 @@
 class_name Platform
 extends AnimatableBody2D
 
+const GRID_UNIT_VALUE = 64
+
 func next_waypoint():
-	target = waypoints[(waypoints.find(target) + 1) % len(waypoints)]
+	target = waypoints_in_pixels[(waypoints_in_pixels.find(target) + 1) % len(waypoints_in_pixels)]
 
 @onready var sprite2D = $Sprite2D
 @onready var collisionShape2D = $CollisionShape2D
@@ -30,11 +32,19 @@ func next_waypoint():
 		_set_sprite2d_region()
 		_set_collision_shape_size()
 
-@export var waypoints: Array[Vector2] = [position]:
+@export var waypoints: Array[Vector2] = [Vector2.ZERO]:
 	set(value):
 		if !value:
-			value = [position]
+			value = [Vector2.ZERO]
 		waypoints = value
+		waypoints_in_pixels = value
+
+var waypoints_in_pixels: Array[Vector2] = [Vector2.ZERO]:
+	set(value):
+		waypoints_in_pixels = []
+		for i in range(value.size()):
+			waypoints_in_pixels.append(value[i] * GRID_UNIT_VALUE)
+
 @export var texture: Texture2D:
 	set(value):
 		texture = value
@@ -64,13 +74,13 @@ func _ready():
 		_waypoint_hint_font = SystemFont.new()
 		_waypoint_hint_font.font_names = ["monospace"]
 	else:
-		for i in len(waypoints):
-			waypoints[i] += position
+		for i in len(waypoints_in_pixels):
+			waypoints_in_pixels[i] += position
 			
 	if !Engine.is_editor_hint() and is_toggleable:
 		OnOff.toggle.connect(next_waypoint)
 	
-	target = waypoints[0]
+	target = waypoints_in_pixels[0]
 
 func _process(_delta):
 	if Engine.is_editor_hint():
@@ -95,15 +105,15 @@ func _physics_process(delta):
 
 func _draw():
 	if Engine.is_editor_hint():
-		var packed_waypoints = PackedVector2Array(waypoints)
-		packed_waypoints.append(waypoints[0])
+		var packed_waypoints = PackedVector2Array(waypoints_in_pixels)
+		packed_waypoints.append(waypoints_in_pixels[0])
 
 		var r = 16
 		var color = collisionShape2D.debug_color
 		
 		draw_polyline(packed_waypoints, color, 2)
-		for i in len(waypoints):
-			var point = waypoints[i]
+		for i in len(waypoints_in_pixels):
+			var point = waypoints_in_pixels[i]
 			
 			draw_circle(point, r, color)
 			draw_string(_waypoint_hint_font, 0.3*r*Vector2.LEFT + 0.25*r*Vector2.DOWN + point, str(i), HORIZONTAL_ALIGNMENT_CENTER, -1, r)
@@ -118,7 +128,7 @@ func _draw():
 		draw_set_transform_matrix(canvas_transform.rotated(PI))
 		draw_texture_rect(
 			bottom_texture,
-			Rect2(-width_pixels / 2, -height_pixels / 2 - bottom_texture.get_height(),
+			Rect2(-width_pixels / 2.0, -height_pixels / 2.0 - bottom_texture.get_height(),
 				  width_pixels, bottom_texture.get_height()), true)
 	if right_texture:
 		draw_set_transform_matrix(canvas_transform.rotated(PI / 2))
