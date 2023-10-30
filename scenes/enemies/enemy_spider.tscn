@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bth5xo6bxskba"]
 
-[ext_resource type="Script" path="res://enemy_spider.gd" id="1_60qeg"]
+[ext_resource type="Script" path="res://scripts/enemy_spider.gd" id="1_60qeg"]
 [ext_resource type="Texture2D" uid="uid://csdky8lro0o22" path="res://textures/enn_spider.png" id="2_nx6wh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0xexo"]

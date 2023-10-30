@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://hnygefrtotfx"]
 
-[ext_resource type="Script" path="res://scenes/elements/bone.gd" id="1_e1uyx"]
+[ext_resource type="Script" path="res://scripts/bone.gd" id="1_e1uyx"]
 [ext_resource type="Texture2D" uid="uid://c6epstetyoo8y" path="res://materials/os.png" id="2_3em5n"]
 [ext_resource type="AudioStream" uid="uid://diaacvin060px" path="res://sounds/LEVIER_GJ_STATE_Bonus.wav" id="2_sa7ny"]
 [ext_resource type="AudioStream" uid="uid://dfobsjyc35md" path="res://sounds/LEVIER_GJ_FOL_Bones_Pick_01.wav" id="3_63j5t"]
