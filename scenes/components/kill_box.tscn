@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvmv0ubhebeb7"]
+
+[ext_resource type="Script" path="res://scripts/components/kill_box.gd" id="1_i5duo"]
+
+[node name="KillBox" type="Area2D"]
+script = ExtResource("1_i5duo")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
