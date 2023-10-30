@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bm2gfylya18x6" path="res://materials/enn_citrouille03.png" id="2_0w4ic"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_uqvsa"]
 [ext_resource type="PackedScene" uid="uid://dokw05n2dslui" path="res://scenes/elements/toggleable_spikes.tscn" id="3_utycn"]
-[ext_resource type="PackedScene" uid="uid://1m2siku6krim" path="res://scenes/elements/door.tscn" id="4_2fmj7"]
 [ext_resource type="PackedScene" uid="uid://bth5xo6bxskba" path="res://scenes/enemies/enemy_spider.tscn" id="4_ffgve"]
 [ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/elements/spikes.tscn" id="4_uyd1a"]
 [ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="5_36hil"]
@@ -14,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="12_yejf2"]
 [ext_resource type="Texture2D" uid="uid://70ptu8emrfhe" path="res://materials/tiles_orange_simple.png" id="13_k8utg"]
 [ext_resource type="Texture2D" uid="uid://dp7gquw16g4xd" path="res://materials/border_orange.png" id="14_htp2h"]
+[ext_resource type="PackedScene" uid="uid://5c5yr0a1a575" path="res://scenes/elements/exit-door.tscn" id="14_kw0kn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
 size = Vector2(1792, 1024)
@@ -53,10 +53,6 @@ layer_0/tile_data = PackedInt32Array(-262132, 3, 0, -327668, 3, 0, -65525, 65536
 z_index = 2
 position = Vector2(608, 280)
 texture = ExtResource("2_0w4ic")
-
-[node name="Door" parent="Misc" instance=ExtResource("4_2fmj7")]
-position = Vector2(160, 768)
-is_player_toggleable = false
 
 [node name="Bones" type="Node" parent="."]
 
@@ -201,6 +197,9 @@ top_texture = ExtResource("14_htp2h")
 
 [node name="FinishArea2" parent="." instance=ExtResource("12_yejf2")]
 position = Vector2(-800, 256)
+
+[node name="Platform" parent="." instance=ExtResource("14_kw0kn")]
+position = Vector2(-736, 221)
 
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]
 [connection signal="timeout" from="Enemies/TimedSpiders/MainSpidersTimer" to="Enemies/TimedSpiders/EnemySpider2" method="descend"]

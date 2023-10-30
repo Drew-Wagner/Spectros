@@ -1,17 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://5c5yr0a1a575"]
+[gd_scene load_steps=6 format=3 uid="uid://5c5yr0a1a575"]
 
 [ext_resource type="PackedScene" uid="uid://cjcnnvu3yseel" path="res://scenes/elements/platform.tscn" id="1_ydgs7"]
 [ext_resource type="Script" path="res://scripts/exit-door.gd" id="2_b7jng"]
 [ext_resource type="Texture2D" uid="uid://bc1v0jnp7notl" path="res://materials/porte.png" id="3_imo73"]
+[ext_resource type="AudioStream" uid="uid://dmgbrbkd4wid2" path="res://sounds/LEVIER_GJ_FOL_Harrow_Open.wav" id="4_1t085"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yuea6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1uohd"]
 size = Vector2(65, 193)
 
 [node name="Platform" groups=["all_bones_collected_listeners"] instance=ExtResource("1_ydgs7")]
 script = ExtResource("2_b7jng")
 is_autonomous = false
 width = 1
-waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -128)])
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -2)])
 texture = ExtResource("3_imo73")
 
 [node name="Sprite2D" parent="." index="0"]
@@ -19,4 +20,9 @@ texture = ExtResource("3_imo73")
 region_rect = Rect2(0, 0, 65, 193)
 
 [node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("RectangleShape2D_yuea6")
+shape = SubResource("RectangleShape2D_1uohd")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="2"]
+stream = ExtResource("4_1t085")
+
+[connection signal="opened" from="." to="AudioStreamPlayer2D" method="play"]

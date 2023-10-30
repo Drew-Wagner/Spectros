@@ -12,9 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://70ptu8emrfhe" path="res://materials/tiles_orange_simple.png" id="8_exlec"]
 [ext_resource type="Texture2D" uid="uid://dp7gquw16g4xd" path="res://materials/border_orange.png" id="9_5gxpe"]
 [ext_resource type="Texture2D" uid="uid://bqfvlivebk645" path="res://materials/platform_gray_thin.png" id="10_m6pvq"]
-[ext_resource type="PackedScene" uid="uid://1m2siku6krim" path="res://scenes/elements/door.tscn" id="10_v55gd"]
 [ext_resource type="Texture2D" uid="uid://c3a16eky6ynqf" path="res://materials/platform_gray_thin_border.png" id="11_dr7lh"]
 [ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="12_ju5uy"]
+[ext_resource type="PackedScene" uid="uid://5c5yr0a1a575" path="res://scenes/elements/exit-door.tscn" id="15_mpol2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
 size = Vector2(1792, 1024)
@@ -138,11 +138,10 @@ position = Vector2(288, -96)
 unique_name_in_owner = true
 position = Vector2(-416, -64)
 
-[node name="ExitDoor" parent="." instance=ExtResource("10_v55gd")]
-position = Vector2(800, -128)
-is_player_toggleable = false
-
 [node name="FinishArea" parent="." instance=ExtResource("12_ju5uy")]
 position = Vector2(864, -128)
+
+[node name="Platform" parent="." instance=ExtResource("15_mpol2")]
+position = Vector2(800, -160)
 
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]

@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cjcnnvu3yseel" path="res://scenes/elements/platform.tscn" id="6_lo2fk"]
 [ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/elements/spikes.tscn" id="6_ooy8t"]
 [ext_resource type="Texture2D" uid="uid://dp7gquw16g4xd" path="res://materials/border_orange.png" id="7_1adhs"]
-[ext_resource type="PackedScene" uid="uid://1m2siku6krim" path="res://scenes/elements/door.tscn" id="7_jo7cc"]
 [ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="8_oiy8w"]
+[ext_resource type="PackedScene" uid="uid://5c5yr0a1a575" path="res://scenes/elements/exit-door.tscn" id="10_yotup"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
 size = Vector2(1792, 1024)
@@ -115,11 +115,10 @@ position = Vector2(736, 928)
 [node name="Spikes2" parent="Hazard" instance=ExtResource("6_ooy8t")]
 position = Vector2(800, 928)
 
-[node name="Door" parent="." instance=ExtResource("7_jo7cc")]
-position = Vector2(-736, 192)
-is_player_toggleable = false
-
 [node name="FinishArea" parent="." instance=ExtResource("8_oiy8w")]
 position = Vector2(-800, 192)
+
+[node name="Platform" parent="." instance=ExtResource("10_yotup")]
+position = Vector2(-736, 160)
 
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]
