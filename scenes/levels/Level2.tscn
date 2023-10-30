@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://dmb6yaqqbdgor"]
+[gd_scene load_steps=17 format=3 uid="uid://dmb6yaqqbdgor"]
 
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_g1cww"]
 [ext_resource type="Texture2D" uid="uid://bm2gfylya18x6" path="res://materials/enn_citrouille03.png" id="2_0w4ic"]
-[ext_resource type="PackedScene" uid="uid://cu4qk30gh72x8" path="res://scenes/elements/moving_platform.tscn" id="2_f56am"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_uqvsa"]
 [ext_resource type="PackedScene" uid="uid://dokw05n2dslui" path="res://scenes/elements/toggleable_spikes.tscn" id="3_utycn"]
 [ext_resource type="PackedScene" uid="uid://1m2siku6krim" path="res://scenes/elements/door.tscn" id="4_2fmj7"]
@@ -11,7 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="5_36hil"]
 [ext_resource type="PackedScene" uid="uid://ck2m2kpsthl3l" path="res://scenes/elements/stasis_field.tscn" id="7_jn4cx"]
 [ext_resource type="PackedScene" uid="uid://xynpr4h0gdnx" path="res://scenes/enemies/enemy_bat.tscn" id="8_obauu"]
+[ext_resource type="PackedScene" uid="uid://cjcnnvu3yseel" path="res://scenes/elements/platform.tscn" id="12_hox0a"]
 [ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="12_yejf2"]
+[ext_resource type="Texture2D" uid="uid://70ptu8emrfhe" path="res://materials/tiles_orange_simple.png" id="13_k8utg"]
+[ext_resource type="Texture2D" uid="uid://dp7gquw16g4xd" path="res://materials/border_orange.png" id="14_htp2h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
 size = Vector2(1792, 1024)
@@ -115,19 +117,6 @@ position = Vector2(-704, -256)
 
 [node name="DynamicEnvironment" type="Node" parent="."]
 
-[node name="MovingPlatform" parent="DynamicEnvironment" instance=ExtResource("2_f56am")]
-position = Vector2(288, 288)
-rotation = 1.5708
-orientation = 1
-on_position = Vector2(0, -128)
-
-[node name="MovingPlatform2" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
-position = Vector2(352, 288)
-rotation = 1.5708
-orientation = 1
-sprite = NodePath("../MovingPlatform/MovingPlatform/Sprite2D")
-on_position = Vector2(0, -128)
-
 [node name="ToggleableSpikes" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
 position = Vector2(288, 608)
 
@@ -141,16 +130,6 @@ position = Vector2(736, 608)
 position = Vector2(544, 480)
 rotation = 3.14159
 stasis_range = 3.0
-
-[node name="MovingPlatform3" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
-position = Vector2(864, 672)
-sprite = NodePath("../MovingPlatform/MovingPlatform/Sprite2D")
-on_position = Vector2(0, -384)
-
-[node name="MovingPlatform4" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
-position = Vector2(928, 672)
-sprite = NodePath("../MovingPlatform/MovingPlatform/Sprite2D")
-on_position = Vector2(0, -384)
 
 [node name="ToggleableSpikes4" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
 position = Vector2(1056, 224)
@@ -166,79 +145,59 @@ is_on = true
 [node name="ToggleableSpikes7" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
 position = Vector2(1440, 224)
 
-[node name="MovingPlatform5" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
-position = Vector2(1696, 416)
-rotation = -1.57079
-sprite = NodePath("../MovingPlatform/MovingPlatform/Sprite2D")
-
 [node name="ToggleableSpikes8" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
 position = Vector2(1376, 416)
 
-[node name="MovingPlatform6" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
-position = Vector2(1248, 928)
-sprite = NodePath("../MovingPlatform/MovingPlatform/Sprite2D")
-on_position = Vector2(0, -448)
+[node name="Platform" parent="DynamicEnvironment" instance=ExtResource("12_hox0a")]
+position = Vector2(320, 288)
+is_autonomous = false
+is_toggleable = true
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(2, 0)])
+texture = ExtResource("13_k8utg")
+top_texture = ExtResource("14_htp2h")
 
-[node name="MovingPlatform7" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
-position = Vector2(1312, 928)
-sprite = NodePath("../MovingPlatform/MovingPlatform/Sprite2D")
-on_position = Vector2(0, -448)
-
-[node name="MovingPlatform8" parent="DynamicEnvironment" instance=ExtResource("2_f56am")]
-position = Vector2(672, 1056)
-on_position = Vector2(0, -128)
-
-[node name="MovingPlatform9" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
+[node name="Platform2" parent="DynamicEnvironment" instance=ExtResource("12_hox0a")]
 position = Vector2(736, 1056)
-sprite = NodePath("../MovingPlatform8/MovingPlatform/Sprite2D")
-on_position = Vector2(0, -128)
+is_autonomous = false
+is_toggleable = true
+width = 3
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -2)])
+texture = ExtResource("13_k8utg")
+top_texture = ExtResource("14_htp2h")
 
-[node name="MovingPlatform10" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
-position = Vector2(800, 1056)
-sprite = NodePath("../MovingPlatform8/MovingPlatform/Sprite2D")
-on_position = Vector2(0, -128)
+[node name="Platform3" parent="DynamicEnvironment" instance=ExtResource("12_hox0a")]
+position = Vector2(1280, 928)
+is_autonomous = false
+is_toggleable = true
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -7)])
+texture = ExtResource("13_k8utg")
+top_texture = ExtResource("14_htp2h")
 
-[node name="MovingPlatform11" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
-position = Vector2(416, 992)
-rotation = 3.14159
-orientation = 2
-sprite = NodePath("../MovingPlatform8/MovingPlatform/Sprite2D")
-on_position = Vector2(0, -192)
+[node name="Platform4" parent="DynamicEnvironment" instance=ExtResource("12_hox0a")]
+position = Vector2(1696, 416)
+is_autonomous = false
+is_toggleable = true
+width = 1
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(-1, 0)])
+texture = ExtResource("13_k8utg")
+left_texture = ExtResource("14_htp2h")
 
-[node name="MovingPlatform12" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
-position = Vector2(352, 992)
-rotation = 3.14159
-orientation = 2
-sprite = NodePath("../MovingPlatform8/MovingPlatform/Sprite2D")
-on_position = Vector2(0, -192)
+[node name="Platform5" parent="DynamicEnvironment" instance=ExtResource("12_hox0a")]
+position = Vector2(896, 672)
+is_autonomous = false
+is_toggleable = true
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -6)])
+texture = ExtResource("13_k8utg")
+top_texture = ExtResource("14_htp2h")
 
-[node name="MovingPlatform13" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
-position = Vector2(416, 928)
-rotation = 3.14159
-orientation = 2
-sprite = NodePath("../MovingPlatform8/MovingPlatform/Sprite2D")
-on_position = Vector2(0, -192)
-
-[node name="MovingPlatform14" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
-position = Vector2(352, 928)
-rotation = 3.14159
-orientation = 2
-sprite = NodePath("../MovingPlatform8/MovingPlatform/Sprite2D")
-on_position = Vector2(0, -192)
-
-[node name="MovingPlatform15" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
-position = Vector2(416, 864)
-rotation = 3.14159
-orientation = 2
-sprite = NodePath("../MovingPlatform8/MovingPlatform/Sprite2D")
-on_position = Vector2(0, -192)
-
-[node name="MovingPlatform16" parent="DynamicEnvironment" node_paths=PackedStringArray("sprite") instance=ExtResource("2_f56am")]
-position = Vector2(352, 864)
-rotation = 3.14159
-orientation = 2
-sprite = NodePath("../MovingPlatform8/MovingPlatform/Sprite2D")
-on_position = Vector2(0, -192)
+[node name="Platform6" parent="DynamicEnvironment" instance=ExtResource("12_hox0a")]
+position = Vector2(384, 928)
+is_autonomous = false
+is_toggleable = true
+height = 3
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, 3)])
+texture = ExtResource("13_k8utg")
+top_texture = ExtResource("14_htp2h")
 
 [node name="FinishArea2" parent="." instance=ExtResource("12_yejf2")]
 position = Vector2(-800, 256)
