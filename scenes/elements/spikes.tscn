@@ -1,20 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://drgbe6551a4os"]
 
-[ext_resource type="Script" path="res://scripts/die_area.gd" id="1_l0l40"]
 [ext_resource type="Texture2D" uid="uid://cpbnn0onl8q5l" path="res://materials/spikes01.png" id="2_kybrj"]
+[ext_resource type="PackedScene" uid="uid://cvmv0ubhebeb7" path="res://scenes/components/kill_box.tscn" id="2_maibp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fyq1"]
 size = Vector2(64, 13)
 
-[node name="Spikes" type="Area2D"]
-script = ExtResource("1_l0l40")
+[node name="Spikes" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_kybrj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="KillBox" parent="." instance=ExtResource("2_maibp")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillBox"]
 position = Vector2(0, 25.5)
 shape = SubResource("RectangleShape2D_8fyq1")
 debug_color = Color(0.854902, 0, 0, 0.419608)
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
