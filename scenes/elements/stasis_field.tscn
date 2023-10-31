@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://ck2m2kpsthl3l"]
+[gd_scene load_steps=11 format=3 uid="uid://ck2m2kpsthl3l"]
 
 [ext_resource type="Script" path="res://scripts/StasisField.gd" id="1_khsr5"]
+[ext_resource type="PackedScene" uid="uid://c3gaovpivkad7" path="res://scenes/components/toggle.tscn" id="2_snf1j"]
 [ext_resource type="Texture2D" uid="uid://bredgyhy8ngnb" path="res://materials/magiczone_floor.png" id="2_y7bsm"]
 [ext_resource type="Texture2D" uid="uid://c8w8tqajmi2p4" path="res://materials/stasis_particle.png" id="3_dbfm5"]
 [ext_resource type="AudioStream" uid="uid://ctbkyboprc27r" path="res://sounds/LEVIER_GJ_SFX_ForceField_On.wav" id="4_6dn5y"]
@@ -33,7 +34,11 @@ color_ramp = SubResource("GradientTexture1D_x6qxd")
 
 [node name="StasisField" type="Node2D"]
 script = ExtResource("1_khsr5")
+is_player_toggleable = true
+is_on = false
 stasis_range = 1.0
+
+[node name="Toggle" parent="." instance=ExtResource("2_snf1j")]
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, 32)
@@ -63,7 +68,8 @@ stream = ExtResource("4_6dn5y")
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_7xa1u")
 
-[connection signal="switched_off" from="." to="AudioStreamPlayer2D2" method="play" binds= [0.0]]
-[connection signal="switched_on" from="." to="AudioStreamPlayer2D" method="play" binds= [0.0]]
+[connection signal="physics_process_on" from="Toggle" to="." method="_on_toggle_physics_process_on"]
+[connection signal="switched_off" from="Toggle" to="." method="_on_toggle_switched_off"]
+[connection signal="switched_on" from="Toggle" to="." method="_on_toggle_switched_on"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

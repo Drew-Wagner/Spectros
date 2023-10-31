@@ -11,6 +11,7 @@ size = Vector2(64, 13)
 
 [node name="Spikes" type="Node2D"]
 script = ExtResource("1_edh38")
+is_player_toggleable = true
 off_texture = ExtResource("2_brnay")
 on_texture = ExtResource("3_bnint")
 
@@ -18,7 +19,6 @@ on_texture = ExtResource("3_bnint")
 texture = ExtResource("3_bnint")
 
 [node name="Toggle" parent="." instance=ExtResource("2_gfmnt")]
-is_player_toggleable = false
 is_on = true
 
 [node name="KillBox" parent="." instance=ExtResource("2_4wj46")]

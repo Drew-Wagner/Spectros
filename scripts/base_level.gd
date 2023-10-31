@@ -50,7 +50,6 @@ func _on_level_area_body_exited(body):
 		print("fell out of world")
 		body.kill()
 
-
 func _connect_listeners():
 	# Connect "on_all_bones collected" listeners .
 	var all_bones_collected_listeners = get_tree().get_nodes_in_group("all_bones_collected_listeners")

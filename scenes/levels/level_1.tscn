@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dvwy8al6vu40d"]
+[gd_scene load_steps=17 format=3 uid="uid://dvwy8al6vu40d"]
 
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_p1cje"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_qaaas"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/enemies/spikes.tscn" id="5_3yoxd"]
 [ext_resource type="PackedScene" uid="uid://ck2m2kpsthl3l" path="res://scenes/elements/stasis_field.tscn" id="6_h0qxl"]
 [ext_resource type="PackedScene" uid="uid://cjcnnvu3yseel" path="res://scenes/elements/platform.tscn" id="7_fpliy"]
-[ext_resource type="PackedScene" uid="uid://dokw05n2dslui" path="res://scenes/enemies/toggleable_spikes.tscn" id="7_shr2y"]
 [ext_resource type="Texture2D" uid="uid://70ptu8emrfhe" path="res://materials/tiles_orange_simple.png" id="8_exlec"]
 [ext_resource type="Texture2D" uid="uid://dp7gquw16g4xd" path="res://materials/border_orange.png" id="9_5gxpe"]
 [ext_resource type="Texture2D" uid="uid://bqfvlivebk645" path="res://materials/platform_gray_thin.png" id="10_m6pvq"]
@@ -130,9 +129,8 @@ top_texture = ExtResource("11_dr7lh")
 [node name="StasisField" parent="." instance=ExtResource("6_h0qxl")]
 position = Vector2(224, -288)
 rotation = -3.14159
-
-[node name="ToggleableSpikes" parent="." instance=ExtResource("7_shr2y")]
-position = Vector2(288, -96)
+is_player_toggleable = true
+is_on = false
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
@@ -143,5 +141,13 @@ position = Vector2(864, -128)
 
 [node name="Platform" parent="." instance=ExtResource("15_mpol2")]
 position = Vector2(800, -160)
+
+[node name="Spikes" parent="." instance=ExtResource("5_3yoxd")]
+position = Vector2(288, -64)
+
+[node name="Spikes2" parent="." instance=ExtResource("5_3yoxd")]
+position = Vector2(288, -96)
+is_player_toggleable = true
+is_on = false
 
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]

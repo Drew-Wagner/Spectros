@@ -111,9 +111,11 @@ bottom_texture = ExtResource("7_1adhs")
 
 [node name="Spikes" parent="Hazard" instance=ExtResource("6_ooy8t")]
 position = Vector2(736, 928)
+is_on = false
 
 [node name="Spikes2" parent="Hazard" instance=ExtResource("6_ooy8t")]
 position = Vector2(800, 928)
+is_on = false
 
 [node name="FinishArea" parent="." instance=ExtResource("8_oiy8w")]
 position = Vector2(-800, 192)

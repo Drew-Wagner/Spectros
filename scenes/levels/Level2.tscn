@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://dmb6yaqqbdgor"]
+[gd_scene load_steps=16 format=3 uid="uid://dmb6yaqqbdgor"]
 
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_g1cww"]
 [ext_resource type="Texture2D" uid="uid://bm2gfylya18x6" path="res://materials/enn_citrouille03.png" id="2_0w4ic"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_uqvsa"]
-[ext_resource type="PackedScene" uid="uid://dokw05n2dslui" path="res://scenes/enemies/toggleable_spikes.tscn" id="3_utycn"]
 [ext_resource type="PackedScene" uid="uid://bth5xo6bxskba" path="res://scenes/enemies/enemy_spider.tscn" id="4_ffgve"]
 [ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/enemies/spikes.tscn" id="4_uyd1a"]
 [ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="5_36hil"]
@@ -113,36 +112,12 @@ position = Vector2(-704, -256)
 
 [node name="DynamicEnvironment" type="Node" parent="."]
 
-[node name="ToggleableSpikes" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
-position = Vector2(288, 608)
-
-[node name="ToggleableSpikes2" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
-position = Vector2(352, 608)
-
-[node name="ToggleableSpikes3" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
-position = Vector2(736, 608)
-
 [node name="StasisField" parent="DynamicEnvironment" instance=ExtResource("7_jn4cx")]
 position = Vector2(544, 480)
 rotation = 3.14159
+is_player_toggleable = true
+is_on = false
 stasis_range = 3.0
-
-[node name="ToggleableSpikes4" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
-position = Vector2(1056, 224)
-is_on = true
-
-[node name="ToggleableSpikes5" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
-position = Vector2(1184, 224)
-
-[node name="ToggleableSpikes6" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
-position = Vector2(1312, 224)
-is_on = true
-
-[node name="ToggleableSpikes7" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
-position = Vector2(1440, 224)
-
-[node name="ToggleableSpikes8" parent="DynamicEnvironment" instance=ExtResource("3_utycn")]
-position = Vector2(1376, 416)
 
 [node name="Platform" parent="DynamicEnvironment" instance=ExtResource("12_hox0a")]
 position = Vector2(320, 288)
@@ -200,6 +175,42 @@ position = Vector2(-800, 256)
 
 [node name="Platform" parent="." instance=ExtResource("14_kw0kn")]
 position = Vector2(-736, 221)
+
+[node name="Spikes" parent="." instance=ExtResource("4_uyd1a")]
+position = Vector2(-608, 96)
+is_player_toggleable = true
+
+[node name="Spikes2" parent="." instance=ExtResource("4_uyd1a")]
+position = Vector2(-544, 96)
+is_player_toggleable = true
+
+[node name="Spikes3" parent="." instance=ExtResource("4_uyd1a")]
+position = Vector2(-160, 96)
+is_player_toggleable = true
+is_on = false
+
+[node name="Spikes4" parent="." instance=ExtResource("4_uyd1a")]
+position = Vector2(160, -288)
+is_player_toggleable = true
+
+[node name="Spikes5" parent="." instance=ExtResource("4_uyd1a")]
+position = Vector2(416, -288)
+is_player_toggleable = true
+
+[node name="Spikes6" parent="." instance=ExtResource("4_uyd1a")]
+position = Vector2(544, -288)
+is_player_toggleable = true
+is_on = false
+
+[node name="Spikes8" parent="." instance=ExtResource("4_uyd1a")]
+position = Vector2(480, -96)
+is_player_toggleable = true
+is_on = false
+
+[node name="Spikes7" parent="." instance=ExtResource("4_uyd1a")]
+position = Vector2(288, -288)
+is_player_toggleable = true
+is_on = false
 
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]
 [connection signal="timeout" from="Enemies/TimedSpiders/MainSpidersTimer" to="Enemies/TimedSpiders/EnemySpider2" method="descend"]
