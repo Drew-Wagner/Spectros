@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c3gaovpivkad7"]
 
-[ext_resource type="Script" path="res://scripts/toggleable.gd" id="1_efoib"]
+[ext_resource type="Script" path="res://scripts/components/toggleable.gd" id="1_204o0"]
 
 [node name="Toggle" type="Node"]
-script = ExtResource("1_efoib")
+script = ExtResource("1_204o0")

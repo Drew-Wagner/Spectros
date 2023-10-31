@@ -115,8 +115,6 @@ position = Vector2(-704, -256)
 [node name="StasisField" parent="DynamicEnvironment" instance=ExtResource("7_jn4cx")]
 position = Vector2(544, 480)
 rotation = 3.14159
-is_player_toggleable = true
-is_on = false
 stasis_range = 3.0
 
 [node name="Platform" parent="DynamicEnvironment" instance=ExtResource("12_hox0a")]

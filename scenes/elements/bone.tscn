@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://hnygefrtotfx"]
 
-[ext_resource type="Script" path="res://scripts/bone.gd" id="1_e1uyx"]
+[ext_resource type="Script" path="res://scripts/elements/bone.gd" id="1_5rkjn"]
 [ext_resource type="Texture2D" uid="uid://c6epstetyoo8y" path="res://materials/os.png" id="2_3em5n"]
 [ext_resource type="AudioStream" uid="uid://diaacvin060px" path="res://sounds/LEVIER_GJ_STATE_Bonus.wav" id="2_sa7ny"]
 [ext_resource type="AudioStream" uid="uid://dfobsjyc35md" path="res://sounds/LEVIER_GJ_FOL_Bones_Pick_01.wav" id="3_63j5t"]
@@ -90,7 +90,7 @@ _data = {
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_bt3i5"]
 
 [node name="Bone" type="Node2D" groups=["bones"]]
-script = ExtResource("1_e1uyx")
+script = ExtResource("1_5rkjn")
 reward_sound = ExtResource("2_sa7ny")
 reward_sound_random_array = Array[AudioStream]([ExtResource("3_63j5t"), ExtResource("4_ullux"), ExtResource("5_0orvm"), ExtResource("6_u3e6t")])
 

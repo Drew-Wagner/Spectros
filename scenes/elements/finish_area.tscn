@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://c1tvdb40a26y0"]
 
-[ext_resource type="Script" path="res://scripts/finish_area.gd" id="1_ph4sy"]
+[ext_resource type="Script" path="res://scripts/elements/finish_area.gd" id="1_oqvi2"]
 [ext_resource type="Texture2D" uid="uid://c8w8tqajmi2p4" path="res://materials/stasis_particle.png" id="1_tu130"]
 [ext_resource type="Texture2D" uid="uid://c6epstetyoo8y" path="res://materials/os.png" id="2_f5m7h"]
 
@@ -76,7 +76,7 @@ scale_max = 0.75
 color_ramp = SubResource("GradientTexture1D_r7eu8")
 
 [node name="FinishArea" type="Area2D" groups=["all_bones_collected_listeners", "finish_area"]]
-script = ExtResource("1_ph4sy")
+script = ExtResource("1_oqvi2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

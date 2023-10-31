@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://fefsjih0pp1c" path="res://textures/landscape_dark.png" id="1_d2qfa"]
 [ext_resource type="AudioStream" uid="uid://caigx6k3md34c" path="res://sounds/LEVIER_GJ_AMB_LP.wav" id="1_njy4r"]
 [ext_resource type="Texture2D" uid="uid://vc5jmnlkqs4h" path="res://textures/titre_spectros4x.png" id="2_6k1bn"]
-[ext_resource type="Script" path="res://scripts/scene_navigation.gd" id="2_numlj"]
+[ext_resource type="Script" path="res://scripts/components/scene_navigation.gd" id="2_numlj"]
 
 [sub_resource type="Animation" id="Animation_xp4vw"]
 resource_name = "FadeIn"

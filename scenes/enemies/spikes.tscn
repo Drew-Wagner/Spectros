@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://drgbe6551a4os"]
 
-[ext_resource type="Script" path="res://scenes/enemies/spikes.gd" id="1_edh38"]
+[ext_resource type="Script" path="res://scripts/elements/spikes.gd" id="1_f0vy1"]
 [ext_resource type="PackedScene" uid="uid://cvmv0ubhebeb7" path="res://scenes/components/kill_box.tscn" id="2_4wj46"]
 [ext_resource type="Texture2D" uid="uid://hetqgqs68u6f" path="res://materials/spikes_off.png" id="2_brnay"]
 [ext_resource type="PackedScene" uid="uid://c3gaovpivkad7" path="res://scenes/components/toggle.tscn" id="2_gfmnt"]
@@ -10,7 +10,7 @@
 size = Vector2(64, 13)
 
 [node name="Spikes" type="Node2D"]
-script = ExtResource("1_edh38")
+script = ExtResource("1_f0vy1")
 off_texture = ExtResource("2_brnay")
 on_texture = ExtResource("3_bnint")
 

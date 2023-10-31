@@ -17,7 +17,7 @@ config/icon="res://textures/skeletomb_icon.svg"
 
 [autoload]
 
-OnOff="*res://scripts/global_on_off.gd"
+OnOff="*res://scripts/autoloads/global_on_off.gd"
 
 [display]
 

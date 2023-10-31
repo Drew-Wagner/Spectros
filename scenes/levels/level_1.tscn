@@ -129,8 +129,6 @@ top_texture = ExtResource("11_dr7lh")
 [node name="StasisField" parent="." instance=ExtResource("6_h0qxl")]
 position = Vector2(224, -288)
 rotation = -3.14159
-is_player_toggleable = true
-is_on = false
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true

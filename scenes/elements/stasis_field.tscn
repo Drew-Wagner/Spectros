@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://ck2m2kpsthl3l"]
 
-[ext_resource type="Script" path="res://scripts/StasisField.gd" id="1_khsr5"]
+[ext_resource type="Script" path="res://scripts/elements/stasis_field.gd" id="1_4s5rn"]
 [ext_resource type="PackedScene" uid="uid://c3gaovpivkad7" path="res://scenes/components/toggle.tscn" id="2_snf1j"]
 [ext_resource type="Texture2D" uid="uid://bredgyhy8ngnb" path="res://materials/magiczone_floor.png" id="2_y7bsm"]
 [ext_resource type="Texture2D" uid="uid://c8w8tqajmi2p4" path="res://materials/stasis_particle.png" id="3_dbfm5"]
@@ -18,7 +18,7 @@ gradient = SubResource("Gradient_janw7")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ojm2u"]
 emission_shape = 3
-emission_box_extents = Vector3(30, 90, 1)
+emission_box_extents = Vector3(30, 30, 1)
 particle_flag_disable_z = true
 direction = Vector3(0, 1, 0)
 spread = 0.0
@@ -33,7 +33,7 @@ scale_min = 0.5
 color_ramp = SubResource("GradientTexture1D_x6qxd")
 
 [node name="StasisField" type="Node2D"]
-script = ExtResource("1_khsr5")
+script = ExtResource("1_4s5rn")
 is_player_toggleable = true
 is_on = false
 stasis_range = 1.0
