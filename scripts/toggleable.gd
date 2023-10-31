@@ -1,61 +1,47 @@
+@tool
 class_name Toggleable
-extends Node2D
+extends Node
 
+signal toggled()
 signal switched_on()
 signal switched_off()
+signal physics_process_on(delta: float)
+signal physics_process_off(delta: float)
 
-# Whether or not to connect to global OnOff.toggle signal
-@export var is_player_toggleable: bool = true
+
+## Is this component connected to the global OnOff toggle signal?
+@export var is_player_toggleable: bool = true:
+	set(value):
+		is_player_toggleable = value
+		if Engine.is_editor_hint(): # OnOff global not available in editor
+			return
+		if not is_node_ready():
+			await ready
+		var already_connected = OnOff.toggle.is_connected(toggle)
+		if is_player_toggleable:
+			if not already_connected:
+				OnOff.toggle.connect(toggle)
+		else:
+			if already_connected:
+				OnOff.toggle.disconnect(toggle)
+
+## Sets the initial state of the toggle.
 @export var is_on: bool = false:
 	set(value):
 		if value and not is_on:
 			switched_on.emit()
-			_on_switch_on()
+			toggled.emit()
 		elif not value and is_on:
 			switched_off.emit()
-			_on_switch_off()
+			toggled.emit()
 		is_on = value
 
-# Called when the element switches from off -> on
-func _on_switch_on():
-	pass
-
-# Called when the element switches from on -> off
-func _on_switch_off():
-	pass
-
-# Called each frame if the element is on
-func _process_on(_delta):
-	pass
-
-# Called each frame if the element is off
-func _process_off(_delta):
-	pass
-
-# Called each physics frame if the element is on
-func _physics_process_on(_delta):
-	pass
-
-# Calld each physics frame if the element is off	
-func _physics_process_off(_delta):
-	pass
-
-# Toggles the element on or off
+## Toggles the element between on or off states
 func toggle():
 	is_on = !is_on
 
-func _ready():
-	if is_player_toggleable and not Engine.is_editor_hint():
-		OnOff.toggle.connect(toggle)
-
-func _process(delta):
-	if is_on:
-		_process_on(delta)
-	else:
-		_process_off(delta)
-
 func _physics_process(delta):
 	if is_on:
-		_physics_process_on(delta)
+		physics_process_on.emit(delta)
 	else:
-		_physics_process_off(delta)
+		physics_process_off.emit(delta)

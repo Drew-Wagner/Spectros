@@ -1,15 +1,31 @@
 @tool
-extends Toggleable
+extends Node2D
+
+@export var is_player_toggleable: bool = false:
+	set(value):
+		is_player_toggleable = value
+		if not is_node_ready():
+			await ready
+		_toggle.is_player_toggleable = is_player_toggleable
+@export var is_on: bool = true:
+	set(value):
+		is_on = value
+		if not is_node_ready():
+			await ready
+		_toggle.is_on = is_on
 
 @export var pull_speed: float = 512 # pixels / sec
 @export var stasis_range: float:# Grid units, can be fractions
 	set(value):
 		stasis_range = value
-		_set_stasis_range.call_deferred()
+		if not is_node_ready():
+			await ready
+		_set_stasis_range()
 
 @onready var particles: GPUParticles2D = $GPUParticles2D
 @onready var pull_target: Marker2D = $PullTarget
 @onready var stasis_area: Area2D = $Area2D
+@onready var _toggle: Toggleable = $Toggle
 
 var bodies_in_area: Array[Node2D]
 
@@ -28,17 +44,17 @@ func _on_area_2d_body_exited(body):
 		if is_on:
 			body.set_in_stasis(false)                   
 
-func _on_switch_on():
+func _on_toggle_switched_on():
 	particles.show()
 	for body in bodies_in_area:
 		body.set_in_stasis(true)
 
-func _on_switch_off():
+func _on_toggle_switched_off():
 	particles.hide()
 	for body in bodies_in_area:
 		body.set_in_stasis(false)
 
-func _physics_process_on(_delta):
+func _on_toggle_physics_process_on(delta):
 	for body in bodies_in_area:
 		if not body is CharacterBody2D:
 			continue
@@ -46,13 +62,7 @@ func _physics_process_on(_delta):
 		body.velocity = direction * pull_speed
 		body.move_and_slide()
 
-
 func _set_stasis_range():
-	if stasis_area == null:
-		stasis_area = $Area2D
-	if particles == null:
-		particles = $GPUParticles2D
-	
 	stasis_area.scale.y = stasis_range
 	
 	var process_material = particles.process_material as ParticleProcessMaterial
