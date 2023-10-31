@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://xynpr4h0gdnx" path="res://scenes/enemies/enemy_bat.tscn" id="4_uwm6b"]
 [ext_resource type="Texture2D" uid="uid://70ptu8emrfhe" path="res://materials/tiles_orange_simple.png" id="6_ipcd7"]
 [ext_resource type="PackedScene" uid="uid://cjcnnvu3yseel" path="res://scenes/elements/platform.tscn" id="6_lo2fk"]
-[ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/enemies/spikes.tscn" id="6_ooy8t"]
+[ext_resource type="PackedScene" uid="uid://b6ql3iocfbgi4" path="res://scenes/enemies/spikes.tscn" id="6_ooy8t"]
 [ext_resource type="Texture2D" uid="uid://dp7gquw16g4xd" path="res://materials/border_orange.png" id="7_1adhs"]
 [ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="8_oiy8w"]
 [ext_resource type="PackedScene" uid="uid://5c5yr0a1a575" path="res://scenes/elements/exit-door.tscn" id="10_yotup"]
@@ -111,11 +111,9 @@ bottom_texture = ExtResource("7_1adhs")
 
 [node name="Spikes" parent="Hazard" instance=ExtResource("6_ooy8t")]
 position = Vector2(736, 928)
-is_on = false
 
 [node name="Spikes2" parent="Hazard" instance=ExtResource("6_ooy8t")]
 position = Vector2(800, 928)
-is_on = false
 
 [node name="FinishArea" parent="." instance=ExtResource("8_oiy8w")]
 position = Vector2(-800, 192)

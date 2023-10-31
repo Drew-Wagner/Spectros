@@ -157,5 +157,5 @@ func get_spring_acceleration(spring_coeficient: float, spring_stretch: float):
 func _draw():
 	if spider_body == null:
 		return
-
+	
 	draw_texture_rect(web_texture, Rect2(-2,-32, 5, spider_body.position.y), true)

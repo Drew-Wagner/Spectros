@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://drgbe6551a4os"]
+[gd_scene load_steps=7 format=3 uid="uid://b6ql3iocfbgi4"]
 
 [ext_resource type="Script" path="res://scripts/elements/spikes.gd" id="1_f0vy1"]
 [ext_resource type="PackedScene" uid="uid://cvmv0ubhebeb7" path="res://scenes/components/kill_box.tscn" id="2_4wj46"]

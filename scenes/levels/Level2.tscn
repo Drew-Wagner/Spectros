@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bm2gfylya18x6" path="res://materials/enn_citrouille03.png" id="2_0w4ic"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_uqvsa"]
 [ext_resource type="PackedScene" uid="uid://bth5xo6bxskba" path="res://scenes/enemies/enemy_spider.tscn" id="4_ffgve"]
-[ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/enemies/spikes.tscn" id="4_uyd1a"]
+[ext_resource type="PackedScene" uid="uid://b6ql3iocfbgi4" path="res://scenes/enemies/spikes.tscn" id="4_uyd1a"]
 [ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="5_36hil"]
 [ext_resource type="PackedScene" uid="uid://ck2m2kpsthl3l" path="res://scenes/elements/stasis_field.tscn" id="7_jn4cx"]
 [ext_resource type="PackedScene" uid="uid://xynpr4h0gdnx" path="res://scenes/enemies/enemy_bat.tscn" id="8_obauu"]

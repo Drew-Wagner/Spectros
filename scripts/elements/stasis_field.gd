@@ -54,7 +54,7 @@ func _on_toggle_switched_off():
 	for body in bodies_in_area:
 		body.set_in_stasis(false)
 
-func _on_toggle_physics_process_on(delta):
+func _on_toggle_physics_process_on(_delta):
 	for body in bodies_in_area:
 		if not body is CharacterBody2D:
 			continue
