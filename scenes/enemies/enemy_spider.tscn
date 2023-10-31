@@ -4,12 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://csdky8lro0o22" path="res://textures/enn_spider.png" id="2_nx6wh"]
 [ext_resource type="PackedScene" uid="uid://cvmv0ubhebeb7" path="res://scenes/components/kill_box.tscn" id="3_o7wso"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mfjf7"]
-radius = 24.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vs3ab"]
+radius = 23.0
 height = 56.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fn28r"]
-radius = 32.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mfjf7"]
+radius = 22.0
+height = 54.0
 
 [node name="EnemySpider" type="Node2D" groups=["enemies"]]
 script = ExtResource("1_60qeg")
@@ -18,19 +19,18 @@ move_speed = 192.0
 [node name="SpiderBody" type="CharacterBody2D" parent="."]
 velocity = Vector2(0, -192)
 
+[node name="KillBox" parent="SpiderBody" instance=ExtResource("3_o7wso")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpiderBody/KillBox"]
+shape = SubResource("CapsuleShape2D_vs3ab")
+debug_color = Color(1, 0, 0, 0.419608)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpiderBody"]
 shape = SubResource("CapsuleShape2D_mfjf7")
 
 [node name="Sprite2D" type="Sprite2D" parent="SpiderBody"]
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_nx6wh")
-
-[node name="KillBox" parent="SpiderBody" instance=ExtResource("3_o7wso")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpiderBody/KillBox"]
-position = Vector2(0, -2)
-shape = SubResource("CircleShape2D_fn28r")
-debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="AscendTimer" type="Timer" parent="."]
 one_shot = true
