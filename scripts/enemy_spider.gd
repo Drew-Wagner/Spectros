@@ -11,7 +11,6 @@ var move_direction: Vector2 = Vector2.UP
 var is_at_top: bool = false
 var is_at_bottom: bool = false
 
-
 func ascend():
 	is_at_bottom = false
 	move_direction = Vector2.UP
@@ -126,11 +125,17 @@ func _process(_delta):
 	queue_redraw()
 
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if Engine.is_editor_hint() and not move_in_editor:
 		return
 	
-	spider_body.velocity = move_speed * move_direction
+	spider_body.velocity.y = move_speed * move_direction.y
+	if true or spider_body.position.x != 0:
+		# Apply srping acceleration according to Hooke's Law.
+		spider_body.velocity.x += get_spring_acceleration(100, spider_body.position.x) * delta
+		# Dampen the velocity to 90%.
+		spider_body.velocity.x *= 0.9
+		
 	spider_body.move_and_slide()
 	
 	if spider_body.is_on_floor() and not is_at_bottom:
@@ -141,6 +146,11 @@ func _physics_process(_delta):
 		stop()
 		is_at_top = true
 		at_top.emit()
+
+# Hooke's Law
+func get_spring_acceleration(spring_coeficient: float, spring_stretch: float):
+	return -spring_coeficient * spring_stretch
+
 
 # Draws the "spider web" line.
 func _draw():

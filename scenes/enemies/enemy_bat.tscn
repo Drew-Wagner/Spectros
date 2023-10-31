@@ -1,34 +1,42 @@
-[gd_scene load_steps=6 format=3 uid="uid://xynpr4h0gdnx"]
+[gd_scene load_steps=7 format=3 uid="uid://xynpr4h0gdnx"]
 
 [ext_resource type="Script" path="res://scenes/enemies/moving_enemy.gd" id="1_tprjj"]
 [ext_resource type="Texture2D" uid="uid://cdepx4hsyo5kh" path="res://materials/BAT.png" id="2_ak3bj"]
 [ext_resource type="PackedScene" uid="uid://cvmv0ubhebeb7" path="res://scenes/components/kill_box.tscn" id="3_bc6vy"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yaoic"]
-radius = 21.0
-height = 61.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yjexl"]
-radius = 32.0
-height = 80.0
+radius = 18.0
+height = 66.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aah5k"]
+radius = 14.0
+height = 38.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yaoic"]
+radius = 13.0
+height = 54.0
 
 [node name="EnemyBat" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_tprjj")
+
+[node name="KillBox" parent="." instance=ExtResource("3_bc6vy")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillBox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_yjexl")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="KillBox"]
+position = Vector2(0, 18)
+shape = SubResource("CapsuleShape2D_aah5k")
+debug_color = Color(0.54902, 0.203922, 0.188235, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.120603, 0.120603)
 texture = ExtResource("2_ak3bj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(0, 9)
 shape = SubResource("CapsuleShape2D_yaoic")
-
-[node name="KillBox" parent="." instance=ExtResource("3_bc6vy")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KillBox"]
-position = Vector2(0, 7)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_yjexl")
-debug_color = Color(1, 0, 0, 0.419608)
 
 [connection signal="squished" from="." to="." method="_on_squished"]
