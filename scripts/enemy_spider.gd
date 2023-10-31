@@ -33,6 +33,7 @@ func stop():
 
 @export var move_speed: float = 256 # pixels / sec
 @export var move_in_editor: bool = false
+@export var web_texture: Texture2D
 
 func _disconnect_descend_timer():
 	descend_timer.stop()
@@ -157,4 +158,4 @@ func _draw():
 	if spider_body == null:
 		return
 
-	draw_line(32 * Vector2.UP, spider_body.position, Color.WHITE_SMOKE, 4, true)
+	draw_texture_rect(web_texture, Rect2(-2,-32, 5, spider_body.position.y), true)

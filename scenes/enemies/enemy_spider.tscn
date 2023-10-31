@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bth5xo6bxskba"]
+[gd_scene load_steps=7 format=3 uid="uid://bth5xo6bxskba"]
 
 [ext_resource type="Script" path="res://scripts/enemy_spider.gd" id="1_60qeg"]
+[ext_resource type="Texture2D" uid="uid://cuw6ubrc7dem0" path="res://materials/spider_web.png" id="2_c14p1"]
 [ext_resource type="Texture2D" uid="uid://csdky8lro0o22" path="res://textures/enn_spider.png" id="2_nx6wh"]
 [ext_resource type="PackedScene" uid="uid://cvmv0ubhebeb7" path="res://scenes/components/kill_box.tscn" id="3_o7wso"]
 
@@ -15,6 +16,7 @@ height = 54.0
 [node name="EnemySpider" type="Node2D" groups=["enemies"]]
 script = ExtResource("1_60qeg")
 move_speed = 192.0
+web_texture = ExtResource("2_c14p1")
 
 [node name="SpiderBody" type="CharacterBody2D" parent="."]
 velocity = Vector2(0, -192)
