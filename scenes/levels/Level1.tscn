@@ -1,0 +1,122 @@
+[gd_scene load_steps=12 format=3 uid="uid://36dkaner3txs"]
+
+[ext_resource type="Script" path="res://scripts/base_level.gd" id="1_n2mvg"]
+[ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_noqvc"]
+[ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="3_rw3hl"]
+[ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/enemies/spikes.tscn" id="3_uppur"]
+[ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="7_2r3bn"]
+[ext_resource type="PackedScene" uid="uid://cjcnnvu3yseel" path="res://scenes/elements/platform.tscn" id="8_tl78t"]
+[ext_resource type="Texture2D" uid="uid://70ptu8emrfhe" path="res://materials/tiles_orange_simple.png" id="9_74amt"]
+[ext_resource type="PackedScene" uid="uid://5c5yr0a1a575" path="res://scenes/elements/exit-door.tscn" id="9_a1rtt"]
+[ext_resource type="Texture2D" uid="uid://dp7gquw16g4xd" path="res://materials/border_orange.png" id="10_73wi0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
+size = Vector2(1792, 1024)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx1p3"]
+size = Vector2(384, 512)
+
+[node name="Level" type="Node2D"]
+position = Vector2(896, 512)
+script = ExtResource("1_n2mvg")
+
+[node name="LevelArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelArea"]
+shape = SubResource("RectangleShape2D_emyvp")
+debug_color = Color(0, 0.647059, 0.760784, 0.419608)
+
+[node name="BourreauArea" type="Area2D" parent="."]
+position = Vector2(704, 256)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BourreauArea"]
+shape = SubResource("RectangleShape2D_wx1p3")
+debug_color = Color(0.941176, 0, 0, 0.419608)
+
+[node name="DynamicEnvironment" type="Node" parent="."]
+
+[node name="StaticEnvironment" type="TileMap" parent="."]
+position = Vector2(-128, 0)
+tile_set = ExtResource("2_noqvc")
+format = 2
+layer_0/z_index = 1
+layer_0/tile_data = PackedInt32Array(-65529, 3, 0, -131065, 3, 0, -196601, 65539, 0, -262137, 65539, 0, -11, 131075, 0, -65547, 65539, 0, -131083, 131075, 0, -196619, 65539, 0, 327672, 0, 4, 327671, 0, 4, 327670, 0, 3, 327669, 0, 3, 327676, 65536, 4, 327677, 0, 3, 262146, 0, 3, 262145, 0, 4, 262144, 0, 4, 327679, 0, 3, 327678, 0, 4, 262151, 65536, 4, 262150, 0, 3, 262149, 0, 3, 458754, 0, 3, 393218, 0, 4, 327682, 0, 4, 458757, 0, 3, 458756, 0, 4, 458755, 65536, 4, 393221, 0, 4, 327685, 0, 4, 131070, 65539, 0, 65534, 3, 0, -2, 131075, 0, -65538, 65539, 0, -131074, 131075, 0, -196610, 3, 0, 65537, 3, 0, 1, 65539, 0, -65535, 65539, 0, -131071, 65539, 0, -196607, 3, 0, -262143, 131075, 0, -327673, 3, 0, -327674, 3, 0, -327675, 3, 0, -327676, 3, 0, -327677, 3, 0, -327678, 3, 0, -327679, 131075, 0, -327680, 3, 0, -262145, 65539, 0, -262146, 65539, 0, -262147, 3, 0, -262148, 3, 0, -262149, 3, 0, -262150, 65539, 0, -262151, 3, 0, -262152, 3, 0, -262153, 3, 0, -262154, 3, 0, -262155, 3, 0, 327675, 65536, 4, 393211, 0, 3, 458747, 0, 3, 524283, 0, 3, 524282, 0, 4, 524281, 0, 4, 524280, 0, 4, 458744, 0, 3, 393208, 0, 3, 7, 3, 0, 262152, 0, 4, 262153, 0, 4, 196617, 3, 0, 131081, 3, 0, 65545, 3, 0, 9, 3, 0, 8, 3, 0, -12, 3, 0, 65524, 3, 0, 131060, 3, 0, 196596, 3, 0, 262132, 3, 0, 327668, 0, 4, -196606, 131075, 0, -262142, 131075, 0, -262141, 131075, 0, -262140, 131075, 0, -262139, 131075, 0, -262138, 131075, 0, -196602, 131075, 0, -65528, 131075, 0, -131064, 131075, 0, -196600, 131075, 0, -262136, 131075, 0, -131063, 131075, 0, -65527, 131075, 0, -131073, 131075, 0, -196609, 131075, 0, -262144, 131075, 0, -131075, 131075, 0, -196611, 131075, 0, -196612, 131075, 0, -131082, 131075, 0, -196618, 131075, 0, 393212, 0, 3, 458748, 0, 3, 393213, 0, 3, 393207, 0, 3, 393206, 0, 3, 327681, 0, 3, 327680, 0, 3, 393217, 0, 3, 327686, 0, 3)
+
+[node name="Hazards" type="Node" parent="."]
+
+[node name="Spikes" parent="Hazards" instance=ExtResource("3_uppur")]
+position = Vector2(352, 928)
+
+[node name="Spikes2" parent="Hazards" instance=ExtResource("3_uppur")]
+position = Vector2(416, 928)
+
+[node name="Spikes3" parent="Hazards" instance=ExtResource("3_uppur")]
+position = Vector2(992, 928)
+
+[node name="Spikes4" parent="Hazards" instance=ExtResource("3_uppur")]
+position = Vector2(1056, 928)
+
+[node name="Bones" type="Node" parent="."]
+
+[node name="Bone" parent="Bones" instance=ExtResource("3_rw3hl")]
+position = Vector2(768, 720)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-704, 256)
+
+[node name="Interactables" type="Node" parent="."]
+
+[node name="Node" type="Node" parent="Interactables"]
+
+[node name="Node2" type="Node" parent="Interactables"]
+
+[node name="Node3" type="Node" parent="Interactables"]
+
+[node name="Node4" type="Node" parent="Interactables"]
+
+[node name="FinishArea" parent="." instance=ExtResource("7_2r3bn")]
+position = Vector2(416, 192)
+
+[node name="Platform" parent="." instance=ExtResource("8_tl78t")]
+position = Vector2(-384, 288)
+is_autonomous = false
+is_toggleable = true
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(-2, 0)])
+texture = ExtResource("9_74amt")
+top_texture = ExtResource("10_73wi0")
+
+[node name="Platform4" parent="." instance=ExtResource("8_tl78t")]
+position = Vector2(128, 288)
+is_autonomous = false
+is_toggleable = true
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(2, 0)])
+texture = ExtResource("9_74amt")
+top_texture = ExtResource("10_73wi0")
+
+[node name="Platform2" parent="." instance=ExtResource("8_tl78t")]
+position = Vector2(-224, 192)
+is_autonomous = false
+is_toggleable = true
+width = 1
+height = 2
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -2)])
+texture = ExtResource("9_74amt")
+bottom_texture = ExtResource("10_73wi0")
+
+[node name="Platform3" parent="." instance=ExtResource("8_tl78t")]
+position = Vector2(-32, 64)
+is_autonomous = false
+is_toggleable = true
+width = 1
+height = 2
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, 2)])
+texture = ExtResource("9_74amt")
+bottom_texture = ExtResource("10_73wi0")
+
+[node name="Platform5" parent="." instance=ExtResource("9_a1rtt")]
+position = Vector2(352, 160)
+
+[connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]
