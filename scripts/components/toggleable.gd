@@ -36,6 +36,11 @@ signal physics_process_off(delta: float)
 			toggled.emit()
 		is_on = value
 
+func _ready():
+	if is_player_toggleable:
+		OnOff.toggle.connect(toggle)
+
+
 ## Toggles the element between on or off states
 func toggle():
 	is_on = !is_on

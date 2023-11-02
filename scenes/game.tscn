@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://4usjiwbxajd8"]
+[gd_scene load_steps=32 format=3 uid="uid://4usjiwbxajd8"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_rnd3o"]
 [ext_resource type="PackedScene" uid="uid://dvwy8al6vu40d" path="res://scenes/levels/level_1.tscn" id="2_12uj8"]
@@ -19,55 +19,15 @@
 [ext_resource type="PackedScene" uid="uid://cxxbjbc1q5rmg" path="res://gui/bone_collection.tscn" id="9_0rnu1"]
 [ext_resource type="AudioStream" uid="uid://caigx6k3md34c" path="res://sounds/LEVIER_GJ_AMB_LP.wav" id="9_jiikb"]
 [ext_resource type="AudioStream" uid="uid://bqn8v3nwh8bvt" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_05.wav" id="9_qffde"]
-[ext_resource type="Texture2D" uid="uid://coc4n04vmmje8" path="res://textures/switch_E02.png" id="10_mamxs"]
-[ext_resource type="Texture2D" uid="uid://dqg33apvr1jvo" path="res://textures/switch_E01.png" id="10_ocyo5"]
 [ext_resource type="Script" path="res://scripts/components/scene_navigation.gd" id="10_ojnpv"]
 [ext_resource type="AudioStream" uid="uid://bhg71u1feri8c" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_06.wav" id="10_siirr"]
-[ext_resource type="Texture2D" uid="uid://b8lrhek1y2knw" path="res://textures/switch_E03.png" id="12_t227g"]
-[ext_resource type="Script" path="res://scripts/components/toggleable.gd" id="13_qf1cm"]
 [ext_resource type="AudioStream" uid="uid://kad8o8d6m2ub" path="res://sounds/LEVIER_GJ_MUS_Main_Theme_LP.wav" id="15_p6qek"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="17_lfl27"]
 [ext_resource type="Texture2D" uid="uid://cdepx4hsyo5kh" path="res://materials/BAT.png" id="21_j2d88"]
+[ext_resource type="PackedScene" uid="uid://b3ejfu42t5g02" path="res://gui/bourreau.tscn" id="22_7royu"]
 [ext_resource type="Texture2D" uid="uid://cychrkbb03800" path="res://materials/enn_bat_citrouille.png" id="22_h685u"]
 [ext_resource type="Texture2D" uid="uid://dutqirio1g75y" path="res://materials/enn_citrouille01.png" id="23_5orxp"]
 [ext_resource type="Texture2D" uid="uid://csdky8lro0o22" path="res://textures/enn_spider.png" id="24_bslw4"]
-
-[sub_resource type="Animation" id="Animation_a07gw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("10_ocyo5")]
-}
-
-[sub_resource type="Animation" id="Animation_vn3ui"]
-resource_name = "switch"
-length = 0.20001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [ExtResource("10_ocyo5"), ExtResource("10_mamxs"), ExtResource("12_t227g")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_r5uvx"]
-_data = {
-"RESET": SubResource("Animation_a07gw"),
-"switch": SubResource("Animation_vn3ui")
-}
 
 [sub_resource type="Animation" id="Animation_pmnll"]
 length = 0.001
@@ -215,19 +175,8 @@ alignment = 2
 layout_mode = 2
 theme_override_constants/margin_right = -80
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer/MarginContainer"]
+[node name="Bourreau" parent="CanvasLayer/VBoxContainer/HBoxContainer/MarginContainer" instance=ExtResource("22_7royu")]
 layout_mode = 2
-texture = ExtResource("10_ocyo5")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/VBoxContainer/HBoxContainer/MarginContainer/TextureRect"]
-libraries = {
-"": SubResource("AnimationLibrary_r5uvx")
-}
-
-[node name="Toggleable" type="Node2D" parent="CanvasLayer/VBoxContainer/HBoxContainer/MarginContainer/TextureRect"]
-script = ExtResource("13_qf1cm")
 
 [node name="TransitionOverlay" type="ColorRect" parent="CanvasLayer"]
 unique_name_in_owner = true
@@ -330,6 +279,3 @@ autoplay = true
 script = ExtResource("10_ojnpv")
 
 [connection signal="game_end" from="." to="SceneNavigation" method="go_to" binds= ["res://scenes/end_of_game_menu.tscn"]]
-[connection signal="level_start" from="." to="CanvasLayer/VBoxContainer/HBoxContainer/MarginContainer/TextureRect/AnimationPlayer" method="play" binds= ["RESET"]]
-[connection signal="switched_off" from="CanvasLayer/VBoxContainer/HBoxContainer/MarginContainer/TextureRect/Toggleable" to="CanvasLayer/VBoxContainer/HBoxContainer/MarginContainer/TextureRect/AnimationPlayer" method="play_backwards" binds= ["switch"]]
-[connection signal="switched_on" from="CanvasLayer/VBoxContainer/HBoxContainer/MarginContainer/TextureRect/Toggleable" to="CanvasLayer/VBoxContainer/HBoxContainer/MarginContainer/TextureRect/AnimationPlayer" method="play" binds= ["switch"]]
