@@ -29,6 +29,9 @@ signal body_killed(body: Node2D)
 @export var ignore_groups: Array[StringName]
 
 func _on_body_entered(body: Node2D):
+	if not is_enabled:
+		return
+	
 	for group in ignore_groups:
 		if body.is_in_group(group):
 			return

@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=3 uid="uid://ca50cv03q5j31"]
+
+[ext_resource type="Script" path="res://scenes/elements/bone_collected.gd" id="1_4xs22"]
+[ext_resource type="Texture2D" uid="uid://c6epstetyoo8y" path="res://materials/os.png" id="1_be0sp"]
+[ext_resource type="Texture2D" uid="uid://c8w8tqajmi2p4" path="res://materials/stasis_particle.png" id="1_km8dc"]
+
+[sub_resource type="Gradient" id="Gradient_42kea"]
+offsets = PackedFloat32Array(0.00530504, 1)
+colors = PackedColorArray(0.775, 1, 0.25, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vgo58"]
+gradient = SubResource("Gradient_42kea")
+
+[sub_resource type="Curve" id="Curve_q56xv"]
+_data = [Vector2(0, 0.801752), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cqclh"]
+curve = SubResource("Curve_q56xv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j364n"]
+lifetime_randomness = 0.25
+emission_shape = 1
+emission_sphere_radius = 15.0
+gravity = Vector3(0, 15, 0)
+scale_curve = SubResource("CurveTexture_cqclh")
+color_ramp = SubResource("GradientTexture1D_vgo58")
+
+[node name="BoneCollected" type="Node2D"]
+z_index = 5
+script = ExtResource("1_4xs22")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_be0sp")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_j364n")
+texture = ExtResource("1_km8dc")

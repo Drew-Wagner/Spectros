@@ -41,6 +41,7 @@ func _ready():
 	
 	print(audio_effects_player)
 	OnOff.toggle.connect(play_toggle_sound)
+	%TransitionOverlay.show()
 	start_level()
 
 func next_level():
@@ -71,7 +72,8 @@ func start_level():
 	level = levels[level_index].instantiate() as BaseLevel
 	level.completed.connect(next_level)
 	level.bone_count_updated.connect(bone_collection.on_bone_count_updated)
-	level.bone_collected.connect(bone_collection.on_bone_collected)
+	level.move_bone_to_collection.connect(bone_collection.on_move_bone_to_collection)
+	level.bone_arrived_to_collection.connect(bone_collection.bone_arrived_to_collection)
 	
 	Callable($LevelHolder.add_child).call_deferred(level)
 	Callable(level.propagate_call).call_deferred("set_physics_process", [false])	

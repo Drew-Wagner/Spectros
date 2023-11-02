@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://mambkkt245kn" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_01.wav" id="5_k5x62"]
 [ext_resource type="AudioStream" uid="uid://ota274s1y71i" path="res://sounds/LEVIER_GJ_STATE_Lose.wav" id="6_006ic"]
 [ext_resource type="AudioStream" uid="uid://cwde5p3jhtrdg" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_02.wav" id="6_mcigs"]
-[ext_resource type="AudioStream" uid="uid://ck2sgonakejta" path="res://sounds/LEVIER_GJ_STATE_Countdown.wav" id="7_8gj3s"]
+[ext_resource type="AudioStream" uid="uid://b33bbfl0xsl5r" path="res://sounds/LEVIER_GJ_STATE_Countdown.wav" id="7_8gj3s"]
 [ext_resource type="AudioStream" uid="uid://cslstts0sdh6f" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_03.wav" id="7_s3rb2"]
 [ext_resource type="Texture2D" uid="uid://cf30xyhg4xcvb" path="res://textures/background_flou.png" id="8_6v6g5"]
 [ext_resource type="AudioStream" uid="uid://b2mxcx5osaili" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_04.wav" id="8_fmkyl"]
@@ -229,7 +229,9 @@ libraries = {
 [node name="Toggleable" type="Node2D" parent="CanvasLayer/VBoxContainer/HBoxContainer/MarginContainer/TextureRect"]
 script = ExtResource("13_qf1cm")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="TransitionOverlay" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -237,16 +239,16 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="SceneTransitionAnimPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
+[node name="SceneTransitionAnimPlayer" type="AnimationPlayer" parent="CanvasLayer/TransitionOverlay"]
 unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_8x8ek")
 }
 
-[node name="TransitionParticles" type="Node2D" parent="CanvasLayer/ColorRect"]
+[node name="TransitionParticles" type="Node2D" parent="CanvasLayer/TransitionOverlay"]
 unique_name_in_owner = true
 
-[node name="PumpkinBats" type="CPUParticles2D" parent="CanvasLayer/ColorRect/TransitionParticles"]
+[node name="PumpkinBats" type="CPUParticles2D" parent="CanvasLayer/TransitionOverlay/TransitionParticles"]
 position = Vector2(1920, 490)
 emitting = false
 amount = 20
@@ -264,7 +266,7 @@ linear_accel_max = 1000.0
 radial_accel_min = -80.65
 scale_amount_max = 2.0
 
-[node name="Pumpkins" type="CPUParticles2D" parent="CanvasLayer/ColorRect/TransitionParticles"]
+[node name="Pumpkins" type="CPUParticles2D" parent="CanvasLayer/TransitionOverlay/TransitionParticles"]
 position = Vector2(1920, 490)
 emitting = false
 amount = 20
@@ -281,7 +283,7 @@ initial_velocity_max = 4000.0
 linear_accel_max = 1000.0
 radial_accel_min = -80.65
 
-[node name="Spiders" type="CPUParticles2D" parent="CanvasLayer/ColorRect/TransitionParticles"]
+[node name="Spiders" type="CPUParticles2D" parent="CanvasLayer/TransitionOverlay/TransitionParticles"]
 position = Vector2(-736, -704)
 emitting = false
 amount = 20
@@ -299,7 +301,7 @@ linear_accel_max = 1000.0
 radial_accel_min = -80.65
 scale_amount_max = 3.0
 
-[node name="Bats" type="CPUParticles2D" parent="CanvasLayer/ColorRect/TransitionParticles"]
+[node name="Bats" type="CPUParticles2D" parent="CanvasLayer/TransitionOverlay/TransitionParticles"]
 position = Vector2(1920, 490)
 emitting = false
 amount = 20
