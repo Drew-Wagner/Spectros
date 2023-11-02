@@ -39,7 +39,6 @@ func _ready():
 	audio_effects_player = player.get_stream_playback()
 	audio_effects_player.play_stream(music)
 	
-	print(audio_effects_player)
 	OnOff.toggle.connect(play_toggle_sound)
 	%TransitionOverlay.show()
 	start_level()

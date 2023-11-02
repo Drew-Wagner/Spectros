@@ -39,4 +39,3 @@ func move_to_collection_slot(slot: BoneIcon):
 	
 	target_direction = (target_position - global_position).normalized()
 	initial_distance = (target_position - global_position).length()
-	print(target_direction, ", ", initial_distance)
