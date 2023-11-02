@@ -1,8 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://chv82bw6fflfk"]
+[gd_scene load_steps=10 format=3 uid="uid://chv82bw6fflfk"]
 
 [ext_resource type="Script" path="res://gui/bone_icon.gd" id="1_k4y4x"]
 [ext_resource type="Texture2D" uid="uid://ci706pxpnh80" path="res://materials/os_slots.png" id="2_ive2m"]
 [ext_resource type="Texture2D" uid="uid://dlqrse0jmsug" path="res://materials/os_slots_empty.png" id="3_rxnix"]
+[ext_resource type="Texture2D" uid="uid://c8w8tqajmi2p4" path="res://materials/stasis_particle.png" id="4_1js33"]
+
+[sub_resource type="Gradient" id="Gradient_5ncoh"]
+colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u5pm7"]
+gradient = SubResource("Gradient_5ncoh")
+
+[sub_resource type="Curve" id="Curve_vpauq"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.148762, 3), 0.0, 0.0, 0, 0, Vector2(0.998859, 0.5), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8ak2w"]
+curve = SubResource("Curve_vpauq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_knsfc"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 5.0
+emission_ring_inner_radius = 0.0
+particle_flag_align_y = true
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 300, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = 100.0
+linear_accel_max = 100.0
+radial_accel_min = 500.0
+radial_accel_max = 500.0
+scale_curve = SubResource("CurveTexture_8ak2w")
+color_ramp = SubResource("GradientTexture1D_u5pm7")
+turbulence_noise_strength = 9.0
 
 [node name="BoneIcon" type="TextureRect"]
 custom_minimum_size = Vector2(128, 128)
@@ -14,3 +51,15 @@ expand_mode = 3
 stretch_mode = 5
 script = ExtResource("1_k4y4x")
 bone_full_texture = ExtResource("2_ive2m")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(80, 64)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_knsfc")
+texture = ExtResource("4_1js33")
+lifetime = 1.5
+one_shot = true
+preprocess = 0.1
+speed_scale = 2.5
+explosiveness = 1.0

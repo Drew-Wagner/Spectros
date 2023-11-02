@@ -61,6 +61,12 @@ position = Vector2(1056, 928)
 [node name="Bone" parent="Bones" instance=ExtResource("3_rw3hl")]
 position = Vector2(768, 720)
 
+[node name="Bone2" parent="Bones" instance=ExtResource("3_rw3hl")]
+position = Vector2(1024, 720)
+
+[node name="Bone3" parent="Bones" instance=ExtResource("3_rw3hl")]
+position = Vector2(384, 720)
+
 [node name="Enemies" type="Node" parent="."]
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
