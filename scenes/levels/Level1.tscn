@@ -24,7 +24,43 @@ position = Vector2(960, 576)
 shape = SubResource("RectangleShape2D_emyvp")
 debug_color = Color(0, 0.647059, 0.760784, 0.419608)
 
-[node name="DynamicEnvironment" type="Node" parent="."]
+[node name="Toggleables" type="Node" parent="."]
+
+[node name="Platform" parent="Toggleables" instance=ExtResource("8_tl78t")]
+position = Vector2(640, 736)
+is_autonomous = false
+is_toggleable = true
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(-2, 0)])
+texture = ExtResource("9_74amt")
+top_texture = ExtResource("10_73wi0")
+
+[node name="Platform4" parent="Toggleables" instance=ExtResource("8_tl78t")]
+position = Vector2(1152, 736)
+is_autonomous = false
+is_toggleable = true
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(2, 0)])
+texture = ExtResource("9_74amt")
+top_texture = ExtResource("10_73wi0")
+
+[node name="Platform2" parent="Toggleables" instance=ExtResource("8_tl78t")]
+position = Vector2(800, 640)
+is_autonomous = false
+is_toggleable = true
+width = 1
+height = 2
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -2)])
+texture = ExtResource("9_74amt")
+bottom_texture = ExtResource("10_73wi0")
+
+[node name="Platform3" parent="Toggleables" instance=ExtResource("8_tl78t")]
+position = Vector2(992, 512)
+is_autonomous = false
+is_toggleable = true
+width = 1
+height = 2
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, 2)])
+texture = ExtResource("9_74amt")
+bottom_texture = ExtResource("10_73wi0")
 
 [node name="StaticEnvironment" type="TileMap" parent="."]
 position = Vector2(896, 448)
@@ -52,50 +88,12 @@ position = Vector2(1184, 864)
 [node name="Bone" parent="Bones" instance=ExtResource("3_rw3hl")]
 position = Vector2(896, 656)
 
-[node name="Enemies" type="Node" parent="."]
-
 [node name="SpawnPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(256, 704)
 
 [node name="FinishArea" parent="." instance=ExtResource("7_2r3bn")]
 position = Vector2(1440, 640)
-
-[node name="Platform" parent="." instance=ExtResource("8_tl78t")]
-position = Vector2(640, 736)
-is_autonomous = false
-is_toggleable = true
-waypoints = Array[Vector2]([Vector2(0, 0), Vector2(-2, 0)])
-texture = ExtResource("9_74amt")
-top_texture = ExtResource("10_73wi0")
-
-[node name="Platform4" parent="." instance=ExtResource("8_tl78t")]
-position = Vector2(1152, 736)
-is_autonomous = false
-is_toggleable = true
-waypoints = Array[Vector2]([Vector2(0, 0), Vector2(2, 0)])
-texture = ExtResource("9_74amt")
-top_texture = ExtResource("10_73wi0")
-
-[node name="Platform2" parent="." instance=ExtResource("8_tl78t")]
-position = Vector2(800, 640)
-is_autonomous = false
-is_toggleable = true
-width = 1
-height = 2
-waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -2)])
-texture = ExtResource("9_74amt")
-bottom_texture = ExtResource("10_73wi0")
-
-[node name="Platform3" parent="." instance=ExtResource("8_tl78t")]
-position = Vector2(992, 512)
-is_autonomous = false
-is_toggleable = true
-width = 1
-height = 2
-waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, 2)])
-texture = ExtResource("9_74amt")
-bottom_texture = ExtResource("10_73wi0")
 
 [node name="Door" parent="." instance=ExtResource("9_a1rtt")]
 position = Vector2(1376, 608)

@@ -1,19 +1,25 @@
 class_name Collectible
 extends Node2D
 
-signal collected()
+signal collected(collectible: Collectible)
 
 @export var reward_sound: AudioStream
 @export var reward_sound_random_array: Array[AudioStream]
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
+var is_collected = false
+
 func _ready():
 	pass
 
 func _on_area_2d_body_entered(body):
+	if is_collected:
+		return
+	
 	if body is MainCharacter:
+		is_collected = true
 		hide()
-		collected.emit()
+		collected.emit(self)
 
 		var sound_length = reward_sound.get_length()
 		if reward_sound:

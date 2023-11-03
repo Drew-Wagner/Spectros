@@ -19,7 +19,7 @@ visible = false
 shape = SubResource("RectangleShape2D_emyvp")
 debug_color = Color(0, 0.647059, 0.760784, 0.419608)
 
-[node name="DynamicEnvironment" type="Node" parent="."]
+[node name="Toggleables" type="Node" parent="."]
 
 [node name="StaticEnvironment" type="TileMap" parent="."]
 position = Vector2(896, 512)

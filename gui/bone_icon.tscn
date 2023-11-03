@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://chv82bw6fflfk"]
+[gd_scene load_steps=11 format=3 uid="uid://chv82bw6fflfk"]
 
 [ext_resource type="Script" path="res://gui/bone_icon.gd" id="1_k4y4x"]
 [ext_resource type="Texture2D" uid="uid://ci706pxpnh80" path="res://materials/os_slots.png" id="2_ive2m"]
 [ext_resource type="Texture2D" uid="uid://dlqrse0jmsug" path="res://materials/os_slots_empty.png" id="3_rxnix"]
+[ext_resource type="PackedScene" uid="uid://ca50cv03q5j31" path="res://scenes/elements/bone_collected.tscn" id="3_uw3rs"]
 [ext_resource type="Texture2D" uid="uid://c8w8tqajmi2p4" path="res://materials/stasis_particle.png" id="4_1js33"]
 
 [sub_resource type="Gradient" id="Gradient_5ncoh"]
@@ -50,6 +51,7 @@ texture = ExtResource("3_rxnix")
 expand_mode = 3
 stretch_mode = 5
 script = ExtResource("1_k4y4x")
+bone_collected_scene = ExtResource("3_uw3rs")
 bone_full_texture = ExtResource("2_ive2m")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
