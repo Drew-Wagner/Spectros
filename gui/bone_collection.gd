@@ -26,22 +26,8 @@ func on_bone_count_updated(value: int):
 		bone_icons.append(bone_icon_instance)
 
 
-func on_move_bone_to_collection(bone: BoneCollected):
+func on_bone_collected(bone: Collectible):
 	var bone_index = bone_amount - bones_collected_amount - 1 - bones_in_collection_progress
-	var slot = bone_icons[bone_index]
-	bones_in_collection_progress += 1
-	bone.move_to_collection_slot(slot)
-
-func bone_arrived_to_collection():
-	_turn_on_bone_by_number(bones_collected_amount)
+	var bone_icon = bone_icons[bone_index]
+	bone_icon.start_collect_bone(bone)
 	bones_collected_amount += 1
-	bones_in_collection_progress -= 1
-
-
-func _turn_on_bone_by_number(number: int):
-	var bone_index = bone_amount - number - 1
-	
-	if bone_index < 0:
-		return
-		
-	bone_icons[bone_index].set_full_texture()

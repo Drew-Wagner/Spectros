@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://ca50cv03q5j31"]
+[gd_scene load_steps=8 format=3 uid="uid://ca50cv03q5j31"]
 
-[ext_resource type="Script" path="res://scenes/elements/bone_collected.gd" id="1_4xs22"]
 [ext_resource type="Texture2D" uid="uid://c6epstetyoo8y" path="res://materials/os.png" id="1_be0sp"]
 [ext_resource type="Texture2D" uid="uid://c8w8tqajmi2p4" path="res://materials/stasis_particle.png" id="1_km8dc"]
 
@@ -28,7 +27,6 @@ color_ramp = SubResource("GradientTexture1D_vgo58")
 
 [node name="BoneCollected" type="Node2D"]
 z_index = 5
-script = ExtResource("1_4xs22")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_be0sp")

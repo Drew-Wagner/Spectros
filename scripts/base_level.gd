@@ -3,11 +3,9 @@ class_name BaseLevel
 extends Node2D
 
 signal completed()
-signal bone_collected()
+signal bone_collected(bone: Collectible)
 signal all_bones_collected()
 signal bone_count_updated(value: int)
-signal move_bone_to_collection(bone: BoneCollected)
-signal bone_arrived_to_collection()
 
 var bones_remaining: int
 
@@ -25,7 +23,6 @@ func _ready():
 		if bone is Collectible and not Engine.is_editor_hint():
 			n_bones += 1
 			bone.collected.connect(_on_bone_collected)
-			bone.move_bone_to_collection_event.connect(_move_bone_to_collection)
 	
 	bones_remaining = n_bones
 	bone_count_updated.emit(bones_remaining)
@@ -33,19 +30,11 @@ func _ready():
 	_connect_listeners()
 	_connect_finish_area()
 
-func _on_bone_collected():
+func _on_bone_collected(bone: Collectible):
 	bones_remaining -= 1
-	bone_collected.emit()
+	bone_collected.emit(bone)
 	if bones_remaining == 0:
 		all_bones_collected.emit()
-
-func _move_bone_to_collection(bone: BoneCollected):
-	bone.bone_arrived_to_collection.connect(on_bone_arrived_to_collection)
-	move_bone_to_collection.emit(bone)
-
-
-func on_bone_arrived_to_collection():
-	bone_arrived_to_collection.emit()
 
 func _on_finish_area_body_entered(body):
 	if not body is MainCharacter:
