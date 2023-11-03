@@ -58,10 +58,10 @@ var waypoints_in_pixels: Array[Vector2] = [Vector2.ZERO]:
 
 var target: Vector2
 
-var width_pixels: int:
+var width_pixels: float:
 	get:
 		return texture.get_width() * width if texture else 0
-var height_pixels: int:
+var height_pixels: float:
 	get:
 		return texture.get_height() * height if texture else 0
 
@@ -154,8 +154,8 @@ func _set_sprite2d_region():
 	sprite2D.region_rect = Rect2i(
 		0,
 		0,
-		width_pixels,
-		height_pixels)
+		int(width_pixels),
+		int(height_pixels))
 
 func _set_collision_shape_size():
 	if !collisionShape2D:
