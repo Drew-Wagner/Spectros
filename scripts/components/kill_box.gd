@@ -23,15 +23,15 @@ signal body_killed(body: Node2D)
 ## Whether or not the kill box is enabled or not
 ##
 ## When disabled, bodies which enter the area will not be killed.
-@export var is_enabled: bool = true
+@export var is_enabled: bool = true:
+	set(value):
+		is_enabled = value
+		monitoring = value
 
 ## Bodies in any of these groups will not be killed.
 @export var ignore_groups: Array[StringName]
 
-func _on_body_entered(body: Node2D):
-	if not is_enabled:
-		return
-	
+func _on_body_entered(body: Node2D):	
 	for group in ignore_groups:
 		if body.is_in_group(group):
 			return

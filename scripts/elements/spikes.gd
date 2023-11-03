@@ -8,6 +8,7 @@ extends Node2D
 			await ready
 		_toggle.is_player_toggleable = is_player_toggleable
 		queue_redraw()
+
 @export var is_on: bool = true:
 	set(value):
 		is_on = value

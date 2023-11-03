@@ -22,6 +22,7 @@ is_player_toggleable = false
 is_on = true
 
 [node name="KillBox" parent="." instance=ExtResource("2_4wj46")]
+ignore_groups = Array[StringName]([])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillBox"]
 position = Vector2(0, 25.5)
