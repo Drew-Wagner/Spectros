@@ -7,6 +7,7 @@ extends Node2D
 		if not is_node_ready():
 			await ready
 		_toggle.is_player_toggleable = is_player_toggleable
+		queue_redraw()
 @export var is_on: bool = true:
 	set(value):
 		is_on = value
@@ -36,6 +37,6 @@ func _on_toggle_switched_on():
 func _draw():
 	if Engine.is_editor_hint() and is_player_toggleable:
 		_systemFont.font_names = ["monospace"]
-		draw_string(_systemFont, 32 * Vector2.LEFT, "↕", HORIZONTAL_ALIGNMENT_CENTER, 64, 32)
+		draw_string(_systemFont, 32 * Vector2.LEFT, "tog", HORIZONTAL_ALIGNMENT_CENTER, 64, 32)
 
 static var _systemFont: SystemFont = SystemFont.new()

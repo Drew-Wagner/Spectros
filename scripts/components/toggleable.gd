@@ -37,7 +37,7 @@ signal physics_process_off(delta: float)
 		is_on = value
 
 func _ready():
-	if is_player_toggleable:
+	if is_player_toggleable and not Engine.is_editor_hint():
 		OnOff.toggle.connect(toggle)
 
 

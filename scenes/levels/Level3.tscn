@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dvwy8al6vu40d"]
+[gd_scene load_steps=16 format=3 uid="uid://dvwy8al6vu40d"]
 
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_p1cje"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_qaaas"]
@@ -18,29 +18,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
 size = Vector2(1792, 1024)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx1p3"]
-size = Vector2(384, 512)
-
 [node name="Level" type="Node2D"]
-position = Vector2(896, 512)
 script = ExtResource("1_p1cje")
 
 [node name="LevelArea" type="Area2D" parent="."]
+visible = false
+position = Vector2(960, 576)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelArea"]
 shape = SubResource("RectangleShape2D_emyvp")
 debug_color = Color(0, 0.647059, 0.760784, 0.419608)
 
-[node name="BourreauArea" type="Area2D" parent="."]
-position = Vector2(704, 256)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BourreauArea"]
-shape = SubResource("RectangleShape2D_wx1p3")
-debug_color = Color(0.941176, 0, 0, 0.419608)
-
 [node name="DynamicEnvironment" type="Node" parent="."]
 
 [node name="StaticEnvironment" type="TileMap" parent="."]
+position = Vector2(896, 512)
 tile_set = ExtResource("2_qaaas")
 format = 2
 layer_0/z_index = 1
@@ -49,18 +41,18 @@ layer_0/tile_data = PackedInt32Array(-393229, 3, 0, -393228, 3, 0, -393227, 3, 0
 [node name="Bones" type="Node" parent="."]
 
 [node name="Bone" parent="Bones" instance=ExtResource("3_4mf6x")]
-position = Vector2(608, 344)
+position = Vector2(608, 336)
 
 [node name="Bone2" parent="Bones" instance=ExtResource("3_4mf6x")]
-position = Vector2(1056, 288)
+position = Vector2(1056, 272)
 
 [node name="Bone3" parent="Bones" instance=ExtResource("3_4mf6x")]
-position = Vector2(1440, 416)
+position = Vector2(1440, 400)
 
 [node name="Enemies" type="Node" parent="."]
 
 [node name="EnemyBat" parent="Enemies" instance=ExtResource("4_jtrpp")]
-position = Vector2(208, 344)
+position = Vector2(224, 344)
 
 [node name="EnemySpider" parent="Enemies" instance=ExtResource("3_bylox")]
 position = Vector2(928, 160)
@@ -127,24 +119,21 @@ texture = ExtResource("10_m6pvq")
 top_texture = ExtResource("11_dr7lh")
 
 [node name="StasisField" parent="." instance=ExtResource("6_h0qxl")]
-position = Vector2(224, -288)
+position = Vector2(1120, 224)
 rotation = -3.14159
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-416, -64)
+position = Vector2(480, 448)
 
 [node name="FinishArea" parent="." instance=ExtResource("12_ju5uy")]
-position = Vector2(864, -128)
+position = Vector2(1696, 392)
 
-[node name="Platform" parent="." instance=ExtResource("15_mpol2")]
-position = Vector2(800, -160)
-
-[node name="Spikes" parent="." instance=ExtResource("5_3yoxd")]
-position = Vector2(288, -64)
+[node name="Door" parent="." instance=ExtResource("15_mpol2")]
+position = Vector2(1632, 352)
 
 [node name="Spikes2" parent="." instance=ExtResource("5_3yoxd")]
-position = Vector2(288, -96)
+position = Vector2(1184, 416)
 is_player_toggleable = true
 is_on = false
 
