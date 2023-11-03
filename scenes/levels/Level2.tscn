@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqm3usquyv1l4"]
+[gd_scene load_steps=12 format=3 uid="uid://dqm3usquyv1l4"]
 
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_ofp7a"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_icp6s"]
@@ -14,29 +14,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
 size = Vector2(1792, 1024)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx1p3"]
-size = Vector2(384, 512)
-
 [node name="Level" type="Node2D"]
-position = Vector2(896, 512)
 script = ExtResource("1_ofp7a")
 
 [node name="LevelArea" type="Area2D" parent="."]
+visible = false
+position = Vector2(960, 576)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelArea"]
 shape = SubResource("RectangleShape2D_emyvp")
 debug_color = Color(0, 0.647059, 0.760784, 0.419608)
 
-[node name="BourreauArea" type="Area2D" parent="."]
-position = Vector2(704, 256)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BourreauArea"]
-shape = SubResource("RectangleShape2D_wx1p3")
-debug_color = Color(0.941176, 0, 0, 0.419608)
-
 [node name="DynamicEnvironment" type="Node" parent="."]
 
 [node name="StaticEnvironment" type="TileMap" parent="."]
+position = Vector2(896, 512)
 tile_set = ExtResource("2_icp6s")
 format = 2
 layer_0/z_index = 1
@@ -51,10 +43,10 @@ position = Vector2(1088, 736)
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-672, 256)
+position = Vector2(224, 768)
 
 [node name="EnemyBat" parent="." instance=ExtResource("4_uwm6b")]
-position = Vector2(352, 216)
+position = Vector2(1280, 728)
 moveSpeed = 150.0
 
 [node name="Interactables" type="Node" parent="."]
@@ -116,9 +108,9 @@ position = Vector2(736, 928)
 position = Vector2(800, 928)
 
 [node name="FinishArea" parent="." instance=ExtResource("8_oiy8w")]
-position = Vector2(-800, 192)
+position = Vector2(96, 704)
 
-[node name="Platform" parent="." instance=ExtResource("10_yotup")]
-position = Vector2(-736, 160)
+[node name="Door" parent="." instance=ExtResource("10_yotup")]
+position = Vector2(160, 672)
 
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]

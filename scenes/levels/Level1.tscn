@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://36dkaner3txs"]
+[gd_scene load_steps=11 format=3 uid="uid://36dkaner3txs"]
 
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_n2mvg"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_noqvc"]
@@ -13,30 +13,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
 size = Vector2(1792, 1024)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx1p3"]
-size = Vector2(384, 512)
-
 [node name="Level" type="Node2D"]
-position = Vector2(896, 512)
 script = ExtResource("1_n2mvg")
 
 [node name="LevelArea" type="Area2D" parent="."]
+visible = false
+position = Vector2(960, 576)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelArea"]
 shape = SubResource("RectangleShape2D_emyvp")
 debug_color = Color(0, 0.647059, 0.760784, 0.419608)
 
-[node name="BourreauArea" type="Area2D" parent="."]
-position = Vector2(704, 256)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BourreauArea"]
-shape = SubResource("RectangleShape2D_wx1p3")
-debug_color = Color(0.941176, 0, 0, 0.419608)
-
 [node name="DynamicEnvironment" type="Node" parent="."]
 
 [node name="StaticEnvironment" type="TileMap" parent="."]
-position = Vector2(-128, 0)
+position = Vector2(896, 448)
 tile_set = ExtResource("2_noqvc")
 format = 2
 layer_0/z_index = 1
@@ -45,43 +36,33 @@ layer_0/tile_data = PackedInt32Array(-65529, 3, 0, -131065, 3, 0, -196601, 65539
 [node name="Hazards" type="Node" parent="."]
 
 [node name="Spikes" parent="Hazards" instance=ExtResource("3_uppur")]
-position = Vector2(352, 928)
+position = Vector2(480, 864)
 
 [node name="Spikes2" parent="Hazards" instance=ExtResource("3_uppur")]
-position = Vector2(416, 928)
+position = Vector2(544, 864)
 
 [node name="Spikes3" parent="Hazards" instance=ExtResource("3_uppur")]
-position = Vector2(992, 928)
+position = Vector2(1120, 864)
 
 [node name="Spikes4" parent="Hazards" instance=ExtResource("3_uppur")]
-position = Vector2(1056, 928)
+position = Vector2(1184, 864)
 
 [node name="Bones" type="Node" parent="."]
 
 [node name="Bone" parent="Bones" instance=ExtResource("3_rw3hl")]
-position = Vector2(768, 720)
+position = Vector2(896, 656)
 
 [node name="Enemies" type="Node" parent="."]
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-704, 256)
-
-[node name="Interactables" type="Node" parent="."]
-
-[node name="Node" type="Node" parent="Interactables"]
-
-[node name="Node2" type="Node" parent="Interactables"]
-
-[node name="Node3" type="Node" parent="Interactables"]
-
-[node name="Node4" type="Node" parent="Interactables"]
+position = Vector2(256, 704)
 
 [node name="FinishArea" parent="." instance=ExtResource("7_2r3bn")]
-position = Vector2(416, 192)
+position = Vector2(1440, 640)
 
 [node name="Platform" parent="." instance=ExtResource("8_tl78t")]
-position = Vector2(-384, 288)
+position = Vector2(640, 736)
 is_autonomous = false
 is_toggleable = true
 waypoints = Array[Vector2]([Vector2(0, 0), Vector2(-2, 0)])
@@ -89,7 +70,7 @@ texture = ExtResource("9_74amt")
 top_texture = ExtResource("10_73wi0")
 
 [node name="Platform4" parent="." instance=ExtResource("8_tl78t")]
-position = Vector2(128, 288)
+position = Vector2(1152, 736)
 is_autonomous = false
 is_toggleable = true
 waypoints = Array[Vector2]([Vector2(0, 0), Vector2(2, 0)])
@@ -97,7 +78,7 @@ texture = ExtResource("9_74amt")
 top_texture = ExtResource("10_73wi0")
 
 [node name="Platform2" parent="." instance=ExtResource("8_tl78t")]
-position = Vector2(-224, 192)
+position = Vector2(800, 640)
 is_autonomous = false
 is_toggleable = true
 width = 1
@@ -107,7 +88,7 @@ texture = ExtResource("9_74amt")
 bottom_texture = ExtResource("10_73wi0")
 
 [node name="Platform3" parent="." instance=ExtResource("8_tl78t")]
-position = Vector2(-32, 64)
+position = Vector2(992, 512)
 is_autonomous = false
 is_toggleable = true
 width = 1
@@ -116,7 +97,7 @@ waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, 2)])
 texture = ExtResource("9_74amt")
 bottom_texture = ExtResource("10_73wi0")
 
-[node name="Platform5" parent="." instance=ExtResource("9_a1rtt")]
-position = Vector2(352, 160)
+[node name="Door" parent="." instance=ExtResource("9_a1rtt")]
+position = Vector2(1376, 608)
 
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]
