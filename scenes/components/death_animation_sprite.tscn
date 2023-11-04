@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cobiuq4txnvry"]
+
+[ext_resource type="Shader" path="res://shaders/death_animation.gdshader" id="1_a727j"]
+[ext_resource type="Script" path="res://scenes/components/death_animation_sprite.gd" id="3_yp73q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ntovt"]
+shader = ExtResource("1_a727j")
+shader_parameter/speed = 3.0
+
+[node name="DeathAnimation" type="Sprite2D"]
+z_index = 10
+material = SubResource("ShaderMaterial_ntovt")
+script = ExtResource("3_yp73q")

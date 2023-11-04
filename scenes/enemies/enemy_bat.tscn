@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://xynpr4h0gdnx"]
+[gd_scene load_steps=8 format=3 uid="uid://xynpr4h0gdnx"]
 
 [ext_resource type="Script" path="res://scenes/enemies/moving_enemy.gd" id="1_tprjj"]
 [ext_resource type="Texture2D" uid="uid://cdepx4hsyo5kh" path="res://materials/BAT.png" id="2_ak3bj"]
 [ext_resource type="PackedScene" uid="uid://cvmv0ubhebeb7" path="res://scenes/components/kill_box.tscn" id="3_bc6vy"]
+[ext_resource type="Script" path="res://scenes/components/death_animation.gd" id="4_a7fxo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yjexl"]
 radius = 18.0
@@ -38,5 +39,11 @@ texture = ExtResource("2_ak3bj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 9)
 shape = SubResource("CapsuleShape2D_yaoic")
+
+[node name="DeathAnimation" type="Node" parent="."]
+script = ExtResource("4_a7fxo")
+sprite_texture = ExtResource("2_ak3bj")
+scale_modifier_x = 0.121
+scale_modifier_y = 0.121
 
 [connection signal="squished" from="." to="." method="_on_squished"]
