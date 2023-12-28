@@ -63,9 +63,6 @@ position = Vector2(256, 920)
 position = Vector2(736, 416)
 descend_wait_time = 1.25
 
-[node name="Spikes" parent="Enemies" instance=ExtResource("4_uyd1a")]
-position = Vector2(1440, 352)
-
 [node name="EnemyBat" parent="Enemies" instance=ExtResource("8_obauu")]
 position = Vector2(1360, 920)
 moveSpeed = 128.0
@@ -103,7 +100,7 @@ is_on = false
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(232, 192)
+position = Vector2(256, 192)
 
 [node name="DynamicEnvironment" type="Node" parent="."]
 
@@ -133,7 +130,7 @@ top_texture = ExtResource("14_htp2h")
 position = Vector2(1344, 864)
 is_autonomous = false
 is_toggleable = true
-waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -7)])
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -7), Vector2(8, -7)])
 texture = ExtResource("13_k8utg")
 top_texture = ExtResource("14_htp2h")
 
