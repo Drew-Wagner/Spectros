@@ -22,7 +22,6 @@ signal squished()
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var in_stasis = false
-var was_on_wall_last_frame = false
 
 func _physics_process(delta):
 	if Engine.is_editor_hint(): return  # disables movement in the editor
@@ -33,14 +32,10 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	
-	
-	if is_on_wall():
-		if was_on_wall_last_frame:
+	elif is_on_wall():
+		var wall_normal = get_wall_normal()
+		if get_real_velocity().dot(wall_normal) < 0:  # Velocity is pointing into the wall
 			isLookingRight = !isLookingRight
-		was_on_wall_last_frame = true
-	else:
-		was_on_wall_last_frame = false
 
 	var direction = 1 if isLookingRight else -1
 	
