@@ -7,4 +7,4 @@
 script = ExtResource("1_17t0s")
 name = &"ambiance"
 stream = ExtResource("2_cl3ho")
-volume_db = 0.0
+volume_db = -6.0

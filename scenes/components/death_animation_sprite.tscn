@@ -17,6 +17,8 @@ material = SubResource("ShaderMaterial_ntovt")
 script = ExtResource("3_yp73q")
 
 [node name="MonsterDie" type="AudioStreamPlayer" parent="."]
+volume_db = -3.5
+pitch_scale = 1.5
 script = ExtResource("3_3hm15")
 sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("4_40kkc"), ExtResource("5_bcjci"), ExtResource("6_qpg03")])
 

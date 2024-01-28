@@ -67,6 +67,8 @@ speed_scale = 2.5
 explosiveness = 1.0
 
 [node name="Bonus" type="AudioStreamPlayer" parent="."]
+volume_db = -4.0
+pitch_scale = 1.7
 script = ExtResource("6_v8rw5")
 sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("7_p0xfe")])
 

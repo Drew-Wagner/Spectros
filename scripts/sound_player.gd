@@ -11,7 +11,7 @@ func play_by_name(name:StringName):
 	play_sound(sound)
 
 func play_sound(sound:Sound):
-	get_stream_playback().play_stream(sound.stream,0,sound.volume_db)
+	get_stream_playback().play_stream(sound.stream,0,sound.volume_db+volume_db,sound.pitch*pitch_scale)
 
 func play_all():
 	for sound in sounds:

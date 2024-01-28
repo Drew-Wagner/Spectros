@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_rnd3o"]
 [ext_resource type="PackedScene" uid="uid://hdpa1pk2842f" path="res://scenes/levels/Level5.tscn" id="2_2mmbw"]
 [ext_resource type="PackedScene" uid="uid://dmb6yaqqbdgor" path="res://scenes/levels/Level4.tscn" id="2_eublf"]
-[ext_resource type="PackedScene" path="res://scenes/levels/Level6.tscn" id="2_fsd4f"]
+[ext_resource type="PackedScene" uid="uid://ccwn4mff4x5fy" path="res://scenes/levels/Level6.tscn" id="2_fsd4f"]
 [ext_resource type="PackedScene" uid="uid://dqm3usquyv1l4" path="res://scenes/levels/Level2.tscn" id="2_g42qk"]
 [ext_resource type="PackedScene" uid="uid://dvwy8al6vu40d" path="res://scenes/levels/Level3.tscn" id="2_jjbby"]
 [ext_resource type="PackedScene" uid="uid://36dkaner3txs" path="res://scenes/levels/Level1.tscn" id="2_t4unh"]
 [ext_resource type="PackedScene" uid="uid://bxhcsdlxckv2k" path="res://scenes/main_character.tscn" id="5_iqaxe"]
-[ext_resource type="PackedScene" path="res://scenes/levels/Level7.tscn" id="8_xeafq"]
+[ext_resource type="PackedScene" uid="uid://beutpnta82ne4" path="res://scenes/levels/Level7.tscn" id="8_xeafq"]
 [ext_resource type="PackedScene" uid="uid://cxxbjbc1q5rmg" path="res://gui/bone_collection.tscn" id="9_0rnu1"]
 [ext_resource type="Script" path="res://scripts/components/scene_navigation.gd" id="10_ojnpv"]
 [ext_resource type="Texture2D" uid="uid://ceayc8iwia132" path="res://materials/environment/decor2floudark.png" id="20_b6r7i"]
@@ -274,6 +274,7 @@ script = ExtResource("10_ojnpv")
 script = ExtResource("29_ssy81")
 
 [node name="Switch" type="AudioStreamPlayer" parent="AudioFoley"]
+volume_db = -2.0
 script = ExtResource("29_ssy81")
 sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("29_al1yq"), ExtResource("30_dgmef")])
 
@@ -281,6 +282,7 @@ sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("29_al1yq"), Ext
 script = ExtResource("29_xq1om")
 
 [node name="HeadmanGrowl" type="AudioStreamPlayer" parent="AudioFoley/Switch"]
+volume_db = -1.5
 script = ExtResource("29_ssy81")
 sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("26_hs8cx"), ExtResource("27_q5i1i"), ExtResource("28_ubhcj"), ExtResource("29_0gaiq"), ExtResource("30_bhajg"), ExtResource("31_3byuh")])
 
@@ -291,10 +293,12 @@ sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("29_7dopt")])
 [node name="AudioSFX" type="Node" parent="."]
 
 [node name="Transition" type="AudioStreamPlayer" parent="AudioSFX"]
+volume_db = 1.0
 script = ExtResource("29_ssy81")
 sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("29_lwo1i"), ExtResource("30_ysmyg")])
 
 [node name="Win" type="AudioStreamPlayer" parent="AudioSFX"]
+volume_db = -1.0
 script = ExtResource("29_ssy81")
 sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("30_ax44j")])
 

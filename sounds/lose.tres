@@ -7,4 +7,5 @@
 script = ExtResource("1_5laqp")
 name = &"lose"
 stream = ExtResource("2_phh7d")
-volume_db = 0.0
+volume_db = -5.0
+pitch = 1.0

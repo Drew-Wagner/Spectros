@@ -20,7 +20,7 @@ gradient = SubResource("Gradient_janw7")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ojm2u"]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(30, 120, 1)
+emission_box_extents = Vector3(30, 90, 1)
 direction = Vector3(0, 1, 0)
 spread = 0.0
 initial_velocity_min = 1.0
@@ -61,6 +61,7 @@ preprocess = 3.0
 texture = ExtResource("2_y7bsm")
 
 [node name="ForceField" type="AudioStreamPlayer" parent="."]
+volume_db = 1.0
 script = ExtResource("7_xp6os")
 sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("8_q6fra"), ExtResource("9_ncy1q")])
 

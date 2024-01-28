@@ -117,7 +117,7 @@ libraries = {
 autoplay = "Hover"
 
 [node name="BonesPick" type="AudioStreamPlayer" parent="."]
-volume_db = 3.0
+volume_db = -2.0
 script = ExtResource("9_0yhr4")
 sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("10_1ba5o"), ExtResource("11_axgf2"), ExtResource("12_0ybiq"), ExtResource("13_63bd6")])
 
