@@ -146,9 +146,8 @@ func _draw():
 
 
 func _set_sprite2d_region():
-	if !sprite2D:
-		Callable(_set_sprite2d_region).call_deferred()
-		return
+	if not is_node_ready():
+		await ready
 
 	sprite2D.texture = texture
 	sprite2D.region_rect = Rect2i(
@@ -158,8 +157,7 @@ func _set_sprite2d_region():
 		int(height_pixels))
 
 func _set_collision_shape_size():
-	if !collisionShape2D:
-		Callable(_set_collision_shape_size).call_deferred()
-		return
+	if not is_node_ready():
+		await ready
 	
 	collisionShape2D.shape.set_size(Vector2(width_pixels, height_pixels))
