@@ -4,7 +4,6 @@
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_qaaas"]
 [ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="3_4mf6x"]
 [ext_resource type="PackedScene" uid="uid://bth5xo6bxskba" path="res://scenes/enemies/enemy_spider.tscn" id="3_bylox"]
-[ext_resource type="PackedScene" uid="uid://xynpr4h0gdnx" path="res://scenes/enemies/enemy_bat.tscn" id="4_jtrpp"]
 [ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/enemies/spikes.tscn" id="5_3yoxd"]
 [ext_resource type="PackedScene" uid="uid://ck2m2kpsthl3l" path="res://scenes/elements/stasis_field.tscn" id="6_h0qxl"]
 [ext_resource type="PackedScene" uid="uid://cjcnnvu3yseel" path="res://scenes/elements/platform.tscn" id="7_fpliy"]
@@ -13,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://2jhvjjxsmgh4" path="res://materials/platform_orange_thin.png" id="10_2docx"]
 [ext_resource type="Texture2D" uid="uid://d2iwhh2by5hbq" path="res://materials/platform_orange_thin_border.png" id="11_2wxps"]
 [ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="12_ju5uy"]
+[ext_resource type="Texture2D" uid="uid://cychrkbb03800" path="res://materials/enn_bat_citrouille.png" id="15_727cr"]
 [ext_resource type="PackedScene" uid="uid://5c5yr0a1a575" path="res://scenes/elements/exit-door.tscn" id="15_mpol2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
@@ -50,10 +50,6 @@ position = Vector2(1056, 272)
 position = Vector2(1440, 400)
 
 [node name="Enemies" type="Node" parent="."]
-
-[node name="EnemyBat" parent="Enemies" instance=ExtResource("4_jtrpp")]
-position = Vector2(224, 344)
-moveSpeed = 64.0
 
 [node name="EnemySpider" parent="Enemies" instance=ExtResource("3_bylox")]
 position = Vector2(928, 160)
@@ -138,5 +134,13 @@ position = Vector2(1632, 352)
 position = Vector2(1184, 416)
 is_player_toggleable = true
 is_on = false
+
+[node name="Platform" parent="." instance=ExtResource("7_fpliy")]
+position = Vector2(160, 288)
+scale = Vector2(0.28, 0.28)
+speed = 100.0
+width = 1
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(2, 0)])
+texture = ExtResource("15_727cr")
 
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]
