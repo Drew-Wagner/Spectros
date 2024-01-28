@@ -20,7 +20,7 @@ gradient = SubResource("Gradient_janw7")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ojm2u"]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(30, 90, 1)
+emission_box_extents = Vector3(30, 120, 1)
 direction = Vector3(0, 1, 0)
 spread = 0.0
 initial_velocity_min = 1.0

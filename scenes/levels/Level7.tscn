@@ -1,0 +1,149 @@
+[gd_scene load_steps=14 format=3 uid="uid://bjvtv7m4jviqv"]
+
+[ext_resource type="Script" path="res://scripts/base_level.gd" id="1_pd6go"]
+[ext_resource type="PackedScene" uid="uid://cjcnnvu3yseel" path="res://scenes/elements/platform.tscn" id="2_6lp1i"]
+[ext_resource type="Texture2D" uid="uid://70ptu8emrfhe" path="res://materials/tiles_orange_simple.png" id="3_pvrkt"]
+[ext_resource type="Texture2D" uid="uid://2jhvjjxsmgh4" path="res://materials/platform_orange_thin.png" id="4_6myan"]
+[ext_resource type="Texture2D" uid="uid://d2iwhh2by5hbq" path="res://materials/platform_orange_thin_border.png" id="5_jonqe"]
+[ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="6_vy2wr"]
+[ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="7_ei7xl"]
+[ext_resource type="PackedScene" uid="uid://xynpr4h0gdnx" path="res://scenes/enemies/enemy_bat.tscn" id="8_2jfc4"]
+[ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/enemies/spikes.tscn" id="8_4b7im"]
+[ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="9_7ny4p"]
+[ext_resource type="PackedScene" uid="uid://bth5xo6bxskba" path="res://scenes/enemies/enemy_spider.tscn" id="9_pb5nj"]
+[ext_resource type="PackedScene" uid="uid://5c5yr0a1a575" path="res://scenes/elements/exit-door.tscn" id="10_sa84r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
+size = Vector2(1856, 1152)
+
+[node name="Level" type="Node2D" groups=["level"]]
+script = ExtResource("1_pd6go")
+
+[node name="LevelArea" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelArea"]
+position = Vector2(928, 576)
+shape = SubResource("RectangleShape2D_emyvp")
+debug_color = Color(0, 0.647059, 0.760784, 0.419608)
+
+[node name="Toggleables" type="Node" parent="."]
+
+[node name="Platform" parent="Toggleables" instance=ExtResource("2_6lp1i")]
+position = Vector2(352, 448)
+is_autonomous = false
+is_toggleable = true
+width = 1
+height = 2
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -2)])
+texture = ExtResource("3_pvrkt")
+top_texture = ExtResource("4_6myan")
+
+[node name="Platform3" parent="Toggleables" instance=ExtResource("2_6lp1i")]
+position = Vector2(1024, 584)
+is_autonomous = false
+is_toggleable = true
+waypoints = Array[Vector2]([Vector2(2, 0), Vector2(0, 0)])
+texture = ExtResource("4_6myan")
+top_texture = ExtResource("5_jonqe")
+
+[node name="Platform2" parent="Toggleables" instance=ExtResource("2_6lp1i")]
+position = Vector2(736, 704)
+speed = 400.0
+is_autonomous = false
+is_toggleable = true
+width = 3
+height = 4
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -4)])
+texture = ExtResource("3_pvrkt")
+top_texture = ExtResource("4_6myan")
+
+[node name="Platform4" parent="Toggleables" instance=ExtResource("2_6lp1i")]
+position = Vector2(1248, 544)
+is_autonomous = false
+is_toggleable = true
+width = 3
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, 1)])
+texture = ExtResource("3_pvrkt")
+top_texture = ExtResource("4_6myan")
+
+[node name="StaticEnvironment" type="TileMap" parent="."]
+position = Vector2(896, 512)
+tile_set = ExtResource("6_vy2wr")
+format = 2
+layer_0/z_index = 1
+layer_0/tile_data = PackedInt32Array(262146, 0, 3, 262145, 0, 3, 262144, 0, 3, 327679, 0, 3, 327678, 65536, 3, 327677, 0, 3, 327676, 0, 3, -458745, 65539, 0, 196611, 65536, 4, 131075, 0, 3, 65539, 0, 4, 262141, 0, 3, 196605, 0, 4, 131069, 65536, 4, 262140, 0, 3, 196604, 0, 3, 131068, 0, 4, 262139, 0, 3, 196603, 0, 4, 131067, 65536, 3, 262138, 0, 3, 196602, 0, 4, 131066, 0, 4, 262137, 0, 4, 196601, 0, 4, 131065, 0, 3, 262136, 0, 4, 196600, 0, 3, 131064, 65536, 4, 196599, 0, 3, 131063, 0, 3, 196598, 0, 4, 131062, 0, 3, 196597, 0, 4, 131061, 0, 4, 131060, 0, 3, 131059, 0, 4, 65524, 0, 3, -12, 65536, 4, -65548, 65536, 4, -131084, 0, 3, 65523, 0, 4, -13, 0, 3, -65549, 0, 3, -131085, 0, 3, 65527, 0, 4, -9, 0, 4, -65545, 0, 4, 65526, 0, 3, -10, 0, 3, -65546, 65536, 4, 65525, 65536, 4, -11, 65536, 4, -65547, 0, 4, 65528, 65536, 4, -8, 65536, 4, 65529, 0, 4, -131082, 0, 3, -131083, 0, 4, -393230, 65539, 0, -262158, 3, 0, -327694, 131075, 0, -196622, 3, 0, -131086, 0, 3, -65550, 0, 4, -14, 0, 3, 65522, 0, 3, 65536, 0, 3, 196608, 0, 3, 131072, 65536, 3, 131071, 65536, 4, 196607, 0, 3, 262143, 0, 3, 262142, 0, 3, 196606, 65536, 4, 131070, 0, 4, 65535, 65536, 4, -1, 65536, 4, -196609, 131075, 0, -262145, 3, 0, -327681, 3, 0, -393217, 65539, 0, -393216, 3, 0, -458751, 65539, 0, -458752, 3, 0, -458750, 3, 0, -458749, 3, 0, -458748, 131075, 0, -458747, 3, 0, -458746, 3, 0, -327682, 3, 0, -393218, 65539, 0, -393219, 3, 0, -393220, 65539, 0, -393221, 3, 0, -393222, 65539, 0, -393223, 3, 0, -393225, 65539, 0, -393224, 65539, 0, -393226, 3, 0, -393227, 3, 0, -393228, 131075, 0, -393229, 65539, 0, 262147, 0, 3, 65540, 0, 4, 65541, 0, 3, 65542, 0, 3, 65543, 0, 3, 7, 0, 3, 8, 0, 4, 9, 0, 4, 10, 0, 3, 11, 0, 3, 12, 0, 3, -458744, 65539, 0, -458743, 3, 0, -458742, 131075, 0, -458741, 3, 0, -458740, 3, 0, -327673, 3, 0, -393209, 65539, 0, -327672, 65539, 0, -327671, 3, 0, -262134, 3, 0, -262133, 131075, 0, -393208, 3, 0, -393207, 65539, 0, -393206, 3, 0, -393205, 65539, 0, -393204, 3, 0, -327670, 65539, 0, -327669, 3, 0, -327668, 65539, 0, -262132, 65539, 0, -393203, 131075, 0, -327667, 3, 0, -262131, 3, 0, 13, 65536, 4, -458739, 131075, 0, 262148, 0, 3, 196612, 0, 3, 131076, 0, 3, 131077, 0, 3, 131078, 0, 3, 131079, 0, 4, 65544, 0, 3, 65546, 0, 3, 65545, 0, 4, 65547, 0, 3, 65548, 0, 3, 65549, 0, 3, 196613, 0, 4, 196614, 0, 3, 131080, 0, 3, 393212, 0, 3, 327680, 65536, 4, 393215, 0, 3, 393214, 65536, 4, 393213, 0, 3, 327681, 0, 3, 327682, 0, 4, 327683, 0, 3, 327684, 0, 3, 327675, 0, 3, 327674, 0, 3, 327673, 0, 4, 262135, 0, 3, 262134, 65536, 3, 196596, 65536, 4, -327674, 3, 0, -327675, 65539, 0, -393211, 65539, 0, -393210, 65539, 0, -393212, 3, 0, -393213, 65539, 0, -393214, 65539, 0, -393215, 3, 0, -262144, 3, 0, -327680, 131075, 0, -327679, 3, 0, -327678, 65539, 0, -327683, 65539, 0, -327684, 131075, 0, -327685, 3, 0, -327686, 65539, 0, -327687, 3, 0, -327688, 3, 0, -327689, 3, 0, -327690, 65539, 0, -327692, 131075, 0, -327691, 65539, 0, -327693, 3, 0, -15, 0, 3, -65551, 0, 3, -131087, 65536, 4, -393231, 65539, 0, -327695, 3, 0, -262159, 65539, 0, -196623, 3, 0)
+
+[node name="Bones" type="Node" parent="."]
+
+[node name="Bone2" parent="Bones" instance=ExtResource("7_ei7xl")]
+position = Vector2(96, 280)
+
+[node name="Bone3" parent="Bones" instance=ExtResource("7_ei7xl")]
+position = Vector2(768, 256)
+
+[node name="Bone4" parent="Bones" instance=ExtResource("7_ei7xl")]
+position = Vector2(928, 536)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="EnemyBat" parent="Enemies" instance=ExtResource("8_2jfc4")]
+position = Vector2(576, 536)
+moveSpeed = 200.0
+
+[node name="EnemySpider" parent="Enemies" instance=ExtResource("9_pb5nj")]
+position = Vector2(1376, 288)
+descend_wait_time = 2.0
+
+[node name="Spikes" parent="Enemies" instance=ExtResource("8_4b7im")]
+position = Vector2(992, 736)
+
+[node name="Spikes2" parent="Enemies" instance=ExtResource("8_4b7im")]
+position = Vector2(1056, 736)
+
+[node name="Platform6" parent="Enemies" instance=ExtResource("2_6lp1i")]
+position = Vector2(-128, 352)
+speed = 30.0
+width = 1
+height = 7
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(50, 0)])
+
+[node name="Spikes" parent="Enemies/Platform6" instance=ExtResource("8_4b7im")]
+position = Vector2(64, -192)
+rotation = 1.5708
+
+[node name="Spikes2" parent="Enemies/Platform6" instance=ExtResource("8_4b7im")]
+position = Vector2(64, -128)
+rotation = 1.5708
+
+[node name="Spikes3" parent="Enemies/Platform6" instance=ExtResource("8_4b7im")]
+position = Vector2(64, -64)
+rotation = 1.5708
+
+[node name="Spikes4" parent="Enemies/Platform6" instance=ExtResource("8_4b7im")]
+position = Vector2(64, 0)
+rotation = 1.5708
+
+[node name="Spikes5" parent="Enemies/Platform6" instance=ExtResource("8_4b7im")]
+position = Vector2(64, 64)
+rotation = 1.5708
+
+[node name="Spikes6" parent="Enemies/Platform6" instance=ExtResource("8_4b7im")]
+position = Vector2(64, 128)
+rotation = 1.5708
+
+[node name="Spikes7" parent="Enemies/Platform6" instance=ExtResource("8_4b7im")]
+position = Vector2(64, 192)
+rotation = 1.5708
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(192, 320)
+
+[node name="FinishArea" parent="." instance=ExtResource("9_7ny4p")]
+position = Vector2(1728, 448)
+
+[node name="Door" parent="." instance=ExtResource("10_sa84r")]
+position = Vector2(1632, 416)
+
+[connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]
