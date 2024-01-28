@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cobiuq4txnvry"]
+[gd_scene load_steps=8 format=3 uid="uid://cobiuq4txnvry"]
 
 [ext_resource type="Shader" path="res://shaders/death_animation.gdshader" id="1_a727j"]
+[ext_resource type="Script" path="res://scripts/sound_player.gd" id="3_3hm15"]
 [ext_resource type="Script" path="res://scenes/components/death_animation_sprite.gd" id="3_yp73q"]
+[ext_resource type="Resource" uid="uid://ifjpein1kpjt" path="res://sounds/monster_die_1.tres" id="4_40kkc"]
+[ext_resource type="Resource" uid="uid://5rhojrbqu0vy" path="res://sounds/monster_die_2.tres" id="5_bcjci"]
+[ext_resource type="Resource" uid="uid://byhhh1iiiau8l" path="res://sounds/monster_die_3.tres" id="6_qpg03"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ntovt"]
 shader = ExtResource("1_a727j")
@@ -11,3 +15,10 @@ shader_parameter/speed = 3.0
 z_index = 10
 material = SubResource("ShaderMaterial_ntovt")
 script = ExtResource("3_yp73q")
+
+[node name="MonsterDie" type="AudioStreamPlayer" parent="."]
+script = ExtResource("3_3hm15")
+sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("4_40kkc"), ExtResource("5_bcjci"), ExtResource("6_qpg03")])
+
+[connection signal="tree_entered" from="." to="MonsterDie" method="_on_death_animation_tree_entered"]
+[connection signal="ready" from="MonsterDie" to="MonsterDie" method="play_random"]

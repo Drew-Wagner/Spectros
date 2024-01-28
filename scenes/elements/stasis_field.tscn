@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://ck2m2kpsthl3l"]
+[gd_scene load_steps=12 format=3 uid="uid://ck2m2kpsthl3l"]
 
 [ext_resource type="Script" path="res://scripts/elements/stasis_field.gd" id="1_4s5rn"]
 [ext_resource type="PackedScene" uid="uid://c3gaovpivkad7" path="res://scenes/components/toggle.tscn" id="2_snf1j"]
 [ext_resource type="Texture2D" uid="uid://bredgyhy8ngnb" path="res://materials/magiczone_floor.png" id="2_y7bsm"]
 [ext_resource type="Texture2D" uid="uid://c8w8tqajmi2p4" path="res://materials/stasis_particle.png" id="3_dbfm5"]
-[ext_resource type="AudioStream" uid="uid://ctbkyboprc27r" path="res://sounds/LEVIER_GJ_SFX_ForceField_On.wav" id="4_6dn5y"]
-[ext_resource type="AudioStream" uid="uid://dd8e2sn15qgwh" path="res://sounds/LEVIER_GJ_SFX_ForceField_Off.wav" id="5_7xa1u"]
+[ext_resource type="Script" path="res://scripts/sound_player.gd" id="7_xp6os"]
+[ext_resource type="Resource" uid="uid://be4cyyimp5jvb" path="res://sounds/force_field_on.tres" id="8_q6fra"]
+[ext_resource type="Resource" uid="uid://dd3auen5t4ixu" path="res://sounds/force_field_off.tres" id="9_ncy1q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8msnd"]
 size = Vector2(64, 64)
@@ -59,14 +60,14 @@ preprocess = 3.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_y7bsm")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_6dn5y")
-
-[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_7xa1u")
+[node name="ForceField" type="AudioStreamPlayer" parent="."]
+script = ExtResource("7_xp6os")
+sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("8_q6fra"), ExtResource("9_ncy1q")])
 
 [connection signal="physics_process_on" from="Toggle" to="." method="_on_toggle_physics_process_on"]
 [connection signal="switched_off" from="Toggle" to="." method="_on_toggle_switched_off"]
+[connection signal="switched_off" from="Toggle" to="ForceField" method="play_by_name" binds= ["force_field_off"]]
 [connection signal="switched_on" from="Toggle" to="." method="_on_toggle_switched_on"]
+[connection signal="switched_on" from="Toggle" to="ForceField" method="play_by_name" binds= ["force_field_on"]]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

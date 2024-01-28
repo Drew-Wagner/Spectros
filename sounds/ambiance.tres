@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" load_steps=3 format=3 uid="uid://j1a4cutppdku"]
+
+[ext_resource type="Script" path="res://scripts/sound.gd" id="1_17t0s"]
+[ext_resource type="AudioStream" uid="uid://caigx6k3md34c" path="res://sounds/rawfiles/LEVIER_GJ_AMB_LP.wav" id="2_cl3ho"]
+
+[resource]
+script = ExtResource("1_17t0s")
+name = &"ambiance"
+stream = ExtResource("2_cl3ho")
+volume_db = 0.0

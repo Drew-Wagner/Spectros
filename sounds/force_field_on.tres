@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" load_steps=3 format=3 uid="uid://be4cyyimp5jvb"]
+
+[ext_resource type="Script" path="res://scripts/sound.gd" id="1_m5w3f"]
+[ext_resource type="AudioStream" uid="uid://ctbkyboprc27r" path="res://sounds/rawfiles/LEVIER_GJ_SFX_ForceField_On.wav" id="2_fj65v"]
+
+[resource]
+script = ExtResource("1_m5w3f")
+name = &"force_field_on"
+stream = ExtResource("2_fj65v")
+volume_db = 0.0

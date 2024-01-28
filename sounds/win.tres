@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" load_steps=3 format=3 uid="uid://c3w4kgdfcd1up"]
+
+[ext_resource type="Script" path="res://scripts/sound.gd" id="1_qgps5"]
+[ext_resource type="AudioStream" uid="uid://nxnmjshhis2c" path="res://sounds/rawfiles/LEVIER_GJ_STATE_Win.wav" id="2_ooneb"]
+
+[resource]
+script = ExtResource("1_qgps5")
+name = &"win"
+stream = ExtResource("2_ooneb")
+volume_db = 0.0

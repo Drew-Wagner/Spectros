@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" load_steps=3 format=3 uid="uid://de2milg8n3408"]
+
+[ext_resource type="Script" path="res://scripts/sound.gd" id="1_uggre"]
+[ext_resource type="AudioStream" uid="uid://spu05ho3ovmo" path="res://sounds/rawfiles/LEVIER_GJ_SFX_Transition.wav" id="2_fh0va"]
+
+[resource]
+script = ExtResource("1_uggre")
+name = &"transition"
+stream = ExtResource("2_fh0va")
+volume_db = 0.0

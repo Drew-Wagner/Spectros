@@ -11,15 +11,11 @@ signal _toggle_released()
 signal _toggle_pressed()
 signal game_end()
 signal level_start()
+signal level_end()
+signal died()
 
-@export var toggle_sounds: Array[AudioStream]
 @export var grunt_sounds: Array[AudioStream]
-@export var win_sound: AudioStream
-@export var lose_sound: AudioStream
-@export var start_sound: AudioStream
-@export var music: AudioStream
 @export var main_character_scene: PackedScene
-var toggle_sound_index = 0
 var level_time = 0
 
 @onready var level_label: Label = %LevelLabel
@@ -34,17 +30,18 @@ var is_paused: bool
 
 func _ready():
 	var player: AudioStreamPlayer = %AudioEffects
+	var bg_sound = $AudioBackground
 	player.stream = AudioStreamPolyphonic.new()
 	player.play()
 	audio_effects_player = player.get_stream_playback()
-	audio_effects_player.play_stream(music)
+	bg_sound.play_all()
 	
-	OnOff.toggle.connect(play_toggle_sound)
+	
 	%TransitionOverlay.show()
 	start_level()
 
 func next_level():
-	audio_effects_player.play_stream(win_sound)
+	level_end.emit()
 
 	level_index += 1
 	start_level()
@@ -54,7 +51,6 @@ func next_level():
 
 
 func start_level():
-	level_start.emit()
 	pause()
 	if level:
 		level.queue_free()
@@ -90,8 +86,7 @@ func start_level():
 	await _toggle_pressed
 	await _toggle_released
 	%SplashLabel.hide()
-	audio_effects_player.play_stream(start_sound)
-
+	level_start.emit()
 	unpause()
 
 
@@ -117,20 +112,17 @@ func _process(delta):
 		if Input.is_action_just_released("toggle"):
 			_toggle_released.emit()
 
-func play_toggle_sound():
-	audio_effects_player.play_stream(toggle_sounds[toggle_sound_index])
-	audio_effects_player.play_stream(grunt_sounds.pick_random())
-
-	toggle_sound_index = (toggle_sound_index + 1) % toggle_sounds.size()
-
 func respawn():
 	if main_character and is_instance_valid(main_character):
 		main_character.queue_free()
 
 	main_character = main_character_scene.instantiate() as MainCharacter
-	main_character.killed.connect(on_character_die)
+	main_character.killed.connect(_emit_died)
 	main_character.global_position = level.spawn_point
 	add_child(main_character)
+
+func _emit_died():
+	died.emit()
 
 func pause():
 	is_paused = true
@@ -142,8 +134,6 @@ func unpause():
 	OnOff.paused = false
 	propagate_call("set_physics_process", [true])
 
-func on_character_die():
-	audio_effects_player.play_stream(lose_sound)
+func _on_died():
 	transition_particles.propagate_call("set_emitting", [true])
 	start_level()
-	

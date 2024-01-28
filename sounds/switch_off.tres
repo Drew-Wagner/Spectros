@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" load_steps=3 format=3 uid="uid://cq05og6s7f22i"]
+
+[ext_resource type="Script" path="res://scripts/sound.gd" id="1_ah4c3"]
+[ext_resource type="AudioStream" uid="uid://bofpqflybv72u" path="res://sounds/rawfiles/LEVIER_GJ_FOL_Lever_Off.wav" id="2_qpppw"]
+
+[resource]
+script = ExtResource("1_ah4c3")
+name = &"switch_off"
+stream = ExtResource("2_qpppw")
+volume_db = 1.0

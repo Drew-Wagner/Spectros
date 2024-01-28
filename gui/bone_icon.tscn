@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://chv82bw6fflfk"]
+[gd_scene load_steps=13 format=3 uid="uid://chv82bw6fflfk"]
 
 [ext_resource type="Script" path="res://gui/bone_icon.gd" id="1_k4y4x"]
 [ext_resource type="Texture2D" uid="uid://ci706pxpnh80" path="res://materials/os_slots.png" id="2_ive2m"]
 [ext_resource type="Texture2D" uid="uid://dlqrse0jmsug" path="res://materials/os_slots_empty.png" id="3_rxnix"]
 [ext_resource type="PackedScene" uid="uid://ca50cv03q5j31" path="res://scenes/elements/bone_collected.tscn" id="3_uw3rs"]
 [ext_resource type="Texture2D" uid="uid://c8w8tqajmi2p4" path="res://materials/stasis_particle.png" id="4_1js33"]
+[ext_resource type="Script" path="res://scripts/sound_player.gd" id="6_v8rw5"]
+[ext_resource type="Resource" uid="uid://dh51rppvqpkq2" path="res://sounds/bonus.tres" id="7_p0xfe"]
 
 [sub_resource type="Gradient" id="Gradient_5ncoh"]
 colors = PackedColorArray(0.470588, 0.886275, 0.427451, 1, 1, 1, 1, 0)
@@ -63,3 +65,10 @@ one_shot = true
 preprocess = 0.1
 speed_scale = 2.5
 explosiveness = 1.0
+
+[node name="Bonus" type="AudioStreamPlayer" parent="."]
+script = ExtResource("6_v8rw5")
+sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("7_p0xfe")])
+
+[connection signal="arrived" from="." to="Bonus" method="play_random"]
+[connection signal="arrived" from="." to="GPUParticles2D" method="set_emitting" binds= [true]]

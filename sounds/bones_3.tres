@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" load_steps=3 format=3 uid="uid://dlr4oyddsqsel"]
+
+[ext_resource type="Script" path="res://scripts/sound.gd" id="1_kasyv"]
+[ext_resource type="AudioStream" uid="uid://d36o4h8h2nkyc" path="res://sounds/rawfiles/LEVIER_GJ_FOL_Bones_Pick_03.wav" id="2_1dpmo"]
+
+[resource]
+script = ExtResource("1_kasyv")
+name = &"bone_3"
+stream = ExtResource("2_1dpmo")
+volume_db = 0.0

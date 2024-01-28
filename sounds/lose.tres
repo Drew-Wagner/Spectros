@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" load_steps=3 format=3 uid="uid://c6xgpnkpbxrv8"]
+
+[ext_resource type="Script" path="res://scripts/sound.gd" id="1_5laqp"]
+[ext_resource type="AudioStream" uid="uid://ota274s1y71i" path="res://sounds/rawfiles/LEVIER_GJ_STATE_Lose.wav" id="2_phh7d"]
+
+[resource]
+script = ExtResource("1_5laqp")
+name = &"lose"
+stream = ExtResource("2_phh7d")
+volume_db = 0.0

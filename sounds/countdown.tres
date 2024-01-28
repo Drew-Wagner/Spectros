@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" load_steps=3 format=3 uid="uid://b2l0vymy6rb54"]
+
+[ext_resource type="Script" path="res://scripts/sound.gd" id="1_fi81a"]
+[ext_resource type="AudioStream" uid="uid://b33bbfl0xsl5r" path="res://sounds/rawfiles/LEVIER_GJ_STATE_Countdown.wav" id="2_r444e"]
+
+[resource]
+script = ExtResource("1_fi81a")
+name = &"countdown"
+stream = ExtResource("2_r444e")
+volume_db = 0.0

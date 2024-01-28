@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" load_steps=3 format=3 uid="uid://5rhojrbqu0vy"]
+
+[ext_resource type="Script" path="res://scripts/sound.gd" id="1_q8j62"]
+[ext_resource type="AudioStream" uid="uid://dxyf2u100115m" path="res://sounds/rawfiles/LEVIER_GJ_VO_Monster_Die-002.wav" id="2_y3ms7"]
+
+[resource]
+script = ExtResource("1_q8j62")
+name = &"monster_die_2"
+stream = ExtResource("2_y3ms7")
+volume_db = 0.0

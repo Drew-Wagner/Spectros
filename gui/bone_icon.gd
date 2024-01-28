@@ -1,9 +1,10 @@
 extends TextureRect
 class_name BoneIcon
 
+signal arrived()
+
 @export var bone_collected_scene: PackedScene
 @export var bone_full_texture: Texture2D
-@onready var particles: GPUParticles2D = $GPUParticles2D
 
 const SPEED = 1200
 const TARGET_OFFSET = Vector2(-3, -4)
@@ -53,4 +54,4 @@ func start_collect_bone(bone: Collectible):
 
 func set_full_texture():
 	texture = bone_full_texture
-	particles.emitting  = true
+	arrived.emit()

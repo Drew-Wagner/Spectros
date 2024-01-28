@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" load_steps=3 format=3 uid="uid://c0hl86w5i1dcj"]
+
+[ext_resource type="Script" path="res://scripts/sound.gd" id="1_mi2oo"]
+[ext_resource type="AudioStream" uid="uid://cslstts0sdh6f" path="res://sounds/rawfiles/LEVIER_GJ_VO_Headsman_Growl_03.wav" id="2_7f4i4"]
+
+[resource]
+script = ExtResource("1_mi2oo")
+name = &"headman_growl_3"
+stream = ExtResource("2_7f4i4")
+volume_db = 0.0

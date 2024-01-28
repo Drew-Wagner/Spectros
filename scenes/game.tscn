@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://4usjiwbxajd8"]
+[gd_scene load_steps=41 format=3 uid="uid://4usjiwbxajd8"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_rnd3o"]
 [ext_resource type="PackedScene" uid="uid://d3didjf3p4p78" path="res://scenes/levels/Level5.tscn" id="2_2mmbw"]
@@ -7,28 +7,37 @@
 [ext_resource type="PackedScene" uid="uid://dqm3usquyv1l4" path="res://scenes/levels/Level2.tscn" id="2_g42qk"]
 [ext_resource type="PackedScene" uid="uid://dvwy8al6vu40d" path="res://scenes/levels/Level3.tscn" id="2_jjbby"]
 [ext_resource type="PackedScene" uid="uid://36dkaner3txs" path="res://scenes/levels/Level1.tscn" id="2_t4unh"]
-[ext_resource type="AudioStream" uid="uid://bofpqflybv72u" path="res://sounds/LEVIER_GJ_FOL_Lever_Off.wav" id="3_o2w25"]
-[ext_resource type="AudioStream" uid="uid://1tc4ak1mjpo1" path="res://sounds/LEVIER_GJ_FOL_Lever_On.wav" id="4_5x8y0"]
-[ext_resource type="AudioStream" uid="uid://nxnmjshhis2c" path="res://sounds/LEVIER_GJ_STATE_Win.wav" id="5_f3xnp"]
 [ext_resource type="PackedScene" uid="uid://bxhcsdlxckv2k" path="res://scenes/main_character.tscn" id="5_iqaxe"]
-[ext_resource type="AudioStream" uid="uid://mambkkt245kn" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_01.wav" id="5_k5x62"]
-[ext_resource type="AudioStream" uid="uid://ota274s1y71i" path="res://sounds/LEVIER_GJ_STATE_Lose.wav" id="6_006ic"]
-[ext_resource type="AudioStream" uid="uid://cwde5p3jhtrdg" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_02.wav" id="6_mcigs"]
-[ext_resource type="AudioStream" uid="uid://b33bbfl0xsl5r" path="res://sounds/LEVIER_GJ_STATE_Countdown.wav" id="7_8gj3s"]
-[ext_resource type="AudioStream" uid="uid://cslstts0sdh6f" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_03.wav" id="7_s3rb2"]
-[ext_resource type="AudioStream" uid="uid://b2mxcx5osaili" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_04.wav" id="8_fmkyl"]
+[ext_resource type="AudioStream" uid="uid://mambkkt245kn" path="res://sounds/rawfiles/LEVIER_GJ_VO_Headsman_Growl_01.wav" id="5_k5x62"]
+[ext_resource type="AudioStream" uid="uid://cwde5p3jhtrdg" path="res://sounds/rawfiles/LEVIER_GJ_VO_Headsman_Growl_02.wav" id="6_mcigs"]
+[ext_resource type="AudioStream" uid="uid://cslstts0sdh6f" path="res://sounds/rawfiles/LEVIER_GJ_VO_Headsman_Growl_03.wav" id="7_s3rb2"]
+[ext_resource type="AudioStream" uid="uid://b2mxcx5osaili" path="res://sounds/rawfiles/LEVIER_GJ_VO_Headsman_Growl_04.wav" id="8_fmkyl"]
 [ext_resource type="PackedScene" uid="uid://cxxbjbc1q5rmg" path="res://gui/bone_collection.tscn" id="9_0rnu1"]
-[ext_resource type="AudioStream" uid="uid://caigx6k3md34c" path="res://sounds/LEVIER_GJ_AMB_LP.wav" id="9_jiikb"]
-[ext_resource type="AudioStream" uid="uid://bqn8v3nwh8bvt" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_05.wav" id="9_qffde"]
+[ext_resource type="AudioStream" uid="uid://bqn8v3nwh8bvt" path="res://sounds/rawfiles/LEVIER_GJ_VO_Headsman_Growl_05.wav" id="9_qffde"]
 [ext_resource type="Script" path="res://scripts/components/scene_navigation.gd" id="10_ojnpv"]
-[ext_resource type="AudioStream" uid="uid://bhg71u1feri8c" path="res://sounds/LEVIER_GJ_VO_Headsman_Growl_06.wav" id="10_siirr"]
-[ext_resource type="AudioStream" uid="uid://kad8o8d6m2ub" path="res://sounds/LEVIER_GJ_MUS_Main_Theme_LP.wav" id="15_p6qek"]
+[ext_resource type="AudioStream" uid="uid://bhg71u1feri8c" path="res://sounds/rawfiles/LEVIER_GJ_VO_Headsman_Growl_06.wav" id="10_siirr"]
 [ext_resource type="Texture2D" uid="uid://ceayc8iwia132" path="res://materials/environment/decor2floudark.png" id="20_b6r7i"]
 [ext_resource type="Texture2D" uid="uid://cdepx4hsyo5kh" path="res://materials/BAT.png" id="21_j2d88"]
 [ext_resource type="PackedScene" uid="uid://b3ejfu42t5g02" path="res://gui/bourreau.tscn" id="22_7royu"]
 [ext_resource type="Texture2D" uid="uid://cychrkbb03800" path="res://materials/enn_bat_citrouille.png" id="22_h685u"]
 [ext_resource type="Texture2D" uid="uid://dutqirio1g75y" path="res://materials/enn_citrouille01.png" id="23_5orxp"]
 [ext_resource type="Texture2D" uid="uid://csdky8lro0o22" path="res://textures/enn_spider.png" id="24_bslw4"]
+[ext_resource type="Resource" uid="uid://cxrv71dn12gd5" path="res://sounds/headman_growl_1.tres" id="26_hs8cx"]
+[ext_resource type="Resource" uid="uid://crm2qee7fjako" path="res://sounds/headman_growl_2.tres" id="27_q5i1i"]
+[ext_resource type="Resource" uid="uid://c0hl86w5i1dcj" path="res://sounds/headman_growl_3.tres" id="28_ubhcj"]
+[ext_resource type="Resource" uid="uid://b6crcch8vr57u" path="res://sounds/headman_growl_4.tres" id="29_0gaiq"]
+[ext_resource type="Resource" uid="uid://b2l0vymy6rb54" path="res://sounds/countdown.tres" id="29_7dopt"]
+[ext_resource type="Resource" uid="uid://ddood287s24c6" path="res://sounds/switch_on.tres" id="29_al1yq"]
+[ext_resource type="Resource" uid="uid://de2milg8n3408" path="res://sounds/transition.tres" id="29_lwo1i"]
+[ext_resource type="Script" path="res://scripts/sound_player.gd" id="29_ssy81"]
+[ext_resource type="Script" path="res://scripts/components/toggleable.gd" id="29_xq1om"]
+[ext_resource type="Resource" uid="uid://c3w4kgdfcd1up" path="res://sounds/win.tres" id="30_ax44j"]
+[ext_resource type="Resource" uid="uid://cqben5gae5bxj" path="res://sounds/headman_growl_5.tres" id="30_bhajg"]
+[ext_resource type="Resource" uid="uid://cq05og6s7f22i" path="res://sounds/switch_off.tres" id="30_dgmef"]
+[ext_resource type="Resource" uid="uid://j1a4cutppdku" path="res://sounds/ambiance.tres" id="30_kgtww"]
+[ext_resource type="Resource" uid="uid://c6xgpnkpbxrv8" path="res://sounds/lose.tres" id="30_ysmyg"]
+[ext_resource type="Resource" uid="uid://dt5r7edeonw60" path="res://sounds/headman_growl_6.tres" id="31_3byuh"]
+[ext_resource type="Resource" uid="uid://xhxxw5kfhani" path="res://sounds/music.tres" id="31_k7mjw"]
 
 [sub_resource type="Animation" id="Animation_pmnll"]
 length = 0.001
@@ -70,12 +79,7 @@ _data = {
 [node name="game" type="Node2D"]
 script = ExtResource("1_rnd3o")
 levels = Array[PackedScene]([ExtResource("2_eublf"), ExtResource("2_t4unh"), ExtResource("2_fsd4f"), ExtResource("2_g42qk"), ExtResource("2_jjbby"), ExtResource("2_2mmbw")])
-toggle_sounds = Array[AudioStream]([ExtResource("3_o2w25"), ExtResource("4_5x8y0")])
 grunt_sounds = Array[AudioStream]([ExtResource("5_k5x62"), ExtResource("6_mcigs"), ExtResource("7_s3rb2"), ExtResource("8_fmkyl"), ExtResource("9_qffde"), ExtResource("10_siirr")])
-win_sound = ExtResource("5_f3xnp")
-lose_sound = ExtResource("6_006ic")
-start_sound = ExtResource("7_8gj3s")
-music = ExtResource("15_p6qek")
 main_character_scene = ExtResource("5_iqaxe")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -267,11 +271,48 @@ scale_amount_min = 0.1
 [node name="AudioEffects" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 
-[node name="AudioAmbiance" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_jiikb")
-autoplay = true
-
 [node name="SceneNavigation" type="Node" parent="."]
 script = ExtResource("10_ojnpv")
 
+[node name="AudioFoley" type="Node" parent="."]
+
+[node name="BonesPick" type="AudioStreamPlayer" parent="AudioFoley"]
+script = ExtResource("29_ssy81")
+
+[node name="Switch" type="AudioStreamPlayer" parent="AudioFoley"]
+script = ExtResource("29_ssy81")
+sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("29_al1yq"), ExtResource("30_dgmef")])
+
+[node name="Switch" type="Node" parent="AudioFoley/Switch"]
+script = ExtResource("29_xq1om")
+
+[node name="HeadmanGrowl" type="AudioStreamPlayer" parent="AudioFoley/Switch"]
+script = ExtResource("29_ssy81")
+sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("26_hs8cx"), ExtResource("27_q5i1i"), ExtResource("28_ubhcj"), ExtResource("29_0gaiq"), ExtResource("30_bhajg"), ExtResource("31_3byuh")])
+
+[node name="Countdown" type="AudioStreamPlayer" parent="AudioFoley"]
+script = ExtResource("29_ssy81")
+sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("29_7dopt")])
+
+[node name="AudioSFX" type="Node" parent="."]
+
+[node name="Transition" type="AudioStreamPlayer" parent="AudioSFX"]
+script = ExtResource("29_ssy81")
+sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("29_lwo1i"), ExtResource("30_ysmyg")])
+
+[node name="Win" type="AudioStreamPlayer" parent="AudioSFX"]
+script = ExtResource("29_ssy81")
+sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("30_ax44j")])
+
+[node name="AudioBackground" type="AudioStreamPlayer" parent="."]
+script = ExtResource("29_ssy81")
+sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("31_k7mjw"), ExtResource("30_kgtww")])
+
+[connection signal="died" from="." to="." method="_on_died"]
+[connection signal="died" from="." to="AudioSFX/Transition" method="play_all"]
 [connection signal="game_end" from="." to="SceneNavigation" method="go_to" binds= ["res://scenes/end_of_game_menu.tscn"]]
+[connection signal="level_end" from="." to="AudioSFX/Win" method="play_all"]
+[connection signal="level_start" from="." to="AudioFoley/Countdown" method="play_all"]
+[connection signal="switched_off" from="AudioFoley/Switch/Switch" to="AudioFoley/Switch" method="play_by_name" binds= ["switch_off"]]
+[connection signal="switched_on" from="AudioFoley/Switch/Switch" to="AudioFoley/Switch" method="play_by_name" binds= ["switch_on"]]
+[connection signal="toggled" from="AudioFoley/Switch/Switch" to="AudioFoley/Switch/HeadmanGrowl" method="play_random"]

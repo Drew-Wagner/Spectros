@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" load_steps=3 format=3 uid="uid://dh51rppvqpkq2"]
+
+[ext_resource type="Script" path="res://scripts/sound.gd" id="1_q77f4"]
+[ext_resource type="AudioStream" uid="uid://diaacvin060px" path="res://sounds/rawfiles/LEVIER_GJ_STATE_Bonus.wav" id="2_jvpb4"]
+
+[resource]
+script = ExtResource("1_q77f4")
+name = &"bonus"
+stream = ExtResource("2_jvpb4")
+volume_db = 0.0

@@ -1,11 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://5c5yr0a1a575"]
+[gd_scene load_steps=7 format=3 uid="uid://5c5yr0a1a575"]
 
 [ext_resource type="PackedScene" uid="uid://cjcnnvu3yseel" path="res://scenes/elements/platform.tscn" id="1_ydgs7"]
 [ext_resource type="Script" path="res://scripts/elements/exit-door.gd" id="2_66h2x"]
 [ext_resource type="Texture2D" uid="uid://bc1v0jnp7notl" path="res://materials/porte.png" id="3_imo73"]
-[ext_resource type="AudioStream" uid="uid://dmgbrbkd4wid2" path="res://sounds/LEVIER_GJ_FOL_Harrow_Open.wav" id="4_1t085"]
+[ext_resource type="Script" path="res://scripts/sound_player.gd" id="4_1jvmh"]
+[ext_resource type="Resource" uid="uid://dxaqmg2djc2di" path="res://sounds/harrow.tres" id="5_bowvh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cj3k0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hq78l"]
 size = Vector2(64, 192)
 
 [node name="Door" groups=["all_bones_collected_listeners"] instance=ExtResource("1_ydgs7")]
@@ -20,9 +21,10 @@ texture = ExtResource("3_imo73")
 region_rect = Rect2(0, 0, 64, 192)
 
 [node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("RectangleShape2D_cj3k0")
+shape = SubResource("RectangleShape2D_hq78l")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="2"]
-stream = ExtResource("4_1t085")
+[node name="Harrow" type="AudioStreamPlayer" parent="." index="2"]
+script = ExtResource("4_1jvmh")
+sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("5_bowvh")])
 
-[connection signal="opened" from="." to="AudioStreamPlayer2D" method="play"]
+[connection signal="opened" from="." to="Harrow" method="play_all"]

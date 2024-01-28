@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" load_steps=3 format=3 uid="uid://dxaqmg2djc2di"]
+
+[ext_resource type="Script" path="res://scripts/sound.gd" id="1_0ftn2"]
+[ext_resource type="AudioStream" uid="uid://dmgbrbkd4wid2" path="res://sounds/rawfiles/LEVIER_GJ_FOL_Harrow_Open.wav" id="2_tqefn"]
+
+[resource]
+script = ExtResource("1_0ftn2")
+name = &"harrow"
+stream = ExtResource("2_tqefn")
+volume_db = 1.0

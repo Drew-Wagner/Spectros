@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" load_steps=3 format=3 uid="uid://xhxxw5kfhani"]
+
+[ext_resource type="Script" path="res://scripts/sound.gd" id="1_a7am5"]
+[ext_resource type="AudioStream" uid="uid://kad8o8d6m2ub" path="res://sounds/rawfiles/LEVIER_GJ_MUS_Main_Theme_LP.wav" id="2_br5ts"]
+
+[resource]
+script = ExtResource("1_a7am5")
+name = &"music"
+stream = ExtResource("2_br5ts")
+volume_db = 0.0
