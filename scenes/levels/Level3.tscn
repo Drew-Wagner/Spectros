@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dvwy8al6vu40d"]
+[gd_scene load_steps=17 format=3 uid="uid://dvwy8al6vu40d"]
 
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_p1cje"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_qaaas"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://2jhvjjxsmgh4" path="res://materials/platform_orange_thin.png" id="10_2docx"]
 [ext_resource type="Texture2D" uid="uid://d2iwhh2by5hbq" path="res://materials/platform_orange_thin_border.png" id="11_2wxps"]
 [ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="12_ju5uy"]
+[ext_resource type="Texture2D" uid="uid://dutqirio1g75y" path="res://materials/enn_citrouille01.png" id="15_3at80"]
 [ext_resource type="Texture2D" uid="uid://cychrkbb03800" path="res://materials/enn_bat_citrouille.png" id="15_727cr"]
 [ext_resource type="PackedScene" uid="uid://5c5yr0a1a575" path="res://scenes/elements/exit-door.tscn" id="15_mpol2"]
 
@@ -142,5 +143,18 @@ speed = 100.0
 width = 1
 waypoints = Array[Vector2]([Vector2(0, 0), Vector2(2, 0)])
 texture = ExtResource("15_727cr")
+
+[node name="PlatformOrangeThin" type="Sprite2D" parent="."]
+position = Vector2(352, 856)
+texture = ExtResource("10_2docx")
+
+[node name="PlatformOrangeThin2" type="Sprite2D" parent="."]
+position = Vector2(416, 856)
+texture = ExtResource("10_2docx")
+
+[node name="EnnCitrouille01" type="Sprite2D" parent="."]
+position = Vector2(384, 816)
+scale = Vector2(0.533333, 0.533333)
+texture = ExtResource("15_3at80")
 
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]

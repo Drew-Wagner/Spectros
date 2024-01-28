@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://beutpnta82ne4"]
+[gd_scene load_steps=16 format=3 uid="uid://bjvtv7m4jviqv"]
 
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_pd6go"]
 [ext_resource type="PackedScene" uid="uid://cjcnnvu3yseel" path="res://scenes/elements/platform.tscn" id="2_6lp1i"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="9_7ny4p"]
 [ext_resource type="PackedScene" uid="uid://bth5xo6bxskba" path="res://scenes/enemies/enemy_spider.tscn" id="9_pb5nj"]
 [ext_resource type="PackedScene" uid="uid://5c5yr0a1a575" path="res://scenes/elements/exit-door.tscn" id="10_sa84r"]
+[ext_resource type="Texture2D" uid="uid://cychrkbb03800" path="res://materials/enn_bat_citrouille.png" id="13_o5hdb"]
+[ext_resource type="Texture2D" uid="uid://bm2gfylya18x6" path="res://materials/enn_citrouille03.png" id="14_r2ply"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
 size = Vector2(1856, 1152)
@@ -145,5 +147,26 @@ position = Vector2(1728, 448)
 
 [node name="Door" parent="." instance=ExtResource("10_sa84r")]
 position = Vector2(1632, 416)
+
+[node name="Platform" parent="." instance=ExtResource("2_6lp1i")]
+position = Vector2(96, 32)
+scale = Vector2(0.394609, 0.394609)
+speed = 100.0
+width = 1
+waypoints = Array[Vector2]([Vector2(25, 0)])
+texture = ExtResource("13_o5hdb")
+
+[node name="PlatformOrangeThin" type="Sprite2D" parent="."]
+position = Vector2(1120, 344)
+texture = ExtResource("4_6myan")
+
+[node name="PlatformOrangeThin2" type="Sprite2D" parent="."]
+position = Vector2(1184, 344)
+texture = ExtResource("4_6myan")
+
+[node name="EnnCitrouille03" type="Sprite2D" parent="."]
+position = Vector2(1152.99, 301.75)
+scale = Vector2(0.867816, 0.867816)
+texture = ExtResource("14_r2ply")
 
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]
