@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3vuux5xlu435"
-path="res://.godot/imported/landscape_dark_TITREMOCKUP.jpg-44e85454783bc91fdf005fcd83cec4bc.ctex"
+uid="uid://t72qarkq7d8e"
+path="res://.godot/imported/enn_citrouille02.png-5e23f43217c5f02b6c5aeae9d87a9b8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://landscape_dark_TITREMOCKUP.jpg"
-dest_files=["res://.godot/imported/landscape_dark_TITREMOCKUP.jpg-44e85454783bc91fdf005fcd83cec4bc.ctex"]
+source_file="res://materials/enn_citrouille02.png"
+dest_files=["res://.godot/imported/enn_citrouille02.png-5e23f43217c5f02b6c5aeae9d87a9b8f.ctex"]
 
 [params]
 

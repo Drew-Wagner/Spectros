@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqm3usquyv1l4"]
+[gd_scene load_steps=16 format=3 uid="uid://dqm3usquyv1l4"]
 
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_ofp7a"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_icp6s"]
@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://dp7gquw16g4xd" path="res://materials/border_orange.png" id="7_1adhs"]
 [ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="8_oiy8w"]
 [ext_resource type="PackedScene" uid="uid://5c5yr0a1a575" path="res://scenes/elements/exit-door.tscn" id="10_yotup"]
+[ext_resource type="Texture2D" uid="uid://2jhvjjxsmgh4" path="res://materials/platform_orange_thin.png" id="11_mtyva"]
+[ext_resource type="Texture2D" uid="uid://t72qarkq7d8e" path="res://materials/enn_citrouille02.png" id="12_paqut"]
+[ext_resource type="Texture2D" uid="uid://dutqirio1g75y" path="res://materials/enn_citrouille01.png" id="13_0jbfk"]
+[ext_resource type="Texture2D" uid="uid://bm2gfylya18x6" path="res://materials/enn_citrouille03.png" id="14_b5ep3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
 size = Vector2(1792, 1024)
@@ -112,5 +116,36 @@ position = Vector2(96, 704)
 
 [node name="Door" parent="." instance=ExtResource("10_yotup")]
 position = Vector2(160, 672)
+
+[node name="PlatformOrangeThin" type="Sprite2D" parent="."]
+position = Vector2(672, 440)
+texture = ExtResource("11_mtyva")
+
+[node name="PlatformOrangeThin2" type="Sprite2D" parent="."]
+position = Vector2(736, 440)
+texture = ExtResource("11_mtyva")
+
+[node name="PlatformOrangeThin3" type="Sprite2D" parent="."]
+position = Vector2(800, 440)
+texture = ExtResource("11_mtyva")
+
+[node name="PlatformOrangeThin4" type="Sprite2D" parent="."]
+position = Vector2(864, 440)
+texture = ExtResource("11_mtyva")
+
+[node name="EnnCitrouille02" type="Sprite2D" parent="."]
+position = Vector2(768, 376)
+scale = Vector2(0.727275, 0.727275)
+texture = ExtResource("12_paqut")
+
+[node name="EnnCitrouille01" type="Sprite2D" parent="."]
+position = Vector2(832, 400)
+scale = Vector2(0.533333, 0.533333)
+texture = ExtResource("13_0jbfk")
+
+[node name="EnnCitrouille03" type="Sprite2D" parent="."]
+position = Vector2(704, 408)
+scale = Vector2(0.551724, 0.551724)
+texture = ExtResource("14_b5ep3")
 
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]
