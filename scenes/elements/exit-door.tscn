@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bc1v0jnp7notl" path="res://materials/porte.png" id="3_imo73"]
 [ext_resource type="AudioStream" uid="uid://dmgbrbkd4wid2" path="res://sounds/LEVIER_GJ_FOL_Harrow_Open.wav" id="4_1t085"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xl0y"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cj3k0"]
 size = Vector2(64, 192)
 
 [node name="Door" groups=["all_bones_collected_listeners"] instance=ExtResource("1_ydgs7")]
@@ -20,7 +20,7 @@ texture = ExtResource("3_imo73")
 region_rect = Rect2(0, 0, 64, 192)
 
 [node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("RectangleShape2D_5xl0y")
+shape = SubResource("RectangleShape2D_cj3k0")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="2"]
 stream = ExtResource("4_1t085")

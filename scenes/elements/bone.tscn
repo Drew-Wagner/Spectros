@@ -104,10 +104,10 @@ texture = ExtResource("2_3em5n")
 
 [node name="RotationPlayer" type="AnimationPlayer" parent="Area2D/Sprite2D"]
 unique_name_in_owner = true
-autoplay = "rotate"
 libraries = {
 "": SubResource("AnimationLibrary_gbkun")
 }
+autoplay = "rotate"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_v6ind")
@@ -115,10 +115,10 @@ debug_color = Color(0.0941176, 0.788235, 0, 0.419608)
 
 [node name="HoverPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
-autoplay = "Hover"
 libraries = {
 "": SubResource("AnimationLibrary_y3sqn")
 }
+autoplay = "Hover"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamPolyphonic_bt3i5")
