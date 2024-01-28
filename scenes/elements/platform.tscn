@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/elements/platform.gd" id="1_3qrrp"]
 [ext_resource type="Texture2D" uid="uid://u7pfs2ev51gm" path="res://materials/plateformes_bois.png" id="2_qtaqy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnfah"]
-size = Vector2(130, 65)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8lyn"]
+size = Vector2(128, 64)
 
 [node name="Platform" type="AnimatableBody2D"]
 script = ExtResource("1_3qrrp")
@@ -18,7 +18,7 @@ texture_filter = 1
 texture_repeat = 2
 texture = ExtResource("2_qtaqy")
 region_enabled = true
-region_rect = Rect2(0, 0, 130, 65)
+region_rect = Rect2(0, 0, 128, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_vnfah")
+shape = SubResource("RectangleShape2D_i8lyn")

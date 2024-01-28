@@ -1,0 +1,116 @@
+[gd_scene load_steps=12 format=3 uid="uid://bpyyvp8ug7cbm"]
+
+[ext_resource type="Script" path="res://scripts/base_level.gd" id="1_f2py6"]
+[ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_olk3o"]
+[ext_resource type="PackedScene" uid="uid://cjcnnvu3yseel" path="res://scenes/elements/platform.tscn" id="2_vm8ju"]
+[ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="3_3754k"]
+[ext_resource type="Texture2D" uid="uid://70ptu8emrfhe" path="res://materials/tiles_orange_simple.png" id="3_qddie"]
+[ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="4_6gixd"]
+[ext_resource type="Texture2D" uid="uid://2jhvjjxsmgh4" path="res://materials/platform_orange_thin.png" id="4_i3rbb"]
+[ext_resource type="Texture2D" uid="uid://d2iwhh2by5hbq" path="res://materials/platform_orange_thin_border.png" id="5_8xegu"]
+[ext_resource type="PackedScene" uid="uid://5c5yr0a1a575" path="res://scenes/elements/exit-door.tscn" id="5_hm7k1"]
+[ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/enemies/spikes.tscn" id="8_lpfvg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
+size = Vector2(1856, 1024)
+
+[node name="Level" type="Node2D" groups=["level"]]
+script = ExtResource("1_f2py6")
+
+[node name="LevelArea" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelArea"]
+position = Vector2(928, 512)
+shape = SubResource("RectangleShape2D_emyvp")
+debug_color = Color(0, 0.647059, 0.760784, 0.419608)
+
+[node name="Toggleables" type="Node" parent="."]
+
+[node name="Platform" parent="Toggleables" instance=ExtResource("2_vm8ju")]
+position = Vector2(800, 448)
+is_autonomous = false
+is_toggleable = true
+width = 1
+height = 2
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, 2)])
+texture = ExtResource("3_qddie")
+bottom_texture = ExtResource("4_i3rbb")
+
+[node name="Platform2" parent="Toggleables" instance=ExtResource("2_vm8ju")]
+position = Vector2(1056, 576)
+is_autonomous = false
+is_toggleable = true
+width = 1
+height = 2
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -2)])
+texture = ExtResource("3_qddie")
+bottom_texture = ExtResource("4_i3rbb")
+
+[node name="Platform5" parent="Toggleables" instance=ExtResource("2_vm8ju")]
+position = Vector2(1184, 576)
+speed = 400.0
+is_autonomous = false
+is_toggleable = true
+width = 1
+height = 2
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, 2)])
+texture = ExtResource("3_qddie")
+top_texture = ExtResource("4_i3rbb")
+
+[node name="Platform3" parent="Toggleables" instance=ExtResource("2_vm8ju")]
+position = Vector2(768, 648)
+is_autonomous = false
+is_toggleable = true
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(-2, 0)])
+texture = ExtResource("4_i3rbb")
+top_texture = ExtResource("5_8xegu")
+
+[node name="Platform4" parent="Toggleables" instance=ExtResource("2_vm8ju")]
+position = Vector2(384, 648)
+is_autonomous = false
+is_toggleable = true
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(2, 0)])
+texture = ExtResource("4_i3rbb")
+top_texture = ExtResource("5_8xegu")
+
+[node name="StaticEnvironment" type="TileMap" parent="."]
+position = Vector2(896, 512)
+tile_set = ExtResource("2_olk3o")
+format = 2
+layer_0/z_index = 1
+layer_0/tile_data = PackedInt32Array(-393215, 3, 0, -327679, 65539, 0, -262143, 65539, 0, -196607, 65539, 0, -393214, 65539, 0, -393213, 65539, 0, -393212, 3, 0, -393211, 3, 0, -393210, 3, 0, -393209, 3, 0, -393208, 65539, 0, -393207, 3, 0, -327671, 131075, 0, -262135, 3, 0, -196599, 3, 0, -131063, 65539, 0, -65527, 5, 1, 9, 0, 3, 8, 0, 4, 7, 0, 4, 6, 0, 4, 5, 0, 3, 65541, 0, 3, 131077, 65536, 4, -327692, 3, 0, -327691, 3, 0, -327690, 3, 0, -327689, 3, 0, -327688, 3, 0, -327687, 3, 0, -327686, 131075, 0, -327685, 131075, 0, -327684, 3, 0, -327683, 3, 0, -327682, 65539, 0, -327681, 131075, 0, -262145, 3, 0, -196609, 3, 0, -131073, 3, 0, -65537, 3, 0, -131071, 3, 0, -2, 3, 0, -65534, 3, 0, 196598, 0, 3, 196601, 0, 3, 196602, 0, 4, 196605, 65536, 4, 196606, 0, 3, 196607, 0, 4, 131072, 0, 3, 131073, 0, 3, 131074, 0, 4, 131075, 0, 4, 131076, 0, 3, -65538, 65539, 0, -131070, 65539, 0, 196596, 0, 3, 196597, 0, 4, -393227, 3, 0, -393226, 3, 0, -393225, 3, 0, -393224, 131075, 0, -393223, 65539, 0, -393222, 65539, 0, -393221, 65539, 0, -393220, 131075, 0, -393219, 3, 0, -393218, 3, 0, -393217, 3, 0, -458752, 3, 0, -458751, 3, 0, -458750, 3, 0, -458749, 3, 0, -458748, 65539, 0, -458747, 3, 0, -458746, 3, 0, -458745, 3, 0, -458744, 65539, 0, 10, 0, 3, -65526, 5, 1, -131062, 3, 0, -196598, 3, 0, -262134, 65539, 0, -327670, 131075, 0, 458742, 0, 3, 393206, 65536, 4, 327670, 65536, 4, 262134, 0, 4, 458741, 0, 4, 393205, 0, 3, 327669, 0, 3, 262133, 0, 3, 262132, 65536, 4, 458746, 0, 3, 393210, 0, 3, 327674, 0, 3, 262138, 0, 4, 458745, 0, 3, 393209, 0, 3, 327673, 0, 4, 262137, 65536, 4, 196613, 0, 3, 196612, 0, 4, 196611, 0, 3, 196610, 0, 3, 196609, 0, 4, 196608, 0, 3, 262143, 65536, 4, 458750, 0, 3, 393214, 0, 3, 327678, 0, 3, 262142, 0, 3, 458749, 0, 4, 393213, 0, 3, 327677, 0, 3, 262141, 0, 3, 196615, 0, 3, 131079, 0, 4, 65543, 0, 3, 196614, 65536, 4, 131078, 0, 3, 65542, 0, 3, -196610, 131075, 0, -262147, 65539, 0, -262146, 3, 0, -131074, 65539, 0, -196606, 3, 0, -262142, 65539, 0, -327677, 3, 0, -327678, 3, 0, -327672, 3, 0, -262150, 65539, 0, -196615, 3, 0, -262151, 3, 0, -262152, 131075, 0, -196616, 3, 0, -131080, 131075, 0, -262153, 3, 0, -262155, 3, 0, -262156, 3, 0, -196620, 3, 0, 458748, 0, 3, 393212, 0, 3, 458747, 65536, 4, 393211, 0, 3, 458744, 0, 4, 393208, 0, 3, 458743, 0, 3, 393207, 0, 4, -65548, 3, 0, -65547, 3, 0, -131083, 3, 0, -131082, 65539, 0, -196617, 3, 0, -196618, 65539, 0, -262154, 3, 0, -196619, 3, 0, -131084, 3, 0, 262131, 0, 4, 196595, 0, 3, -65549, 3, 0, -131085, 65539, 0, -196621, 3, 0, -262157, 3, 0, 393215, 0, 4, 262144, 0, 3, 327679, 0, 3, 327668, 0, 3, 393204, 65536, 3, 131080, 0, 3, 65545, 0, 3, 65544, 0, 4)
+
+[node name="Bones" type="Node" parent="."]
+
+[node name="Bone2" parent="Bones" instance=ExtResource("3_3754k")]
+position = Vector2(1376, 480)
+
+[node name="Bone3" parent="Bones" instance=ExtResource("3_3754k")]
+position = Vector2(288, 608)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Spikes" parent="Enemies" instance=ExtResource("8_lpfvg")]
+position = Vector2(352, 800)
+
+[node name="Spikes2" parent="Enemies" instance=ExtResource("8_lpfvg")]
+position = Vector2(416, 800)
+
+[node name="Spikes3" parent="Enemies" instance=ExtResource("8_lpfvg")]
+position = Vector2(608, 800)
+
+[node name="Spikes4" parent="Enemies" instance=ExtResource("8_lpfvg")]
+position = Vector2(672, 800)
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(928, 256)
+
+[node name="FinishArea" parent="." instance=ExtResource("4_6gixd")]
+position = Vector2(160, 592)
+
+[node name="Door" parent="." instance=ExtResource("5_hm7k1")]
+position = Vector2(224, 544)
+
+[connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://5c5yr0a1a575" path="res://scenes/elements/exit-door.tscn" id="5_qe8io"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
-size = Vector2(1792, 1024)
+size = Vector2(1920, 1088)
 
 [node name="Level" type="Node2D" groups=["level"]]
 script = ExtResource("1_ng8v4")
@@ -16,6 +16,7 @@ script = ExtResource("1_ng8v4")
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelArea"]
+position = Vector2(960, 544)
 shape = SubResource("RectangleShape2D_emyvp")
 debug_color = Color(0, 0.647059, 0.760784, 0.419608)
 

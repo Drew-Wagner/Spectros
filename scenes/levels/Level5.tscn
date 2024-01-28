@@ -1,257 +1,107 @@
-[gd_scene load_steps=12 format=3 uid="uid://hdpa1pk2842f"]
+[gd_scene load_steps=13 format=3 uid="uid://d3didjf3p4p78"]
 
 [ext_resource type="Script" path="res://scripts/base_level.gd" id="1_nfwjl"]
 [ext_resource type="TileSet" uid="uid://8jd3eqwvtp76" path="res://tilesets/tileset.tres" id="2_gvgd8"]
 [ext_resource type="PackedScene" uid="uid://cjcnnvu3yseel" path="res://scenes/elements/platform.tscn" id="2_qishb"]
 [ext_resource type="PackedScene" uid="uid://hnygefrtotfx" path="res://scenes/elements/bone.tscn" id="3_4d55u"]
 [ext_resource type="PackedScene" uid="uid://drgbe6551a4os" path="res://scenes/enemies/spikes.tscn" id="3_fu3be"]
+[ext_resource type="Texture2D" uid="uid://70ptu8emrfhe" path="res://materials/tiles_orange_simple.png" id="3_u5pjx"]
 [ext_resource type="PackedScene" uid="uid://c1tvdb40a26y0" path="res://scenes/elements/finish_area.tscn" id="4_ew0n6"]
-[ext_resource type="PackedScene" uid="uid://bth5xo6bxskba" path="res://scenes/enemies/enemy_spider.tscn" id="4_tel7p"]
+[ext_resource type="Texture2D" uid="uid://2jhvjjxsmgh4" path="res://materials/platform_orange_thin.png" id="4_oawpu"]
+[ext_resource type="Texture2D" uid="uid://d2iwhh2by5hbq" path="res://materials/platform_orange_thin_border.png" id="5_6enmd"]
 [ext_resource type="PackedScene" uid="uid://5c5yr0a1a575" path="res://scenes/elements/exit-door.tscn" id="5_v56ld"]
-[ext_resource type="PackedScene" uid="uid://ck2m2kpsthl3l" path="res://scenes/elements/stasis_field.tscn" id="5_xlg4e"]
 [ext_resource type="PackedScene" uid="uid://xynpr4h0gdnx" path="res://scenes/enemies/enemy_bat.tscn" id="7_wkd6h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emyvp"]
-size = Vector2(1792, 1024)
+size = Vector2(1856, 1024)
 
 [node name="Level" type="Node2D" groups=["level"]]
 script = ExtResource("1_nfwjl")
 
 [node name="LevelArea" type="Area2D" parent="."]
 visible = false
-position = Vector2(960, 576)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelArea"]
+position = Vector2(928, 512)
 shape = SubResource("RectangleShape2D_emyvp")
 debug_color = Color(0, 0.647059, 0.760784, 0.419608)
 
-[node name="DynamicEnvironment" type="Node" parent="."]
+[node name="Toggleables" type="Node" parent="."]
 
-[node name="Platform" parent="DynamicEnvironment" instance=ExtResource("2_qishb")]
-position = Vector2(352, 416)
+[node name="Platform2" parent="Toggleables" instance=ExtResource("2_qishb")]
+position = Vector2(992, 576)
 is_autonomous = false
 is_toggleable = true
 width = 1
-height = 3
+height = 2
 waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -2)])
+texture = ExtResource("3_u5pjx")
+bottom_texture = ExtResource("4_oawpu")
 
-[node name="Spikes" parent="DynamicEnvironment/Platform" instance=ExtResource("3_fu3be")]
-position = Vector2(0, 128)
-rotation = -3.14159
-
-[node name="Platform4" parent="DynamicEnvironment" instance=ExtResource("2_qishb")]
-position = Vector2(480, 608)
+[node name="Platform5" parent="Toggleables" instance=ExtResource("2_qishb")]
+position = Vector2(1184, 704)
 is_autonomous = false
 is_toggleable = true
 width = 1
-height = 3
+height = 2
 waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -2)])
+texture = ExtResource("3_u5pjx")
+top_texture = ExtResource("4_oawpu")
 
-[node name="Spikes" parent="DynamicEnvironment/Platform4" instance=ExtResource("3_fu3be")]
-position = Vector2(0, 128)
-rotation = -3.14159
-
-[node name="Platform5" parent="DynamicEnvironment" instance=ExtResource("2_qishb")]
-position = Vector2(608, 480)
+[node name="Platform4" parent="Toggleables" instance=ExtResource("2_qishb")]
+position = Vector2(480, 576)
 is_autonomous = false
 is_toggleable = true
 width = 1
-height = 3
+height = 2
 waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, 2)])
+texture = ExtResource("3_u5pjx")
+top_texture = ExtResource("4_oawpu")
 
-[node name="Spikes" parent="DynamicEnvironment/Platform5" instance=ExtResource("3_fu3be")]
-position = Vector2(0, -128)
-is_player_toggleable = true
-
-[node name="Platform7" parent="DynamicEnvironment" instance=ExtResource("2_qishb")]
-position = Vector2(608, 864)
+[node name="Platform3" parent="Toggleables" instance=ExtResource("2_qishb")]
+position = Vector2(768, 648)
 is_autonomous = false
 is_toggleable = true
-width = 1
-height = 3
-waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, 2)])
-
-[node name="Spikes" parent="DynamicEnvironment/Platform7" instance=ExtResource("3_fu3be")]
-position = Vector2(0, -128)
-is_player_toggleable = true
-
-[node name="Platform8" parent="DynamicEnvironment" instance=ExtResource("2_qishb")]
-position = Vector2(480, 992)
-is_autonomous = false
-is_toggleable = true
-width = 1
-height = 3
-waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -2)])
-
-[node name="Spikes" parent="DynamicEnvironment/Platform8" instance=ExtResource("3_fu3be")]
-position = Vector2(0, -128)
-is_player_toggleable = true
-is_on = false
-
-[node name="Platform9" parent="DynamicEnvironment" instance=ExtResource("2_qishb")]
-position = Vector2(736, 992)
-is_autonomous = false
-is_toggleable = true
-width = 1
-height = 3
-waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -2)])
-
-[node name="Spikes" parent="DynamicEnvironment/Platform9" instance=ExtResource("3_fu3be")]
-position = Vector2(0, -128)
-is_player_toggleable = true
-is_on = false
-
-[node name="Platform6" parent="DynamicEnvironment" instance=ExtResource("2_qishb")]
-position = Vector2(736, 608)
-is_autonomous = false
-is_toggleable = true
-width = 1
-height = 3
-waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -2)])
-
-[node name="Spikes" parent="DynamicEnvironment/Platform6" instance=ExtResource("3_fu3be")]
-position = Vector2(0, 128)
-rotation = -3.14159
-
-[node name="Platform2" parent="DynamicEnvironment" instance=ExtResource("2_qishb")]
-position = Vector2(544, 224)
-is_autonomous = false
-is_toggleable = true
-width = 1
-height = 3
-waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, -2)])
-
-[node name="Spikes" parent="DynamicEnvironment/Platform2" instance=ExtResource("3_fu3be")]
-position = Vector2(0, 128)
-rotation = -3.14159
-
-[node name="Platform3" parent="DynamicEnvironment" instance=ExtResource("2_qishb")]
-position = Vector2(1184, 672)
-is_autonomous = false
-is_toggleable = true
-width = 1
-height = 9
-waypoints = Array[Vector2]([Vector2(0, 0), Vector2(0, 8)])
-
-[node name="Spikes" parent="DynamicEnvironment/Platform3" instance=ExtResource("3_fu3be")]
-position = Vector2(-64, -256)
-rotation = -7.85397
-
-[node name="Spikes2" parent="DynamicEnvironment/Platform3" instance=ExtResource("3_fu3be")]
-position = Vector2(-64, 0)
-rotation = -7.85397
-
-[node name="Spikes3" parent="DynamicEnvironment/Platform3" instance=ExtResource("3_fu3be")]
-position = Vector2(64, 128)
-rotation = -10.9956
-
-[node name="Spikes4" parent="DynamicEnvironment/Platform3" instance=ExtResource("3_fu3be")]
-position = Vector2(64, -64)
-rotation = -10.9956
-
-[node name="StasisField" parent="DynamicEnvironment" instance=ExtResource("5_xlg4e")]
-position = Vector2(928, 96)
-rotation = -3.14159
-stasis_range = 13.0
-
-[node name="Spikes" parent="DynamicEnvironment" instance=ExtResource("3_fu3be")]
-position = Vector2(672, 288)
-is_player_toggleable = true
-is_on = false
-
-[node name="Spikes2" parent="DynamicEnvironment" instance=ExtResource("3_fu3be")]
-position = Vector2(1120, 288)
-is_player_toggleable = true
-
-[node name="Spikes3" parent="DynamicEnvironment" instance=ExtResource("3_fu3be")]
-position = Vector2(1248, 288)
-is_player_toggleable = true
-is_on = false
-
-[node name="Spikes4" parent="DynamicEnvironment" instance=ExtResource("3_fu3be")]
-position = Vector2(1376, 288)
-is_player_toggleable = true
-
-[node name="Spikes5" parent="DynamicEnvironment" instance=ExtResource("3_fu3be")]
-position = Vector2(1504, 288)
-is_player_toggleable = true
-is_on = false
+waypoints = Array[Vector2]([Vector2(0, 0), Vector2(-2, 0)])
+texture = ExtResource("4_oawpu")
+top_texture = ExtResource("5_6enmd")
 
 [node name="StaticEnvironment" type="TileMap" parent="."]
 position = Vector2(896, 512)
 tile_set = ExtResource("2_gvgd8")
 format = 2
 layer_0/z_index = 1
-layer_0/tile_data = PackedInt32Array(-65524, 1, 3, 12, 1, 3, 10, 65537, 3, 9, 1, 3, 11, 65537, 3, 8, 1, 3, 7, 65537, 3, 393223, 1, 3, 393222, 65537, 3, 393221, 1, 4, 393220, 1, 3, 393219, 1, 3, 393218, 1, 3, 393217, 65537, 3, 393216, 1, 3, 458751, 1, 3, 458750, 1, 3, 458749, 65537, 3, 458748, 1, 3, 458747, 1, 3, 458746, 1, 3, 458745, 65537, 3, 458744, 1, 3, 458743, 65537, 3, 458742, 1, 3, 458741, 65537, 3, 458740, 1, 3, 393204, 65537, 3, 262132, 1, 3, 196596, 1, 3, -131084, 65537, 4, -196620, 65537, 3, -131083, 1, 4, -131082, 1, 3, -131080, 1, 3, -131081, 1, 3, -131079, 1, 3, -131078, 1, 4, -131077, 1, 4, -131076, 65537, 3, -131075, 1, 3, -131074, 1, 4, -131073, 1, 3, -196608, 1, 4, -196607, 1, 3, -196606, 1, 3, -196605, 65537, 3, -196604, 65537, 3, -196603, 1, 3, -196602, 65537, 3, -196601, 1, 3, -196600, 1, 3, -196599, 1, 3, 6, 1, 3, 5, 1, 3, 4, 1, 3, 3, 65537, 3, 2, 1, 3, 1, 1, 3, 0, 1, 3, 65535, 65537, 3, 65534, 1, 4, 65533, 1, 3, 65532, 1, 3, 65531, 65537, 3, 65530, 65537, 3, 65529, 1, 3, 65528, 1, 3, 65527, 65537, 3, 262135, 1, 3, 262136, 1, 3, 262137, 1, 4, 262138, 65537, 3, 262139, 1, 3, 262140, 65537, 3, 262141, 65537, 3, 262142, 1, 3, 262143, 1, 3, 196608, 1, 4, 196609, 1, 4, 196610, 65537, 4, 196611, 1, 3, 196612, 65537, 3, 262134, 1, 4, 262133, 1, 3, 327687, 1, 3, -458754, 1, 3, -524286, 1, 4, -524284, 1, 3, -524282, 65537, 3, -524280, 65537, 3)
+layer_0/tile_data = PackedInt32Array(-393215, 3, 0, -327679, 65539, 0, -262143, 65539, 0, -196607, 65539, 0, -393214, 65539, 0, -393213, 65539, 0, -393212, 3, 0, -393211, 3, 0, -393210, 3, 0, -393209, 3, 0, -393208, 65539, 0, -393207, 3, 0, -327671, 131075, 0, -262135, 3, 0, -196599, 3, 0, -131063, 65539, 0, -65527, 5, 1, 9, 0, 3, 8, 0, 4, 7, 0, 4, 131077, 65536, 4, -65549, 3, 0, -131085, 65539, 0, -196621, 3, 0, -262157, 3, 0, -327692, 3, 0, -327691, 3, 0, -327690, 3, 0, -327689, 3, 0, -327688, 3, 0, -327687, 3, 0, -327686, 131075, 0, -327685, 131075, 0, -327684, 3, 0, -327683, 3, 0, -327682, 65539, 0, -327681, 131075, 0, -262145, 3, 0, -196609, 3, 0, -131073, 3, 0, -65537, 3, 0, -131071, 3, 0, 196598, 0, 3, 196601, 0, 3, 196602, 0, 4, 196605, 65536, 4, 196606, 0, 3, 196607, 0, 4, 131072, 0, 3, 131073, 0, 3, 131074, 0, 4, 131075, 0, 4, 131076, 0, 3, -65538, 65539, 0, 196595, 0, 3, 196596, 0, 3, 196597, 0, 4, -393227, 3, 0, -393226, 3, 0, -393225, 3, 0, -393224, 131075, 0, -393223, 65539, 0, -393222, 65539, 0, -393221, 65539, 0, -393220, 131075, 0, -393219, 3, 0, -393218, 3, 0, -393217, 3, 0, -458752, 3, 0, -458751, 3, 0, -458750, 3, 0, -458749, 3, 0, -458748, 65539, 0, -458747, 3, 0, -458746, 3, 0, -458745, 3, 0, -458744, 65539, 0, 10, 0, 3, -65526, 5, 1, -131062, 3, 0, -196598, 3, 0, -262134, 65539, 0, -327670, 131075, 0, 262134, 0, 3, 262133, 0, 3, 262132, 65536, 4, 458746, 0, 3, 393210, 0, 3, 327674, 0, 3, 262138, 0, 4, 458745, 0, 3, 393209, 0, 3, 327673, 0, 4, 262137, 65536, 4, 196613, 0, 4, 196612, 0, 3, 196611, 0, 3, 196610, 0, 3, 196609, 0, 4, 196608, 0, 3, 262143, 0, 4, 458750, 0, 3, 393214, 65536, 4, 327678, 0, 4, 262142, 0, 3, 458749, 0, 4, 393213, 0, 3, 327677, 0, 3, 262141, 0, 3, 196615, 0, 3, 131079, 0, 4, 65543, 0, 3, 196614, 65536, 4, 131078, 0, 3, -196610, 131075, 0, -262147, 65539, 0, -262146, 3, 0, -131074, 65539, 0, -196606, 3, 0, -262142, 65539, 0, -327677, 3, 0, -327678, 3, 0, -327672, 3, 0, -262150, 65539, 0, -196615, 3, 0, -262151, 3, 0, -262152, 131075, 0, -196616, 3, 0, -131080, 131075, 0, -262153, 3, 0, -262155, 3, 0, -262156, 3, 0, -196620, 3, 0, 458748, 0, 3, 393212, 0, 4, 458747, 65536, 4, 393211, 0, 3, -65548, 3, 0, -65547, 3, 0, -131083, 3, 0, -131082, 65539, 0, -196617, 3, 0, -196618, 65539, 0, -262154, 3, 0, -196619, 3, 0, -131084, 3, 0, -1, 3, 0, -65535, 131075, 0, 196600, 65536, 4, 196599, 0, 3, 262135, 0, 3, 262136, 0, 4, 327671, 0, 3, 327672, 65536, 4, 393208, 65536, 4, 393215, 0, 3, 262144, 0, 3, 327679, 0, 3, 65542, 65536, 4, 131080, 0, 4, 262146, 0, 3, 262145, 0, 3, 65545, 0, 3, 65544, 0, 4, 262131, 0, 4)
 
 [node name="Bones" type="Node" parent="."]
 
-[node name="Bone" parent="Bones" instance=ExtResource("3_4d55u")]
-position = Vector2(608, 664)
-
 [node name="Bone2" parent="Bones" instance=ExtResource("3_4d55u")]
-position = Vector2(928, 112)
+position = Vector2(1184, 456)
 
 [node name="Bone3" parent="Bones" instance=ExtResource("3_4d55u")]
-position = Vector2(1632, 464)
+position = Vector2(480, 456)
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="EnemyBat" parent="Enemies" instance=ExtResource("7_wkd6h")]
-position = Vector2(448, 472)
-moveSpeed = 128.0
+[node name="Spikes3" parent="Enemies" instance=ExtResource("3_fu3be")]
+position = Vector2(608, 800)
 
-[node name="EnemySpider" parent="Enemies" instance=ExtResource("4_tel7p")]
-position = Vector2(800, 96)
-descend_wait_time = 3.0
-ascend_wait_time = 1.0
-
-[node name="TimedSpiders" type="Node" parent="Enemies"]
-
-[node name="EnemySpider2" parent="Enemies/TimedSpiders" instance=ExtResource("4_tel7p")]
-position = Vector2(1056, 96)
-descend_wait_time = -1.0
-
-[node name="EnemySpider3" parent="Enemies/TimedSpiders" instance=ExtResource("4_tel7p")]
-position = Vector2(1184, 96)
-descend_wait_time = -1.0
-
-[node name="EnemySpider4" parent="Enemies/TimedSpiders" instance=ExtResource("4_tel7p")]
-position = Vector2(1312, 96)
-descend_wait_time = -1.0
-
-[node name="EnemySpider5" parent="Enemies/TimedSpiders" instance=ExtResource("4_tel7p")]
-position = Vector2(1440, 96)
-descend_wait_time = -1.0
-
-[node name="TimerS2" type="Timer" parent="Enemies/TimedSpiders"]
-wait_time = 3.0
-autostart = true
-
-[node name="TimerS3" type="Timer" parent="Enemies/TimedSpiders"]
-one_shot = true
-
-[node name="TimerS4" type="Timer" parent="Enemies/TimedSpiders"]
-one_shot = true
-
-[node name="TimerS5" type="Timer" parent="Enemies/TimedSpiders"]
-one_shot = true
+[node name="Spikes4" parent="Enemies" instance=ExtResource("3_fu3be")]
+position = Vector2(672, 800)
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(224, 320)
+position = Vector2(928, 256)
 
 [node name="FinishArea" parent="." instance=ExtResource("4_ew0n6")]
-position = Vector2(224, 848)
+position = Vector2(160, 592)
 
 [node name="Door" parent="." instance=ExtResource("5_v56ld")]
-position = Vector2(288, 800)
+position = Vector2(224, 544)
+
+[node name="EnemyBat" parent="." instance=ExtResource("7_wkd6h")]
+position = Vector2(1440, 472)
+moveSpeed = 150.0
+isLookingRight = false
 
 [connection signal="body_exited" from="LevelArea" to="." method="_on_level_area_body_exited"]
-[connection signal="timeout" from="Enemies/TimedSpiders/TimerS2" to="Enemies/TimedSpiders/EnemySpider2" method="descend"]
-[connection signal="timeout" from="Enemies/TimedSpiders/TimerS2" to="Enemies/TimedSpiders/TimerS3" method="start" binds= [0.8]]
-[connection signal="timeout" from="Enemies/TimedSpiders/TimerS3" to="Enemies/TimedSpiders/EnemySpider3" method="descend"]
-[connection signal="timeout" from="Enemies/TimedSpiders/TimerS3" to="Enemies/TimedSpiders/TimerS4" method="start" binds= [0.8]]
-[connection signal="timeout" from="Enemies/TimedSpiders/TimerS4" to="Enemies/TimedSpiders/EnemySpider4" method="descend"]
-[connection signal="timeout" from="Enemies/TimedSpiders/TimerS4" to="Enemies/TimedSpiders/TimerS5" method="start" binds= [0.8]]
-[connection signal="timeout" from="Enemies/TimedSpiders/TimerS5" to="Enemies/TimedSpiders/EnemySpider5" method="descend"]
