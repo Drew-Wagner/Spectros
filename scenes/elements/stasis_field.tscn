@@ -11,22 +11,20 @@
 size = Vector2(64, 64)
 
 [sub_resource type="Gradient" id="Gradient_janw7"]
-colors = PackedColorArray(1, 0, 0.5, 1, 0.616667, 0, 1, 1)
+colors = PackedColorArray(1, 0.788235, 0, 1, 0.616667, 0, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_x6qxd"]
 gradient = SubResource("Gradient_janw7")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ojm2u"]
-emission_shape = 3
-emission_box_extents = Vector3(30, 30, 1)
 particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(30, 90, 1)
 direction = Vector3(0, 1, 0)
 spread = 0.0
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = 1.0
 initial_velocity_max = 1.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(0, 0, 0)
 linear_accel_min = 100.0
 linear_accel_max = 100.0
 scale_min = 0.5
@@ -35,13 +33,14 @@ color_ramp = SubResource("GradientTexture1D_x6qxd")
 [node name="StasisField" type="Node2D"]
 script = ExtResource("1_4s5rn")
 is_player_toggleable = true
-is_on = false
-stasis_range = 1.0
+stasis_range = 3.0
 
 [node name="Toggle" parent="." instance=ExtResource("2_snf1j")]
+is_on = true
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, 32)
+scale = Vector2(1, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -32)
@@ -52,8 +51,7 @@ debug_color = Color(1, 0, 0.74902, 0.419608)
 position = Vector2(0, 32)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-visible = false
-position = Vector2(0, -30)
+position = Vector2(0, -90)
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_ojm2u")
 texture = ExtResource("3_dbfm5")

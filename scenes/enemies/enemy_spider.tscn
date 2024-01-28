@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/enemy_spider.gd" id="1_60qeg"]
 [ext_resource type="Texture2D" uid="uid://cuw6ubrc7dem0" path="res://materials/spider_web.png" id="2_c14p1"]
-[ext_resource type="Texture2D" uid="uid://csdky8lro0o22" path="res://textures/enn_spider.png" id="2_nx6wh"]
 [ext_resource type="PackedScene" uid="uid://cvmv0ubhebeb7" path="res://scenes/components/kill_box.tscn" id="3_o7wso"]
+[ext_resource type="Texture2D" uid="uid://dxtkc85mqm7yw" path="res://materials/enemy_spider_glow.png" id="4_svobe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vs3ab"]
 radius = 23.0
@@ -32,7 +32,7 @@ shape = SubResource("CapsuleShape2D_mfjf7")
 
 [node name="Sprite2D" type="Sprite2D" parent="SpiderBody"]
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_nx6wh")
+texture = ExtResource("4_svobe")
 
 [node name="AscendTimer" type="Timer" parent="."]
 one_shot = true

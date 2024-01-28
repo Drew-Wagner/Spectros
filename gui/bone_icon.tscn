@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c8w8tqajmi2p4" path="res://materials/stasis_particle.png" id="4_1js33"]
 
 [sub_resource type="Gradient" id="Gradient_5ncoh"]
-colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 0)
+colors = PackedColorArray(0.470588, 0.886275, 0.427451, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_u5pm7"]
 gradient = SubResource("Gradient_5ncoh")
@@ -21,19 +21,17 @@ point_count = 3
 curve = SubResource("Curve_vpauq")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_knsfc"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
 emission_shape = 6
 emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 1.0
 emission_ring_radius = 5.0
 emission_ring_inner_radius = 0.0
-particle_flag_align_y = true
-particle_flag_disable_z = true
 direction = Vector3(0, 0, 0)
 spread = 180.0
 flatness = 1.0
 gravity = Vector3(0, 300, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
 linear_accel_min = 100.0
 linear_accel_max = 100.0
 radial_accel_min = 500.0
