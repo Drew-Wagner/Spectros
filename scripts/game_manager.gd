@@ -36,22 +36,20 @@ func next_level():
 	level_index += 1
 	start_level()
 
-	if level_index == levels.size():
-		game_end.emit()
-
-
 func start_level():
 	pause()
 	if level:
-		level.queue_free()
-
 		scene_transition.play("fade")
+		if level_index >= levels.size():
+			await scene_transition.animation_finished
+			game_end.emit()
+			return
+		
 		await scene_transition.animation_finished
+		level.queue_free()
+		await level.tree_exited
 	
 	level_time = 0
-
-	if level_index >= levels.size():
-		return
 
 	# Spawn in level
 	level = levels[level_index].instantiate() as BaseLevel
