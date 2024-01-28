@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4oc8ogfikqdm"]
+[gd_scene load_steps=10 format=3 uid="uid://b4oc8ogfikqdm"]
 
 [ext_resource type="Shortcut" uid="uid://dbm3w3ubk6mno" path="res://scripts/toggle_button_shortcut.tres" id="1_1eg65"]
 [ext_resource type="Texture2D" uid="uid://fefsjih0pp1c" path="res://textures/landscape_dark.png" id="1_d2qfa"]
 [ext_resource type="AudioStream" uid="uid://caigx6k3md34c" path="res://sounds/rawfiles/LEVIER_GJ_AMB_LP.wav" id="1_njy4r"]
 [ext_resource type="Script" path="res://scripts/components/scene_navigation.gd" id="2_numlj"]
+[ext_resource type="Script" path="res://scripts/sound_player.gd" id="3_7fkeu"]
+[ext_resource type="Resource" uid="uid://dhfb1u4qin8vh" path="res://sounds/wouhou.tres" id="4_0hc0g"]
 
 [sub_resource type="Animation" id="Animation_xp4vw"]
 resource_name = "FadeIn"
@@ -193,6 +195,11 @@ libraries = {
 "": SubResource("AnimationLibrary_kuc60")
 }
 
+[node name="wouhou" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+script = ExtResource("3_7fkeu")
+sounds = Array[Resource("res://scripts/sound.gd")]([ExtResource("4_0hc0g")])
+
 [node name="AudioAmbiance" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_njy4r")
 autoplay = true
@@ -200,5 +207,6 @@ autoplay = true
 [node name="Navigation" type="Node" parent="."]
 script = ExtResource("2_numlj")
 
+[connection signal="ready" from="." to="wouhou" method="play_all"]
 [connection signal="pressed" from="Hbox/VBoxContainer/Title/MarginContainer/BackToMainMenu" to="Navigation" method="go_to" binds= ["res://scenes/main_menu.tscn"]]
 [connection signal="ready" from="AnimationPlayer" to="AnimationPlayer" method="play" binds= ["FadeIn"]]

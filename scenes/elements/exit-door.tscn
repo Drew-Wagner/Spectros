@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/sound_player.gd" id="4_1jvmh"]
 [ext_resource type="Resource" uid="uid://dxaqmg2djc2di" path="res://sounds/harrow.tres" id="5_bowvh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6oqg6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qs0al"]
 size = Vector2(64, 192)
 
 [node name="Door" groups=["all_bones_collected_listeners"] instance=ExtResource("1_ydgs7")]
@@ -21,7 +21,7 @@ texture = ExtResource("3_imo73")
 region_rect = Rect2(0, 0, 64, 192)
 
 [node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("RectangleShape2D_6oqg6")
+shape = SubResource("RectangleShape2D_qs0al")
 
 [node name="Harrow" type="AudioStreamPlayer" parent="." index="2"]
 volume_db = 3.0
