@@ -14,13 +14,11 @@ signal level_start()
 signal level_end()
 signal died()
 
-@export var grunt_sounds: Array[AudioStream]
 @export var main_character_scene: PackedScene
 var level_time = 0
 
 @onready var level_label: Label = %LevelLabel
 @onready var time_label: Label = %TimeLabel
-var audio_effects_player: AudioStreamPlaybackPolyphonic
 @onready var scene_transition: AnimationPlayer = %SceneTransitionAnimPlayer
 @onready var transition_particles: Node2D = %TransitionParticles
 
@@ -29,14 +27,6 @@ var spawn_location: Vector2
 var is_paused: bool
 
 func _ready():
-	var player: AudioStreamPlayer = %AudioEffects
-	var bg_sound = $AudioBackground
-	player.stream = AudioStreamPolyphonic.new()
-	player.play()
-	audio_effects_player = player.get_stream_playback()
-	bg_sound.play_all()
-	
-	
 	%TransitionOverlay.show()
 	start_level()
 
